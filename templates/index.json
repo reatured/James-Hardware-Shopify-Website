@@ -20,7 +20,6 @@
     },
     "lingyi_banner_image_responsive_7Pn9wP": {
       "type": "Lingyi_Banner-Image-Responsive",
-      "disabled": true,
       "settings": {
         "desktop_image": "shopify://shop_images/Branding_Souvenir_V1.jpg",
         "mobile_image": "shopify://shop_images/Branding_Souvenir_V4_Mobile.jpg",
@@ -29,7 +28,6 @@
     },
     "lingyi_banner_image_responsive_FpKntr": {
       "type": "Lingyi_Banner-Image-Responsive",
-      "disabled": true,
       "settings": {
         "desktop_image": "shopify://shop_images/Frame_3_1.png",
         "mobile_image": "shopify://shop_images/Frame_4_1.png",
