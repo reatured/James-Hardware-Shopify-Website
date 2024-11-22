@@ -2,9 +2,10 @@
   <div class="quote-request-container">
     <h1>Request a Quote</h1>
     
-    <form id="quote-form" class="quote-form" action="/contact#contact_form" method="POST">
+    <form id="quote-form" class="quote-form" action="/contact" method="POST">
       <input type="hidden" name="form_type" value="contact" />
       <input type="hidden" name="utf8" value="✓" />
+      <input type="hidden" name="contact[subject]" value="Quote Request" />
       
       <div class="field">
         <label for="quote-name">Name</label>

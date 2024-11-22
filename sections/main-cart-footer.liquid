@@ -93,19 +93,16 @@
                     {{ 'sections.cart.checkout' | t }}
                   </button>
 
-                  <button
-                    type="submit"
+                  <a
+                    href="/pages/quote-request"
                     id="request-quote"
                     class="cart__quote-button button button--secondary"
-                    name="request_quote"
                     {% if cart == empty %}
-                      disabled
+                      aria-disabled="true"
                     {% endif %}
-                    form="cart"
-                    formaction="/pages/quote-request"
                   >
                     Request Quote
-                  </button>
+                  </a>
                 </div>
               </div>
 
