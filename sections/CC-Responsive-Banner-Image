@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body,
+      .container,
+      .desktop-image,
+      .mobile-image {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      .container {
+        /* max-width: 100%; */
+        margin: 0 auto; /* Center the content */
+        text-align: center; /* Align content to center */
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      .desktop-image {
+        display: inline-block; /* Allow centering */
+        max-width: 1920px;
+      }
+
+      .mobile-image {
+        display: none;
+        /* max-width: 2160px; */
+      }
+
+      @media screen and (max-width: 768px) {
+        .desktop-image {
+          display: none;
+        }
+
+        .mobile-image {
+          display: inline-block; /* Allow centering */
+        }
+      }
+    </style>
+    <script>
+    function getRandomColor() {
+      const getRandomValue = () => Math.floor(Math.random() * 106) + 150; // Values between 150 and 255
+      const r = getRandomValue();
+      const g = getRandomValue();
+      const b = getRandomValue();
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const divs = document.querySelectorAll('.desktop-image, .mobile-image');
+      divs.forEach(div => {
+        div.style.backgroundColor = getRandomColor();
+      });
+    });
+    </script>
+  </head>
+
+  <body>
+    <!-- Container with max-width and centered alignment -->
+    <div class="container">
+      <!-- Desktop Image -->
+      <div class="desktop-image">
+        {% if section.settings.image_link %}
+          <a href="{{ section.settings.image_link }}">
+        {% endif %}
+        <img
+          src="{{ section.settings.desktop_image | image_url }}"
+          alt=""
+          width="2048"
+          height="2048"
+        >
+        {% if section.settings.image_link %}
+          </a>
+        {% endif %}
+      </div>
+
+      <!-- Mobile Image -->
+      <div class="mobile-image">
+        {% if section.settings.image_link %}
+          <a href="{{ section.settings.image_link }}">
+        {% endif %}
+        <img
+          src="{% if section.settings.mobile_image != blank %}{{ section.settings.mobile_image | image_url }}{% else %}{{ section.settings.desktop_image | image_url }}{% endif %}"
+          alt=""
+          width="768"
+          height="768"
+        >
+        {% if section.settings.image_link %}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+
+  {% schema %}
+{
+  "name": "Responsive Banner Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Upload Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Upload Mobile Image"
+    },
+    {
+      "type": "url",
+      "id": "image_link",
+      "label": "Image Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Responsive Banner Image",
+      "category": "Custom"
+    }
+  ]
+}
+  {% endschema %}
+</html>
