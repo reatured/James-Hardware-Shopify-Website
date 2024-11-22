@@ -1,0 +1,80 @@
+{% assign number_of_products = 4 %}
+{% assign number_of_products_to_fetch = number_of_products | plus: 1 %}
+
+{% if collection == null or collection.handle == 'frontpage' or collection.handle == 'all' %}
+  {% assign found_a_collection = false %}
+  {% for c in product.collections %}
+    {% if found_a_collection == false and c.handle != 'frontpage' and c.handle != 'all' and c.all_products_count > 1 %}
+      {% assign found_a_collection = true %}
+      {% assign collection = c %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+<div class="container related-block">
+{% if collection and collection.products_count > 1 %}  
+  <div class="slider-product-title">
+    <h3 class="title"><span>{{ 'products.general.related_products_title' | t }}</span></h3>
+  </div>
+  <div class="row">
+    <div class="related-carousel">	
+    {% assign current_product = product %}
+    {% assign current_product_found = false %}
+    {% for product in collection.products limit: number_of_products_to_fetch %}
+      {% if product.handle == current_product.handle %}
+        {% assign current_product_found = true %}
+      {% else %}
+        {% unless current_product_found == false and forloop.last %}          
+    		<div class="item">	
+	          {% include 'product-grid-item' %}
+    		</div>  
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+  	</div>    
+  </div>
+{% endif %}
+</div>  
+<script type="text/javascript">
+jQuery(function ($) {
+    "use strict";
+	var productCarousel = $(".related-carousel");	
+	if (productCarousel.length > 0) productCarousel.each(function () {	
+	var items = 4,
+	    itemsDesktop = 4,
+	    itemsDesktopSmall = 3,
+	    itemsTablet = 2,
+	    itemsMobile = 1;
+	var rtl = false;
+	if ($("body").hasClass("rtl")) rtl = true;
+	$(this).owlCarousel({
+	    responsiveClass:true,
+		responsive:{
+			1550:{
+				items:items
+			},
+			1199:{
+				items:itemsDesktop
+			},
+			991:{
+				items:itemsDesktopSmall
+			},
+			767:{
+				items:itemsTablet
+			},
+			318:{
+				items:itemsMobile
+			}
+		},
+		rtl: rtl,
+		autoPlay: false,
+	    nav: true,
+		dots:  false,
+	    pagination: false,
+	    rewindNav: true,
+	    navigationText: ["", ""],
+	    scrollPerPage: false,
+	    slideSpeed: 500
+	})
+	});
+});
+</script>

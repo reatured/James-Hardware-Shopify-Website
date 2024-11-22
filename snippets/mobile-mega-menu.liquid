@@ -1,0 +1,24 @@
+<ul class="dropdown-menu">  	
+      {% for count in (1..5) %}      	
+          {% assign col_id = mega_id | append:"_col" | append:count %} 
+          {% capture col_id %}{{ mega_id }}_col{{ count }}{% endcapture %}  	 
+          {% capture col_width %}{{ col_id }}_width{% endcapture %}  	  		  		
+          {% capture col_menu %}{{ col_id }}_menu{% endcapture %}  	  		  		
+          {% capture col_useimage %}{{ col_id }}_useimage{% endcapture %}  	  		  		
+          {% capture col_image %}{{ col_id }}.jpg{% endcapture %}
+          {% capture col_title %}{{ col_id }}_title{% endcapture %}      	
+          {% if settings[col_useimage] %}              
+              {% if settings[col_title] != blank %}
+              <li class="group"><a href="#">{{ settings[col_title] }}</a></li>
+              {% endif %}
+  			  <li><img src="{{ col_image | asset_url }}" alt="Megamenu" /></li>              
+          {% elsif linklists[settings[col_menu]].links != blank %}                                
+               {% if settings[col_title] != blank %}
+                    <li class="group"><a href="#">{{ settings[col_title] }}</a></li>	
+               {% endif %}
+               {% for childlink in linklists[settings[col_menu]].links %}
+                   <li><a href="{{ childlink.url }}" class="{% if childlink.active %}active{% endif %}">{{ childlink.title }}</a></li>
+               {% endfor %}               
+          {% endif %}	
+      {% endfor %} 	 
+</ul>

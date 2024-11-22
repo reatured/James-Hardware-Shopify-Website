@@ -1,0 +1,74 @@
+<div id="social_block">
+<ul class="find-us">
+  {% if settings.social_twitter_link != blank %}
+    <li class="divider">
+      <a href="{{ settings.social_twitter_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
+       		<span class="fa fa-twitter"></span>
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_facebook_link != blank %}
+    <li class="divider">
+      <a href="{{ settings.social_facebook_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
+      		<span class="fa fa-facebook"></span>
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_pinterest_link != blank %}
+    <li class="divider">
+      <a href="{{ settings.social_pinterest_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
+        	<span class="fa fa-pinterest"></span>
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_google_plus_link != blank %}
+    <li class="divider">
+      <a href="{{ settings.social_google_plus_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Google Plus' }}" rel="publisher">
+          <span class="fa fa-google-plus"></span>
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_instagram_link != blank %}
+    <li class="divider">
+      <a href="{{ settings.social_instagram_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
+        	<span class="fa fa-instagram"></span>
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_tumblr_link != blank %}
+    <li class="divider">
+      <a href="{{ settings.social_tumblr_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
+        	<span class="fa fa-tumblr"></span>
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_youtube_link != blank %}
+    <li class="divider">
+      <a href="{{ settings.social_youtube_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
+          <span class="fa fa-youtube"></span>
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_vimeo_link != blank %}
+    <li class="divider">
+      <a href="{{ settings.social_vimeo_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
+        <span class="fa fa-vimeo"></span>
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_fancy_link != blank %}
+    <li class="divider">
+      <a href="{{ settings.social_fancy_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Fancy' }}">
+        <span class="fa fa-vimeo"></span>
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_rss_link != blank %}
+    <li class="divider">
+      <a href="{{ settings.social_rss_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'RSS' }}">
+        <span class="fa fa-rss"></span>
+      </a>
+    </li>
+  {% endif %}
+</ul>
+</div>  

@@ -1,0 +1,77 @@
+<div class="section-blog">
+<div class="home-row row fullwidth">
+ <div class="slider-product-title">
+<h3 class="title">
+	<span>{{ settings.blog_title }}</span>
+</h3>
+</div> 
+<div class="blog-carousel">  
+{% for article in blogs[settings.blog_category].articles limit: settings.blog_total %}
+<div class="item">  
+	<div class="blog-item">
+      	<div class="post-thumb">
+          	<a href="{{ article.url }}"><img src="{{ article.image.src | img_url: '600x600' }}" alt="{{ article.title }}" ></a>
+        </div>      
+      	<div class="blog-info">
+         	<h4 class="post-title"><a href="{{ article.url }}">{{ article.title }}</a></h4>
+          	<ul class="post-meta">
+                 <li class="post-created">
+                      <span class="created">{{ article.created_at | date: "%B %d, %Y" }}</span>
+				 </li>
+                 <li class="post-comments">{{ article.comments.size }} <span>{{ 'blogs.article.comments' | t }}</span></li>
+          	</ul> 
+          	<p class="blog-intro">
+              	{{ article.content | strip_html | truncate: 130 }}
+          	</p> 
+          	<a href="{{ article.url }}" class="blog_readmore">{{ 'blogs.article.read_more' | t }}</a>
+      	</div>  
+  	</div>
+</div>  
+{% endfor %}
+</div>
+</div>  
+</div>
+<script type="text/javascript">
+jQuery(function ($) {
+    "use strict";
+	var blogCarousel = $(".blog-carousel");	
+	if (blogCarousel.length > 0) blogCarousel.each(function () {	
+	var items = {{ settings.blog_posts }},
+	    itemsDesktop = 3,
+	    itemsDesktopSmall = 2,
+	    itemsTablet = 2,
+	    itemsMobile = 1;
+	var rtl = false;
+	if ($("body").hasClass("rtl")) rtl = true;
+	$(this).owlCarousel({
+	    responsiveClass:true,
+		responsive:{
+			1550:{
+				items:items
+			},
+			1199:{
+				items:itemsDesktop
+			},
+			991:{
+				items:itemsDesktopSmall
+			},
+			767:{
+				items:itemsTablet
+			},
+			318:{
+				items:itemsMobile
+			}
+		},
+		rtl: rtl,
+		autoPlay: false,
+	    nav: {{ settings.blog_navigation }},
+		dots:  false,
+	    pagination: {{ settings.blog_pagination }},
+	    rewindNav: {{ settings.blog_rewind }},
+	    navigationText: ["", ""],
+	    scrollPerPage: false,
+	    slideSpeed: 500
+	})
+	});
+});
+</script>

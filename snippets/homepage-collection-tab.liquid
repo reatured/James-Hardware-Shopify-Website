@@ -1,0 +1,116 @@
+{% assign cols = settings.tabs_products_per_row | plus: 0 %}
+{% assign rows = settings.tabs_products_per_column | plus: 0 %}
+{% assign total_products = settings.tabs_total | plus: 0 %}
+{% assign rewind = settings.tabs_rewind %}
+{% assign pagination = settings.tabs_pagination %}
+{% assign navigation = settings.tabs_navigation %}
+{% assign tab_collection = settings.tab_collection_1 %}
+
+<div class="section-products"><div class="home-row row fullwidth">  
+<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">  
+<div class="jms-tab">
+	<ul class="nav nav-tabs" role="tablist">
+	{% for i in (1..5) %}
+      	{% capture tab_enable %}tab_enable_{{ i }}{% endcapture %}      	
+      	{% capture tab_title %}tab_title_{{ i }}{% endcapture %}	      	      	
+      	{% if settings[tab_enable] %}
+     	 <li class="{% if i == 1 %}active{% endif %}"><a href="#tab-collection{{ i }}" data-toggle="tab" class="button">{{ settings[tab_title] }}</a></li>
+      	{% endif %}
+	{% endfor %}
+	</ul>  
+</div> 
+<div class="tab-content">
+	{% for i in (1..5) %}
+  		{% capture tab_enable %}tab_enable_{{ i }}{% endcapture %}      	          	
+  		{% capture tab_collection %}tab_collection_{{ i }}{% endcapture %}	
+      	{% if settings[tab_enable] %}
+      	<div id="tab-collection{{ i }}" class="tab-pane{% if i == 1 %} active{% endif %}" role="tabpanel">                    	
+              	<div class="product-tab-carousel">
+                  	{% assign products_count = collections[settings[tab_collection]].products.size %}
+                  	{% if products_count > total_products %}
+						{% assign total = total_products %} 
+					{% else %}
+                  		{% assign total = products_count %} 
+    				{% endif %}
+                  	{% assign cols_mod = total | modulo:rows %}
+                  	{% if cols_mod == 0 %}
+                  		{% assign number_cols = total | divided_by:rows %}  
+                  	{% else %}
+                  		{% assign number_cols = total | divided_by:rows | plus:1 %}  
+                  	{% endif %}
+                  	
+                  	{% if cols > number_cols %}	
+						{% assign number_cols = cols %}
+					{% endif %}                  	
+                  	{% for product in collections[settings[tab_collection]].products limit: total_products %}
+                  		{% assign i_mod = forloop.index0 | modulo:number_cols %}
+                  		{% if i_mod == 0 %}
+                            {% assign index = 0 %}
+                        {% else %}
+                  			{% assign index = i_mod %}
+                  		{% endif %}
+                  	{% endfor %}
+                  	
+                  	{% for i  in (0..10) limit:number_cols %}
+                  		<div class="item">
+                  		{% for product in collections[settings[tab_collection]].products limit: total_products %}
+                          	{% assign i_mod = forloop.index0 | modulo:number_cols %}
+                          	{% if i_mod == i %}
+                  				{% include 'product-grid-item' %}
+                  		  	{% endif %}	                  				
+                      	{% endfor %}
+                  		</div>    
+                  	{% endfor %}
+              	</div>
+          	
+      	</div>
+      	{% endif %}
+      
+	{% endfor %}
+</div>  
+</div>  
+</div></div>
+<script type="text/javascript">
+jQuery(function ($) {
+    "use strict";
+	var productCarousel = $(".product-tab-carousel");	
+	if (productCarousel.length > 0) productCarousel.each(function () {	
+	var items = {{ cols }},
+	    itemsDesktop = 4,
+	    itemsDesktopSmall = 3,
+	    itemsTablet = 2,
+	    itemsMobile = 1;
+	var rtl = false;
+	if ($("body").hasClass("rtl")) rtl = true;
+	$(this).owlCarousel({
+	    responsiveClass:true,
+		responsive:{
+			1550:{
+				items:items
+			},
+			1199:{
+				items:itemsDesktop
+			},
+			991:{
+				items:itemsDesktopSmall
+			},
+			767:{
+				items:itemsTablet
+			},
+			318:{
+				items:itemsMobile
+			}
+		},
+		rtl: rtl,
+		autoPlay: false,
+	    nav: {{ navigation }},
+		dots:  false,
+	    pagination: {{ pagination }},
+	    rewindNav: {{ rewind }},
+	    navigationText: ["", ""],
+	    scrollPerPage: false,
+	    slideSpeed: 500
+	})
+	});
+});
+</script>

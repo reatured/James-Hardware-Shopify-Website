@@ -1,0 +1,76 @@
+{% comment %}
+
+  This snippet defines the default structure of each search result.
+
+  'item' refers to the result, but typically mimics the product liquid tag,
+  so you can access product liquid tags with {{ item.XXX }}.
+
+  Remember that results aren't specific to products, so don't depend on
+  a featured image or item.type. Pages, for example, have a blank item.type.
+
+  Product liquid tag info:
+   - http://docs.shopify.com/themes/liquid-variables/product
+
+{% endcomment %}
+
+<div class="item">
+	<div class="product-preview">
+      	<div class="preview">
+          	<a href="{{ item.url | within: collection }}">
+         		<img src="{{ item.featured_image.src | img_url: 'grande' }}" alt="{{ item.featured_image.alt | escape }}">
+         	</a>
+          	<div class="wrapper-label">
+                {% if on_sale and settings.collections_show_sale_circle %}
+                <span class="label label-sale">
+                  {{ 'products.product.sale' | t }}
+                </span>
+                {% endif %}
+            </div>
+            <div class="products-box">      
+              {% if settings.show_quickview_button %}
+              <a title="Quick View" class="quick-view product-btn hidden-xs" data-id="{{ product.handle }}">
+                  <span class="icon icon-basic-link"></span>
+              </a>
+              {% endif %}
+              {% if settings.show_addtowishlist_button %}
+              {% include 'wishlist-product-grid' %}
+              {% endif %}
+              <a title="Add to cart" href="#" class="ajax_add_to_cart_button cart-button product-btn" data-productid="{{ product.id }}">
+                  <span class="icon icon-ecommerce-bag"></span>
+              </a>
+              <div class="action">
+                {% assign variantCount = item.variants | size %}
+                <form action="/cart/add" method="post" class="variants product-actions-{{ item.id }}" enctype="multipart/form-data" style="padding:0px;">    
+                  {% if sold_out %}
+                  <input class="btn add-to-cart-btn" type="submit" value="{{ 'products.product.unavailable' | t }}" disabled="disabled" />
+                  {% else %}
+                  {% if variantCount > 1 %}
+                  <input class="btn" type="button" onclick="window.location.href='{{item.url}}'" value="{{ 'products.product.select_options' | t }}" />
+                  {% else %}
+                  <input type="hidden" name="id" value="{{ item.variants[0].id }}" />                      
+                  {% endif %}
+                  {% endif %}
+                </form>      
+              </div>
+         	 </div>  
+      	</div>
+      	<div class="product-info clearfix">
+            <h3 class="title product-title">
+              <a href="{{ item.url | within: collection }}">{{ item.title }}</a>
+            </h3>
+            <div class="rate_box pull-left">
+                 <div class="shopify-product-reviews-badge" data-id="{{item.id}}"></div> 
+            </div>  
+            <div class="content_price pull-right">
+                {% capture price %}{{ item.price | money }}{% endcapture %}
+                {% if on_sale %}
+                <span class="old price"><span class="money">{{ item.compare_at_price | money }}</span></span>
+                {% endif %}
+                <span class="price"><span class="money">{% if item.price_varies %}{{ 'products.general.from_html' | t: price: price }}{% else %}{{ price }}{% endif %}</span></span>
+            </div>
+            <div class="list_info">
+                {{ item.description | strip_html | slice: 0, 200 | append: ' ...' }}
+            </div>
+        </div>
+  	</div>
+</div>

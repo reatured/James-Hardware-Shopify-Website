@@ -1,0 +1,111 @@
+{% assign slider_enabled = true %}
+<div class="slideshow-section">
+{{ 'jquery.fractionslider.js' | asset_url | script_tag }}
+{{ 'fractionslider.css' | asset_url | stylesheet_tag }}
+<div class="jms-slider-wrapper">
+	<div class="responisve-container">
+		<div class="slider" >
+		<div class="fs_loader"></div>
+    {% for i in (1..5) %}
+    	{% capture display_slide %}display_slide_{{ i }}{% endcapture %}	
+      	{% capture slide %}slide_{{ i }}{% endcapture %}      	
+      	{% capture slide_img %}slide_{{ i }}.jpg{% endcapture %}    	
+        {% capture slide_link %}slide_link_{{ i }}{% endcapture %}    	
+    	{% capture slide_heading %}slide_heading_{{ i }}{% endcapture %}
+    	{% capture slide_heading_color %}slide_heading_color_{{ i }}{% endcapture %}
+    	{% capture slide_heading_size %}slide_heading_size_{{ i }}{% endcapture %}        
+        {% capture slide_heading_posx %}slide_heading_posx_{{ i }}{% endcapture %}
+        {% capture slide_heading_posy %}slide_heading_posy_{{ i }}{% endcapture %}
+        {% capture slide_heading_in %}slide_heading_transitionin_{{ i }}{% endcapture %}
+        {% capture slide_heading_out %}slide_heading_transitionout_{{ i }}{% endcapture %}
+    	{% capture slide_text %}slide_text_{{ i }}{% endcapture %}
+    	{% capture slide_text_color %}slide_text_color_{{ i }}{% endcapture %}
+    	{% capture slide_text_size %}slide_text_size_{{ i }}{% endcapture %}        
+        {% capture slide_text_posx %}slide_text_posx_{{ i }}{% endcapture %}
+        {% capture slide_text_posy %}slide_text_posy_{{ i }}{% endcapture %}
+        {% capture slide_text_in %}slide_text_transitionin_{{ i }}{% endcapture %}
+        {% capture slide_text_out %}slide_text_transitionout_{{ i }}{% endcapture %}  
+    	{% capture slide_button %}slide_button_{{ i }}{% endcapture %}        
+		{% capture slide_button_posx %}slide_button_posx_{{ i }}{% endcapture %}
+        {% capture slide_button_posy %}slide_button_posy_{{ i }}{% endcapture %}
+        {% capture slide_button_in %}slide_button_transitionin_{{ i }}{% endcapture %}
+        {% capture slide_button_out %}slide_button_transitionout_{{ i }}{% endcapture %}          
+      	{% if settings[display_slide] %}       	
+          <div class="slide" style="background:url({{ slide_img | asset_img_url: '1920x1024' }}) no-repeat left top;background-size:cover;">
+          	{% if settings[slide_heading] != blank %}  	
+            	<div class="jms-slide-content slide-heading" 					
+					data-position="{{ settings[slide_heading_posy] }},{{ settings[slide_heading_posx] }}" 
+					data-fontsize = "{{ settings[slide_heading_size] }}"					
+					data-in="{{ settings[slide_heading_in] }}" 
+					data-out="{{ settings[slide_heading_out] }}" 
+					data-delay="{{ settings.slide_heading_delay }}" 
+					data-ease-in="{{ settings.slide_easy_in }}" 
+					data-ease-out="{{ settings.slide_easy_out }}" 
+					data-step="0" 
+					data-special="0"
+					data-time = "{{ settings.slide_heading_time }}"
+					style="{% if settings[slide_heading_size] != blank %}font-size:{{ settings[slide_heading_size] }}px;{% endif %} {% if settings[slide_heading_color] != blank %}color:{{ settings[slide_heading_color] }};{% endif %}"					
+					>{{ settings[slide_heading] }}
+				</div>
+            {% endif %}
+            {% if settings[slide_text] != blank %}  	
+            	<div class="jms-slide-content slide-text" 					
+					data-position="{{ settings[slide_text_posy] }},{{ settings[slide_text_posx] }}" 
+					data-fontsize = "{{ settings[slide_text_size] }}"					
+					data-in="{{ settings[slide_text_in] }}" 
+					data-out="{{ settings[slide_text_out] }}" 
+					data-delay="{{ settings.slide_text_delay }}" 
+					data-ease-in="{{ settings.slide_easy_in }}" 
+					data-ease-out="{{ settings.slide_easy_out }}" 
+					data-step="0" 
+					data-special="0"
+					data-time = "{{ settings.slide_text_time }}"
+					style="{% if settings[slide_text_size] != blank %}font-size:{{ settings[slide_text_size] }}px;{% endif %} {% if settings[slide_text_color] != blank %}color:{{ settings[slide_text_color] }};{% endif %}"					
+					>{{ settings[slide_text] }}
+				</div>
+            {% endif %}
+            {% if settings[slide_button] != blank %}  	
+            	<div class="jms-slide-content slide-button" 					
+					data-position="{{ settings[slide_button_posy] }},{{ settings[slide_button_posx] }}" 								
+					data-in="{{ settings[slide_button_in] }}" 
+					data-out="{{ settings[slide_button_out] }}" 
+					data-delay="{{ settings.slide_button_delay }}" 
+					data-ease-in="{{ settings.slide_easy_in }}" 
+					data-ease-out="{{ settings.slide_easy_out }}" 
+					data-step="0" 
+					data-special="0"                    
+					data-time = "{{ settings.slide_button_time }}"><a href="{{ settings[slide_link] }}">{{ settings[slide_button] }}</a>
+				</div>
+            {% endif %}
+          </div>        
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+</div>  
+</div>  
+<script type="text/javascript">
+	$(window).load(function(){
+		$('.slider').fractionSlider({	
+			'slideTransition' : "fade",
+			'slideEndAnimation' : true,
+			'transitionIn' : "left", // default in - transition
+			'transitionOut' : "left", // default out - transition
+			'fullWidth' : false, // transition over the full width of the window
+			'delay' : 1000, // default delay for elements
+			'timeout' : 9000, // default timeout before switching slides
+			'speedIn' : 300,
+			'speedOut' : 300, // default in - transition speed
+			'easeIn' : "{{ settings.slide_easy_in }}", // default easing in
+			'easeOut' : "{{ settings.slide_easy_out }}", // default easing out
+			'controls' : {{ settings.slide_controls }}, // controls on/off
+            'pager' : {{ settings.slide_pagination }}, // pager inside of the slider on/off OR $('someselector') for a pager outside of the slider
+        	'autoChange' : {{ settings.slide_auto }} , // auto change slides
+            'pauseOnHover' : {{ settings.slide_pauseonhover }}, // Pauses slider on hover (current step will still be completed)
+			'backgroundAnimation' : true,
+			'backgroundEase' : "easeOutCubic",
+			'responsive' : true, // responsive slider (see below for some implementation tipps)
+			'dimensions' : "{{ settings.slide_width }},{{ settings.slide_height }}",
+		});
+	});
+</script>

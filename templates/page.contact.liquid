@@ -1,0 +1,52 @@
+<div class="contact row">
+  	<div class="col-lg-6">
+      	<img class="img-responsive" src="{{ "contact.jpg" | asset_url }}" alt="Contact">
+      	{{ page.content }}
+  	</div>
+  	<div class="col-lg-6">
+      	{% form 'contact' %}
+          {% if form.posted_successfully? %}
+            <p class="alert alert-success">
+              {{ 'contact.form.post_success' | t }}
+            </p>
+          {% endif %}
+      	  {% if form.errors %}
+      	  <div class="alert alert-danger"> 	
+          {{ form.errors | default_errors }}
+      	  </div>  
+          {% endif %}
+      	  <h3 class="title col-sm-offset-3 col-sm-9">{{ page.title }}</h3>	
+          {% assign name_attr = 'contact.form.name' | t | handle %}
+          <div class="text form-group">
+          	<label for="ContactFormName" class="col-sm-3 control-label">{{ 'contact.form.name' | t }}</label>
+            <div class="col-sm-9">
+          		<input type="text" id="ContactFormName" class="form-control" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+            </div>  
+      	  </div>
+      	  <div class="text form-group">	
+          	<label for="ContactFormEmail" class="col-sm-3 control-label">{{ 'contact.form.email' | t }}</label>
+            <div class="col-sm-9">
+          		<input type="email" id="ContactFormEmail" name="contact[email]" class="form-control" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+            </div>  
+		  </div>
+          {% assign name_attr = 'contact.form.phone' | t | handle %}
+      	  <div class="text form-group">
+          	<label for="ContactFormPhone" class="col-sm-3 control-label">{{ 'contact.form.phone' | t }}</label>
+            <div class="col-sm-9">
+          		<input type="tel" id="ContactFormPhone" name="contact[{{ name_attr }}]" class="form-control" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+            </div>  
+	      </div>
+      	  <div class="textarea form-group">
+          	<label for="ContactFormMessage" class="col-sm-3 control-label">{{ 'contact.form.message' | t }}</label>
+            <div class="col-sm-9">
+          		<textarea rows="10" id="ContactFormMessage" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}" class="form-control">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+            </div>  
+          </div>  
+      	  <div class="submit form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+          		<input type="submit" class="btn right" value="{{ 'contact.form.send' | t }}">
+            </div>  
+          </div>    
+        {% endform %}
+  	</div>
+</div>

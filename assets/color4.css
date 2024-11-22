@@ -1,0 +1,253 @@
+a:hover,
+a:focus,
+a.active {
+  color:#0f9094;
+}
+.btn-small {
+    color: #0f9094;
+}
+.btn-small-hover {
+    background: #0f9094 none repeat scroll 0 0;
+    border-color: #0f9094;
+}
+.btn-medium-bg-hover {
+    background: #0f9094 none repeat scroll 0 0;
+    border-color: #0f9094;
+}
+.btn-small:hover{
+	border-color: #0f9094;
+}
+.btn-hover {
+    background: #0f9094 none repeat scroll 0 0;
+    border-color: #0f9094;
+}
+.btn.focus, 
+.btn:focus, 
+.btn:hover,
+.button_large:focus, 
+.button_large:hover {
+    background: #0f9094 none repeat scroll 0 0;
+	border-color: #0f9094;
+}
+.shoppingcart-box .actions button:hover,
+.shoppingcart-box .actions button:active,
+.shoppingcart-box .actions button:focus{
+	border-color: #0f9094;
+	color: #0f9094;
+}
+.nav-tabs > li.active > a, 
+.nav-tabs > li.active > a:focus, 
+.nav-tabs > li.active > a:hover{
+	color: #0f9094;
+}
+.nav-tabs li a:hover{
+	color: #0f9094;
+}
+.tab-typo-two .nav.nav-tabs {
+    border-top: 2px solid #0f9094;
+}
+.tab-typo-two .nav-tabs li a::after{
+    border-top: 4px solid #0f9094;
+}
+.tab-typo-three .nav-tabs li a::after{
+    border-bottom: 4px solid #0f9094;
+}
+.tab-typo-three .nav-tabs li a::before {
+    background: #0f9094 none repeat scroll 0 0;
+}
+.dropdown-menu.shoppingcart-box {    
+    border-color:#0f9094;
+}
+.shoppingcart-box .actions button {
+    background: #0f9094 none repeat scroll 0 0;
+    border-color: #0f9094;
+}
+.shoppingcart-box .summary .price {
+    color: #0f9094;    
+}
+.jms-megamenu .mega-nav li > a:hover, 
+.jms-megamenu .mega-nav li > span:hover{
+	color: #0f9094;
+}
+.setting-top .setting-block li > a:hover,
+.setting-top .setting-block li > a.selected {
+    color: #0f9094;
+}
+.box.ajax_cart_quantity {
+    background: #0f9094 none repeat scroll 0 0;
+}
+.header-top .dropdown-menu > li > a:focus, 
+.header-top .dropdown-menu > li > a:hover{
+	color: #0f9094;
+}
+.header-top .dropdown-menu::after {
+    background: #0f9094 none repeat scroll 0 0;
+}
+.flex-control-nav a.flex-active {
+    background: #0f9094 none repeat scroll 0 0 !important;
+}
+.slide-des .slide-button:hover {
+  border:1px solid #0f9094;
+  background:#0f9094;
+}
+.box-content > a span {
+  border-bottom: 1px solid #0f9094;
+}
+.home-2 .box-content > a span {
+    border-bottom: 1px solid #0f9094;
+}
+.home-2 .box-content > a span:hover {
+    color: #0f9094;
+}
+.services-box h3.title a:hover{
+	color: #0f9094;
+}
+.services-content em {
+	border: 2px solid #0f9094;
+}
+.services-content em::after {
+    background: #0f9094 none repeat scroll 0 0;
+}
+.signup-box .title span {
+    color: #0f9094;
+}
+.signup-content > a {
+    background: #0f9094 none repeat scroll 0 0;
+    border: 1px solid #0f9094;
+}
+.signup-content > a:hover {
+    color: #0f9094;
+}
+.ct-content > a {
+    border-bottom: 1px solid #0f9094;
+    color: #010101;
+}
+.ct-content > a:hover{
+	color: #0f9094;
+}
+.category-box-1 .writing-mode {
+    color: #0f9094;
+}
+.category-box-6 .writing-mode {
+    color: #0f9094;
+}
+.product-info h3.title a:hover{color: #0f9094;}
+.blog-item:hover .blog-info .post-title > a {
+	color: #0f9094;
+}
+.wraper-newsletter .input-group-addon .button {
+  color: #0f9094;
+}
+.find-us .divider:hover {
+    border-color: #0f9094;
+}
+.find-us .divider:hover a {
+	color: #0f9094;
+}
+#block_contact_infos li em {
+  color: #0f9094;
+}
+.coppy-right .block-content > p a {
+    color: #0f9094;
+}
+.breadcrumbs a:hover{
+    color: #0f9094;
+}
+.left-banner .box-content > p span {
+    color: #0f9094;
+}
+.pagination > .active > a, 
+.pagination > .active > a:focus, 
+.pagination > .active > a:hover, 
+.pagination > .active > span, 
+.pagination > .active > span:focus, 
+.pagination > .active > span:hover {
+    border-color: #0f9094;
+    color: #0f9094;
+}
+.pagination > li > a:focus, 
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+    border-color: #0f9094;
+    color: #0f9094;
+}
+#pagination_next > a:focus,
+#pagination_next > a:hover,
+#pagination_previous > span:hover,
+#pagination_next > span:hover,
+#pagination_previous > span:focus,
+#pagination_next > span:focus,
+#pagination_previous > a:hover,
+#pagination_previous > a:focus{
+    border-color: #0f9094;
+    color: #0f9094;
+}
+.view-modes a.active, .view-modes a:hover {
+    border-color: #0f9094;
+    color: #0f9094;
+}
+ul.step li.step_current {
+		background: #0f9094 none repeat scroll 0 0;
+		border-color: #0f9094;
+}
+@media (min-width: 992px) {
+      ul.step li.step_current span {
+		background: #0f9094 none repeat scroll 0 0;
+		border-color: #0f9094;
+      }
+}
+#cart_summary tfoot td.total_price_container span {
+  color: #0f9094;  
+}
+#cart_summary tfoot td#total_price_container {
+  color: #0f9094;
+}
+.back-to-top:hover {
+	background: #0f9094;
+}
+.pagenotfound > #error-code {
+    color: #0f9094;
+}
+.contact_address .fa {
+	color: #0f9094;
+}
+.quantity-cart .add-to-cart-btn { 
+   	background: #0f9094 none repeat scroll 0 0;
+    border-color: #0f9094;
+}
+#more_info_block .nav-tabs li.active a, #more_info_block .nav-tabs li:hover a {
+    color: #0f9094;
+}
+.spr-form-actions .spr-button-primary:hover {
+	background:#0f9094;
+}
+.fs-pager-wrapper a.active, .fs-custom-pager-wrapper a.active {
+    background: #0f9094 none repeat scroll 0 0 !important;
+}
+.slide-button::after {
+  background: #0f9094 none repeat scroll 0 0;
+}
+.owl-theme .owl-controls .owl-nav div.owl-next:hover, 
+.owl-theme .owl-controls .owl-nav div.owl-prev:hover{
+	border-color: #0f9094;
+}
+.owl-theme .owl-controls .owl-nav div.owl-next:hover::before,
+.owl-theme .owl-controls .owl-nav div.owl-prev:hover::before{
+	color: #0f9094;
+}
+.jms-megamenu .nav > li > a::after, .jms-megamenu .nav > li > a::after {
+    background: #0f9094 none repeat scroll 0 0;
+}
+.jms-megamenu .dropdown-menu .mega-dropdown-inner {
+  border-bottom: 3px solid #0f9094;
+}
+.jms-slider-wrapper .slide-button::before {
+  background: #0f9094 none repeat scroll 0 0!important;
+}
+.jms-slider-wrapper .fs-pager-wrapper a.active, .jms-slider-wrapper .fs-custom-pager-wrapper a.active {
+  background: #0f9094 none repeat scroll 0 0 !important;
+}
+.footer-navbar .menu-footer li a:hover {
+    color: #0f9094;
+}

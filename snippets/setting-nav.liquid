@@ -1,0 +1,126 @@
+{% comment %}
+
+  A snippet to include a search bar anywhere in your theme.
+  Note we are using 'input-group' for the layout. Look under Forms > Input Groups for some demos.
+
+  More information:
+   - http://docs.shopify.com/themes/liquid-variables/search
+
+  To return only products in results:
+    - http://docs.shopify.com/manual/configuration/store-customization/return-only-product-in-storefront-search-results
+    - Or manually add type=product to the search URL as a query parameter
+    - Uncomment hidden input with value="product" below
+
+{% endcomment %}
+<div class="setting-top">
+  	<h4 class="title_block">{{ 'layout.settingnav.setting' | t }}</h4><a id="close-options-top" href="#"><img alt="Ceramics" src="{{ "close.png" | asset_url }}" /></a>
+	{% if shop.customer_accounts_enabled %}
+  		<div class="setting-block">
+          <label>{{ 'layout.settingnav.account' | t }}</label>
+          <ul>
+          {% if customer %}
+          <li>
+              <a href="/account">{{ 'layout.customer.account' | t }}</a>
+          </li>
+          <li>
+              <a href="/pages/wish-list">{{ 'wishlist.general.my_wishlist' | t }}</a>
+          </li>  
+          	<li>
+            {{ 'layout.customer.log_out' | t | customer_logout_link }}
+            </li>
+           {% else %}
+           <li>
+              <a href="/pages/wish-list">{{ 'wishlist.general.my_wishlist' | t }}</a>
+          </li> 
+           <li>
+                {{ 'layout.customer.log_in' | t | customer_login_link }}
+           </li>           
+           <li>
+                {{ 'layout.customer.create_account' | t | customer_register_link }}
+           </li>
+           {% endif %}
+           </ul>
+  		</div> 
+    {% endif %}  	
+  	   	
+  	{% if settings.enable_multiple_currencies %}
+  	<div class="setting-block">
+      	 <label>{{ 'layout.settingnav.currencies' | t }}</label>
+          <ul id="currencies">
+            {% for i in (1..5) %}
+              {% capture currency_unit %}currency_unit_{{ i }}{% endcapture %}      	      		
+              {% assign currency_length = settings[currency_unit] | size %}
+              {% if currency_length > 0 %}
+                  <li><a data-currency="{{ settings[currency_unit] }}" {% if shop.currency == settings[currency_unit] %}class="selected"{% endif %}>{{ settings[currency_unit] }}</a></li>
+              {% endif %}	
+            {% endfor %}     
+          </ul>
+  			{{ "//cdn.shopify.com/s/javascripts/currencies.js" | script_tag }}
+			{{ "jquery.currencies.min.js" | asset_url | script_tag }}
+        <script>
+
+          // Pick your format here:
+          // money_format or money_with_currency_format
+          Currency.format = 'money_format';
+
+          var shopCurrency = '{{ shop.currency }}';
+
+          /* Sometimes merchants change their shop currency, let's tell our JavaScript file */
+          Currency.moneyFormats[shopCurrency].money_with_currency_format = {{ shop.money_with_currency_format | strip_html | json }};
+          Currency.moneyFormats[shopCurrency].money_format = {{ shop.money_format | strip_html | json }};
+
+          var cookieCurrency = Currency.cookie.read();
+
+          // Fix for customer account pages.
+          jQuery('span.money span.money').each(function() {
+            jQuery(this).parents('span.money').removeClass('money');
+          });
+
+          // Saving the current price.
+          jQuery('span.money').each(function() {
+            jQuery(this).attr('data-currency-{{ shop.currency }}', jQuery(this).html());
+          });
+
+          // Select all your currencies buttons.
+          var buttons = jQuery('#currencies a');
+
+          // If there's no cookie or it's the shop currency.
+          if (cookieCurrency == null || cookieCurrency === shopCurrency) {
+            buttons.removeClass('selected');
+            jQuery('#currencies span[data-currency=' + shopCurrency + ']').addClass('selected');
+            Currency.currentCurrency = shopCurrency;
+          }
+          else {
+            Currency.convertAll(shopCurrency, cookieCurrency);
+            buttons.removeClass('selected');
+            jQuery('#currencies span[data-currency=' + cookieCurrency + ']').addClass('selected');
+          }
+
+          // When customer clicks on a currency button.
+          buttons.click(function() {
+            buttons.removeClass('selected');
+            jQuery(this).addClass('selected');
+            var newCurrency =  jQuery(this).attr('data-currency');
+            Currency.cookie.write(newCurrency);
+            Currency.convertAll(Currency.currentCurrency, newCurrency);
+          });
+
+          // For options.
+          var original_selectCallback = window.selectCallback;
+          var selectCallback = function(variant, selector) {
+            original_selectCallback(variant, selector);
+            Currency.convertAll(shopCurrency, jQuery('#currencies span.selected').attr('data-currency'));
+            jQuery('.selected-currency').text(Currency.currentCurrency);
+          };
+
+          $('body').on('ajaxCart.afterCartLoad', function(cart) {
+            Currency.convertAll(shopCurrency, jQuery('#currencies span.selected').attr('data-currency'));
+            jQuery('.selected-currency').text(Currency.currentCurrency);
+          });
+
+          jQuery('.selected-currency').text(Currency.currentCurrency);
+        </script> 
+  	</div> 
+    {% endif %}
+</div>
+

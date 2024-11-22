@@ -1,0 +1,42 @@
+{% assign products_per_row = settings.collections_products_per_row %}
+{% assign rows = settings.collections_rows %}
+{% assign total_products = products_per_row | times: rows %}
+
+{% paginate collection.products by total_products %}
+<div class="row">
+{% if settings.collection_sidebar == 'left' %}  
+<div class="col-sm-4 col-md-3 col-lg-3 col-xs-12 content-aside">  
+	{% include 'collection-sidebar' %}
+</div>
+{% endif %} 
+<div class="{% if settings.collection_sidebar == 'left' or settings.collection_sidebar == 'right' %}col-sm-8 col-md-9 col-lg-9 col-xs-12 {% endif %}content-center">
+  	<div class="page-header">
+  		<h1 class="page-title">{{ collection.title }}</h1> 
+      {% if collection.description != blank %}
+        <div class="rte">
+          {{ collection.description }}
+        </div>  
+      {% endif %}
+  	</div> 
+  	{% include 'collection-toolbar' %}
+	<div id="products-list" class="grid-mode row">
+  	{% for product in collection.products %}
+  	<div class="item">
+    {% include 'product-grid-item' %}
+  	</div>  
+  	{% endfor %}
+	</div>
+  	{% if paginate.pages > 1 %}
+      <div class="pagination-section">
+        {% include 'pagination-page' %}
+      </div>
+    {% endif %}
+</div>
+{% if settings.collection_sidebar == 'right' %}  
+<div class="col-sm-4 col-md-3 col-lg-3 col-xs-12 content-aside">  
+	{% include 'collection-sidebar' %}
+</div>
+{% endif %}
+</div>
+
+{% endpaginate %}

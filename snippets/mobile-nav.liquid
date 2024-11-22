@@ -1,0 +1,44 @@
+{% comment %}
+  List out your main-menu linklist (default)
+
+  More info on linklists:
+    - http://docs.shopify.com/themes/liquid-variables/linklists
+{% endcomment %}
+{% assign mega_items = settings.mega_items | split: '|' %}
+{% assign mega_i = 1 %}
+<div class="menu-wrap hidden-lg hidden-md">
+<nav id="off-canvas-menu">
+<div id="off-canvas-menu-title">{{ 'layout.settingnav.menu' | t }}<span class="icon icon-arrows-remove close-button" id="close-button"></span></div>
+<ul class="nav nav-pills nav-stacked level0">
+  {% for link in linklists.main-menu.links %}    
+    {% assign child_list_handle = link.title | handleize %}
+    {% if linklists[child_list_handle].links != blank %}
+      <li class="mega {% if link.active %} active{% endif %}">
+        <a href="{{ link.url }}">
+          {{ link.title }}
+          <em class="fa fa-angle-right"></em>
+        </a>       
+        <ul class="dropdown-menu">
+         	{% for childlink in linklists[child_list_handle].links %}
+        	 	<li{% if childlink.active %} class="active"{% endif %}>
+                	<a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+              	</li>
+            {% endfor %}
+         </ul>
+      </li>
+    {% else %}
+  		{% capture mega_id %}mega{{ mega_i }}{% endcapture %}  		
+  		{% capture mega_width %}{{ mega_id }}_width{% endcapture %}  		          	  	
+  		{% capture mega_align %}{{ mega_id }}_align{% endcapture %}
+      	<li class="{% if mega_items contains link.title %}mega{% endif %}{% if link.active %} active{% endif %}">
+        	<a href="{{ link.url }}" class="">{{ link.title }}{% if mega_items contains link.title %}<em class="fa fa-angle-right"></em>{% endif %}</a>
+        	{% if mega_items contains link.title %}        	        		
+        			{% include 'mobile-mega-menu' %}
+              		{% assign mega_i = mega_i | plus: 1 %}        	
+        	{% endif %}
+      	</li>
+    {% endif %}
+  {% endfor %}
+</ul>
+</nav>
+</div>  

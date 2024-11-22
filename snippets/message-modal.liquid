@@ -1,0 +1,26 @@
+<div class="loading-modal modal"><div class="cssload-container"><div class="cssload-double-torus"></div></div></div>
+<div class="ajax-error-modal modal">
+  <div class="modal-inner">
+    <div class="ajax-error-title">{{ 'cart.ajax_cart.error' | t }}</div>
+    <div class="ajax-error-message"></div>
+  </div>
+</div>
+<div class="ajax-success-modal modal">
+    <div class="overlay"></div>
+  <div class="content">
+      <div class="ajax-left">
+        <img class="ajax-product-image" alt="&nbsp;" src="&nbsp;" style="max-width:65px; max-height:100px"/>
+      </div>
+      <div class="ajax-right">
+        <p class="ajax-product-title"></p>
+        <p class="success-message btn-go-to-cart">{{ 'cart.ajax_cart.success_text' | t }}</p>
+        <p class="success-message btn-go-to-wishlist">{{ 'wishlist.ajax_wishlist.success_text' | t }}</p>        
+        <div class="actions">
+          <button class="btn-default continue-shopping" onclick="javascript:void(0)">{{ 'cart.ajax_cart.continue_shopping' | t }}</button>
+          <button class="btn-default btn-go-to-cart" onclick="window.location='/cart'">{{ 'cart.ajax_cart.go_to_cart' | t }}</button>
+          <button class="btn-default btn-go-to-wishlist" onclick="window.location='/pages/wish-list'">{{ 'wishlist.ajax_wishlist.go_to_wishlist' | t }}</button>
+        </div>
+      </div>
+    <a href="javascript:void(0)" class="close-modal"><span class="fa fa-times"></span></a>
+  </div>    
+</div>

@@ -1,0 +1,119 @@
+#off-canvas-menu-title {
+  	background: #fff none repeat scroll 0 0;
+    border-bottom: 1px solid #e7e7e7;
+    display: block;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 1.23em;
+    font-weight: bold;
+    line-height: 46px;
+    padding-left: 15px;
+  	text-transform:uppercase;
+}
+#open-button i {
+    color: #4f4f4f;    
+    font-size: 21px;
+    line-height: 25px;
+    vertical-align: middle;
+}
+#open-button i::before {
+	font-family:"linea-arrows-10" !important;
+	font-size:32px;
+	line-height:1;	
+}
+#close-button {
+  	color: #1c2833;
+    cursor: pointer;
+    float: right;
+    font-size: 20px;
+    padding: 12px 12px 0 0;
+  	line-height:20px;
+}
+#close-button::before {
+		font-family:"linea-arrows-10" !important;
+		font-size:32px;
+	}
+
+#content-wrap {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+#content-wrap {	
+	-webkit-overflow-scrolling: touch;
+}
+.menu-wrap {
+  background: #fff none repeat scroll 0 0;
+  height: 100%;
+  overflow: auto;
+  padding: 0 0 30px;
+  position: fixed;
+  right: -320px;
+  top: 0;
+  transition: right 0.4s cubic-bezier(0.7, 0, 0.3, 1) 0s;
+  width: 270px;
+  z-index: 3001;
+}
+
+.show-menu .menu-wrap {
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+    right: 0;
+    transition: right 0.4s cubic-bezier(0.7, 0, 0.3, 1) 0s;
+}
+
+.show-menu .content::before {
+	opacity: 1;
+	-webkit-transition: opacity 0.8s;
+	transition: opacity 0.8s;
+	-webkit-transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+	transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+#off-canvas-menu {
+    background: #fff none repeat scroll 0 0;
+    height: 100%;
+}
+@media (max-width: 991px) {	
+  	.jms-megamenu {
+    	display: none;
+	}
+	#open-button {
+      	display:block;
+    }
+}
+#off-canvas-menu .nav > li {
+    border-bottom: 1px solid #e0e0e0;
+    float: left;
+    width: 100%;
+  	margin:0px;
+}
+#off-canvas-menu li a {
+    border-radius: 0;
+    display: block;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+#off-canvas-menu li.active a,
+#off-canvas-menu li a:focus {
+  	background:none;
+  	color:#4f4f4f;
+}
+#off-canvas-menu li > a em {
+    float: right;
+    font-size: 15px;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 5px;
+    text-align: center;
+    width: 20px;
+}
+#off-canvas-menu .open > .dropdown-menu {
+    border: 0 none;
+    box-shadow: none;
+    position: static;
+    width: 100%;
+}
+#off-canvas-menu .dropdown-menu > li > a {
+    line-height: 35px;
+    padding: 3px 30px;
+}

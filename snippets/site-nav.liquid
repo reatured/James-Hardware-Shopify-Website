@@ -1,0 +1,56 @@
+{% comment %}
+  List out your main-menu linklist (default)
+
+  More info on linklists:
+    - http://docs.shopify.com/themes/liquid-variables/linklists
+{% endcomment %}
+{% assign mega_items = settings.mega_items | split: '|' %}
+{% assign mega_i = 1 %}
+<a href="#" id="open-button" class="open-button hidden-lg hidden-md"><i class="icon icon-arrows-hamburger-2"></i></a>
+<div class="jms-megamenu">
+<ul class="nav level0">
+  {% for link in linklists.main-menu.links %}    
+    {% assign child_list_handle = link.title | handleize %}
+    {% if linklists[child_list_handle].links != blank %}
+      <li class="mega {% if link.active %} active{% endif %}">
+        <a href="{{ link.url }}">
+          {{ link.title }}
+          <em class="caret"></em>
+        </a>
+        <div class="dropdown-menu">
+          	<div class="mega-dropdown-inner single-column">
+                  <ul class="mega-nav">
+                  	{% for childlink in linklists[child_list_handle].links %}
+                  	<li{% if childlink.active %} class="active"{% endif %}>
+                    	<a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                  	</li>
+                	{% endfor %}
+                  </ul>              	
+             </div> 
+        </div> 
+      </li>
+    {% else %}
+  		{% capture mega_id %}mega{{ mega_i }}{% endcapture %}  		
+  		{% capture mega_width %}{{ mega_id }}_width{% endcapture %}  		          	  	
+  		{% capture mega_align %}{{ mega_id }}_align{% endcapture %}
+      	<li class="{% if mega_items contains link.title %}mega mega-align-{{ settings[mega_align] }} {% endif %}{% if link.active %} active{% endif %}">
+        	<a href="{{ link.url }}" class="">{{ link.title }}{% if mega_items contains link.title %}<em class="caret"></em>{% endif %}</a>
+        	{% if mega_items contains link.title %}        	
+        		<div class="dropdown-menu" style="width:{{settings[mega_width]}}px;">
+        			{% include 'mega-menu' %}
+              		{% assign mega_i = mega_i | plus: 1 %}
+        		</div>          	
+        	{% endif %}
+      	</li>
+    {% endif %}
+  {% endfor %}
+</ul>
+</div>  
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+    	jQuery('.jms-megamenu').jmsMegaMenu({    			
+    		event: 'hover',
+    		duration: 500
+    	});		
+	});	
+</script>

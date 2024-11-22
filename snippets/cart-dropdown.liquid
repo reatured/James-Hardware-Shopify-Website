@@ -1,0 +1,40 @@
+<div class="dropdown-menu shoppingcart-box">
+  	<div class="no-items">
+       <p>{{ 'cart.general.empty' | t }}</p>
+       <div class="actions"><button class="btn" onclick="javascript:void(0)">{{ 'cart.ajax_cart.continue_shopping' | t }}</button></div>
+    </div>
+  	<div class="has-items">
+      <ul class="cart-products">
+          {% for item in cart.items %}
+              <li class="item" id="cart-item-{{item.id}}">
+                  <a href="{{item.url}}" class="product-image">
+                      <img src="{{ item.image | product_img_url: 'small' }}" alt="{{item.title}}">
+                  </a>
+                  <div class="product-details">                 	
+                      <p class="product-name">
+                          <a href="{{item.url}}">{{ item.product.title | split: '|' | first }}</a>
+                      </p>
+                      <div class="option">
+                         {% if item.product.variants.size != 0 %}
+                         {% unless item.variant.title contains 'Default' %}
+                              <small>{{ item.variant.title }}</small>
+                          {% endunless %}
+                          {% endif %}
+                      </div>
+                      <div class="cart-collateral"><span class="price">{{item.price | money}}</span> x {{item.quantity}}</div>
+                   </div>
+                   <a href="javascript:void(0)" title="{{ 'cart.general.remove' | t }}" class="btn-remove"><i class="fa fa-remove"></i></a>	
+              </li>  
+          {% endfor %}
+      </ul>  	
+      <div class="summary">                
+         <p class="total">
+             <span class="label">{{ 'cart.label.total' | t }}:</span>
+             <span class="price">{{cart.total_price | money}}</span> 
+         </p>
+      </div>
+      <div class="actions">
+          <button class="btn" onclick="window.location='/checkout'">{{ 'cart.general.checkout' | t }}</button>
+      </div>
+   </div>   
+</div>
