@@ -1,0 +1,2 @@
+# James Hardware Shopify Website
+ 
