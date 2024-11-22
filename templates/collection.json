@@ -9,7 +9,7 @@
  */
 {
   "sections": {
-    "banner": {
+    "main-collection-banner": {
       "type": "main-collection-banner",
       "settings": {
         "show_collection_description": true,
@@ -17,13 +17,13 @@
         "color_scheme": "scheme-1"
       }
     },
-    "product-grid": {
+    "main-collection-product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
+        "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
@@ -33,13 +33,13 @@
         "filter_type": "horizontal",
         "enable_sorting": true,
         "columns_mobile": "2",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 20,
+        "padding_bottom": 68
       }
     }
   },
   "order": [
-    "banner",
-    "product-grid"
+    "main-collection-banner",
+    "main-collection-product-grid"
   ]
 }
