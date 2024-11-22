@@ -1,0 +1,78 @@
+{% schema %}
+{
+  "name": "Collection Quick Viewer",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Quick Viewer SS",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<section>
+  <style>
+    .omgrfq-collection-button {
+      display: none;
+    }
+    .collection-products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .product {
+      background: #f0f0f0; /* Example background color */
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .product-images {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .product-images img {
+      flex: 1 1 auto;
+      max-width: 80px; /* Adjusted maximum width */
+      max-height: 80px; /* Adjusted maximum height */
+      height: auto;
+      margin: 5px;
+    }
+    .product h3 {
+      margin: 10px 0;
+    }
+  </style>
+
+  <div class="collection-quick-viewer">
+    {% if section.settings.collection %}
+      {% assign collection = collections[section.settings.collection] %}
+      <h2>{{ collection.title }}</h2>
+      <div class="collection-products">
+        {% for product in collection.products %}
+          <div class="product">
+            <a href="{{ product.url }}">
+              <h3>{{ product.title }}</h3>
+            </a>
+            <div class="product-images">
+              {% for image in product.images %}
+                <img src="{{ image | img_url: 'medium' }}" alt="{{ product.title }}">
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>Please select a collection in the section settings.</p>
+    {% endif %}
+  </div>
+</section>

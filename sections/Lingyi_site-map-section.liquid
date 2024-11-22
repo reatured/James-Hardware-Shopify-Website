@@ -1,0 +1,134 @@
+<!-- Site Map Snippet -->
+<div class="site-map">
+  <!-- Collections Column -->
+  <div class="site-map-column">
+    <h4>Collections</h4>
+    <ul>
+      {% for collection in collections %}
+        {% assign title_downcased = collection.title | downcase %}
+        {% if title_downcased contains 'collection' %}
+          <li>
+            <a href="{{ collection.url }}">{{ collection.title }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- Product Types Column -->
+  <div class="site-map-column">
+    <h4>Product Types</h4>
+    <ul>
+      {% for collection in collections %}
+        {% assign title_downcased = collection.title | downcase %}
+        {% unless title_downcased contains 'collection' or title_downcased contains 'Selection' %}
+          <li>
+            <a href="{{ collection.url }}">{{ collection.title }}</a>
+          </li>
+        {% endunless %}
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- Information Column -->
+  <div class="site-map-column">
+    <h4>Information</h4>
+    <ul>
+      <li><a href="https://jameshardwarecn.com/">Home</a></li>
+      <li><a href="https://jameshardwarecn.com/pages/about-us">About Us</a></li>
+      <li><a href="https://jameshardwarecn.com/blogs/news">News</a></li>
+    </ul>
+  </div>
+
+  <!-- Removed Blog Section -->
+</div>
+
+<script>
+  // Convert Liquid variable to JavaScript
+  var numberOfBlogs = {{ blogs | size | json }};
+
+  // Output the number of blogs to the console
+  console.log('Number of Blogs:', numberOfBlogs);
+</script>
+
+{% schema %}
+{
+  "name": "Section Map",
+  "settings": [
+    {
+      "id": "heading_color",
+      "type": "color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "id": "link_color",
+      "type": "color",
+      "label": "Link Color",
+      "default": "#333333"
+    }
+  ],
+  "presets": [
+    {
+      "name": "section map",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+  .site-map {
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    flex-wrap: wrap;
+  }
+
+  .site-map-column {
+    flex: 0 0 22%; /* Reduced width and set to not grow or shrink */
+    padding: 0 15px;
+    box-sizing: border-box;
+    text-align: left; /* Center the content */
+  }
+
+  .site-map-column h4 {
+    font-size: 18px; /* Increased size */
+    font-weight: bold; /* Make it bold */
+    margin-bottom: 10px;
+    color: {{ settings.heading_color }};
+  }
+
+  .site-map-column ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .site-map-column ul li a {
+    color: #333;
+    text-decoration: none;
+    line-height: 1.5;
+    cursor: pointer;
+    color: {{ settings.link_color }};
+  }
+
+  .site-map-column ul li a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .site-map-column {
+      flex-basis: 100%;
+      max-width: 100%;
+      padding: 0 10px;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+    // Convert Liquid variable to JavaScript
+  var numberOfBlogs = {{ blogs | size | json }};
+
+  // Output the number of blogs to the console
+  console.log('Number of Blogs:', numberOfBlogs);
+{% endjavascript %}

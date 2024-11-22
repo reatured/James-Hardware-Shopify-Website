@@ -1,0 +1,30 @@
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.59/build/spline-viewer.js"></script>
+<spline-viewer id="spline-viewer" url="https://prod.spline.design/NzGNN2yt666jFz5g/scene.splinecode"></spline-viewer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      var splineViewer = document.getElementById('spline-viewer');
+      var windowHeight = window.innerHeight;
+      splineViewer.style.height = (windowHeight / 2) + 'px';
+
+      splineViewer.addEventListener('mouseenter', function() {
+          document.body.style.overflow = 'hidden';
+      });
+      splineViewer.addEventListener('mouseleave', function() {
+          document.body.style.overflow = 'auto';
+      });
+  });
+</script>
+
+{% schema %}
+{
+        "name": "Spline Viewer",
+        "settings": [],
+        "presets": [
+                {
+                        "name": "Default",
+                        "category": "Custom"
+                }
+        ]
+}
+{% endschema %}
