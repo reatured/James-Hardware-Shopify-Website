@@ -22,36 +22,36 @@
       	</div>
   	</div>  
 </div>
-{{ 'jquery.fancybox.js' | asset_url | script_tag }} 
-{{ 'jquery.fancybox.css' | asset_url | stylesheet_tag }}
 <script type="text/javascript">
 jQuery(function ($) {
     "use strict";
 	var galleryCarousel = $(".gallery-carousel");	
-	if (galleryCarousel.length > 0) galleryCarousel.each(function () {		
+	if (galleryCarousel.length > 0) galleryCarousel.each(function () {	
+	var items = 6,
+	    itemsDesktop = 6,
+	    itemsDesktopSmall = 3,
+	    itemsTablet = 2,
+	    itemsMobile = 1;
 	var rtl = false;
 	if ($("body").hasClass("rtl")) rtl = true;
 	$(this).owlCarousel({
 	    responsiveClass:true,
 		responsive:{
 			1550:{
-				items:6
+				items:items
 			},
 			1199:{
-				items:6
+				items:itemsDesktop
 			},
 			991:{
-				items:3
+				items:itemsDesktopSmall
 			},
 			767:{
-				items:2
+				items:itemsTablet
 			},
-			500:{
-				items:2
-			},
-          	318:{
-				items:1
-			},
+			318:{
+				items:itemsMobile
+			}
 		},
 		rtl: rtl,
 		autoPlay: false,

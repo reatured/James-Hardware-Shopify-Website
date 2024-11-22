@@ -70,7 +70,7 @@
                {% endif %}
           	   <br />
           	   <span class="cart__mini-labels">{{ 'cart.label.price' | t }}</span>
-               <span class="h5 money">{{ item.price | money }}</span>
+               <span class="h5">{{ item.price | money }}</span>
           	   <br />	
                <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart-remove">
                   <small>{{ 'cart.general.remove' | t }}</small>
@@ -82,7 +82,7 @@
           </div>  
           <div class="col-lg-3 col-sm-3 align-right">
                <span class="cart__mini-labels">{{ 'cart.label.total' | t }}</span>
-               <span class="h5 money">
+               <span class="h5">
                   {% if item.original_line_price != item.line_price %}
                     <small class="cart-item__original-price"><s>{{ item.original_line_price | money }}</s></small>
                   {% endif %}

@@ -1,0 +1,32 @@
+{% assign description = settings.social_description %}
+{% assign facebook_enable = settings.social_enable_facebook %}
+{% assign twitter_enable = settings.social_enable_twitter %}
+{% assign linkedin_enable = settings.social_enable_linkedin %}
+{% assign google_plus_enable = settings.social_enable_google_plus %}
+{% assign youtube_enable = settings.social_enable_youtube %}
+{% assign facebook_link = settings.link_social_facebook %}
+{% assign twitter_link = settings.link_social_twitter %}
+{% assign linkedin_link = settings.link_social_linkedin %}
+{% assign youtube_link = settings.link_social_enable_youtube %}
+{% assign google_plus_link = settings.link_social_google_plus %}
+<div class="footer-social" style="background-image:url('{{ "social_bg.jpg" | asset_url }}');background-size:{{ settings.social_background__size }};background-attachment:{{ settings.social_background_attachment }};background-position:{{ settings.social_background_position }};background-repeat:{{ settings.social_background_repeat }}">
+  <div class="container">
+    <div class="content">
+    	<a title="{{ page_title }}" href="/">
+          <img alt="{{ page_title }}" src="{{ 'social_logo.png' | asset_url }}">
+      	</a>
+      <div class="description">
+        <p>{{ description }}</p>
+      </div>
+      <div id="social_block">
+		<ul class="find-us">
+      		{% if facebook_enable %}<li class="divider btn-facebook"><a class="facebook" href="{{ facebook_link }}"><span class="fa fa-facebook"></span></a></li>{% endif %}
+          	{% if twitter_enable %}<li class="divider btn-twitter"><a class="twitter" href="{{ twitter_link }}"><span class="fa fa-twitter"></span></a></li>{% endif %}
+            {% if linkedin_enable %}<li class="divider btn-linkedin"><a class="linkedin" href="{{ linkedin_link }}"><span class="fa fa-linkedin"></span></a></li>{% endif %}
+          	{% if youtube_enable %}<li class="divider btn-youtube"><a class="youtube" href="{{ youtube_link }}"><span class="fa fa-youtube"></span></a></li>{% endif %}
+          	{% if google_plus_enable %}<li class="divider btn-google-plus"><a class="gplus" href="{{ google_plus_link }}"><span class="fa fa-google-plus"></span></a></li>{% endif %}	            
+   		 </ul>
+	  </div>
+    </div>
+  </div>
+</div>

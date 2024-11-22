@@ -1,35 +1,39 @@
 <div class="section-blog">
-<div class="home-row row fullwidth">
+<div class="container">
+<div class="home-row">
  <div class="slider-product-title">
 <h3 class="title">
 	<span>{{ settings.blog_title }}</span>
 </h3>
 </div> 
 <div class="blog-carousel">  
-{% for article in blogs[settings.blog_category].articles limit: settings.blog_total %}
+{% for article in blogs.news.articles limit: settings.blog_total %}
 <div class="item">  
 	<div class="blog-item">
       	<div class="post-thumb">
-          	<a href="{{ article.url }}"><img src="{{ article.image.src | img_url: '600x600' }}" alt="{{ article.title }}" ></a>
+          	<a href="{{ article.url }}"><img class="img-responsive" src="{{ article.image.src | img_url: '600x600' }}" alt="{{ article.title }}" ></a>
         </div>      
       	<div class="blog-info">
-         	<h4 class="post-title"><a href="{{ article.url }}">{{ article.title }}</a></h4>
-          	<ul class="post-meta">
-                 <li class="post-created">
-                      <span class="created">{{ article.created_at | date: "%B %d, %Y" }}</span>
-				 </li>
-                 <li class="post-comments">{{ article.comments.size }} <span>{{ 'blogs.article.comments' | t }}</span></li>
-          	</ul> 
-          	<p class="blog-intro">
-              	{{ article.content | strip_html | truncate: 130 }}
-          	</p> 
-          	<a href="{{ article.url }}" class="blog_readmore">{{ 'blogs.article.read_more' | t }}</a>
+         	<h4 class="post-title"><a href="{{ article.url }}">{{ article.title }}</a></h4> 
+          	<p class="blog-intro blog-intro-2">
+              	{{ article.content | strip_html | truncate: 80 }}
+          	</p>
+          	<div class="show_readmore">
+              <ul class="post-meta">
+                   <li class="post-created">
+                        <span class="created"><span class="icon icon-basic-clock"></span> {{ article.created_at | date: "%B %d, %Y" }}</span>
+                   </li>
+                   <li class="post-comments"><span class="icon icon-basic-message"></span> {{ article.comments.size }}</li>
+              </ul>
+              <a href="{{ article.url }}" class="blog_readmore">Read more</a>
+  			</div>
       	</div>  
   	</div>
 </div>  
 {% endfor %}
 </div>
 </div>  
+</div>
 </div>
 <script type="text/javascript">
 jQuery(function ($) {
@@ -70,6 +74,7 @@ jQuery(function ($) {
 	    rewindNav: {{ settings.blog_rewind }},
 	    navigationText: ["", ""],
 	    scrollPerPage: false,
+     	margin: 30,
 	    slideSpeed: 500
 	})
 	});

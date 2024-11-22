@@ -1,22 +1,13 @@
 <div class="home-content">
 {% include 'homepage-sliderlayer' %}
 {% include 'homepage-banners' %}  
-{% include 'homepage-collection-tab' %}
-{% if settings.blog_enable %} 
+{% include 'homepage-new-products' %}
+{% include 'homepage-services' %}
+{% if settings.footer_blog_enable %} 
 	{% include 'homepage-blog' %}    
-{% endif %}  
-{% if settings.gallery_enable %}     
-	{% include 'homepage-gallery' %}  
-{% endif %}   
+{% endif %}
+{% include 'homepage-featured-products' %}
+<div class="section-social">
+{% include 'footer-social' %}
 </div>
-{% if settings.footer_newsletter_enable %}
-<div class="section-newsletter">    	
-  	<div class="home-row row fullwidth">
-      	<div id="newsletter_block">          
-          	<h4 class="title_block"><span class="title">{{ 'layout.footer.newsletter_title' | t }}</span></h4>
-            <span class="des-newsletter">{{ 'layout.footer.newsletter_caption' | t }}</span>
-            {% include 'newsletter-form' %}
-        </div>
-    </div>  
-</div>  
-{% endif %}  
+</div>

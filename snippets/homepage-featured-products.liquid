@@ -1,0 +1,97 @@
+{% assign cols = settings.featured_products_per_row | plus: 0 %}
+{% assign rows = settings.featured_products_per_column | plus: 0 %}
+{% assign total_products = settings.featured_products_total | plus: 0 %}
+{% assign rewind = settings.featured_products_rewind %}
+{% assign pagination = settings.featured_products_pagination %}
+{% assign navigation = settings.featured_products_navigation %}
+{% assign products_collection = settings.featured_products_collection %}
+
+<div class="section-products featured-products">
+ <div class="container">
+<div class="slider-product-title">
+	<h3 class="title">
+		<span>{{ settings.featured_products_title }}</span>
+	</h3>
+</div>
+              	<div class="featured-products-carousel">
+				
+                  	{% assign products_count = collections[products_collection].products.size %}
+                  	{% if products_count > total_products %}
+						{% assign total = total_products %} 
+					{% else %}
+                  		{% assign total = products_count %} 
+    				{% endif %}
+                  	{% assign cols_mod = total | modulo:rows %}
+                  	{% if cols_mod == 0 %}
+                  		{% assign number_cols = total | divided_by:rows %}  
+                  	{% else %}
+                  		{% assign number_cols = total | divided_by:rows | plus:1 %}  
+                  	{% endif %}
+                  	
+                  	{% if cols > number_cols %}	
+						{% assign number_cols = cols %}
+					{% endif %}                  	
+                  	{% for product in collections[products_collection].products limit: total %}
+                  		{% assign i_mod = forloop.index0 | modulo:number_cols %}
+                  		{% if i_mod == 0 %}
+                            {% assign index = 0 %}
+                        {% else %}
+                  			{% assign index = i_mod %}
+                  		{% endif %}
+                  	{% endfor %}
+                  	
+                  	{% for i  in (0..10) limit:number_cols %}
+                  		<div class="item">
+                  		{% for product in collections[products_collection].products limit: total %}
+                          	{% assign i_mod = forloop.index0 | modulo:number_cols %}
+                          	{% if i_mod == i %}
+                  				{% include 'product-grid-item' %}
+                  		  	{% endif %}	                  				
+                      	{% endfor %}
+                  		</div>    
+                  	{% endfor %}				
+              	</div>
+</div>
+</div>
+<script type="text/javascript">
+jQuery(function ($) {
+    "use strict";
+	var productCarousel = $(".featured-products-carousel");	
+	if (productCarousel.length > 0) productCarousel.each(function () {	
+	var items = {{ cols }},
+	    itemsDesktop = 4,
+	    itemsDesktopSmall = 3,
+	    itemsTablet = 2,
+	    itemsMobile = 1;
+	var rtl = false;
+	if ($("body").hasClass("rtl")) rtl = true;
+	$(this).owlCarousel({
+	    responsiveClass:true,
+		responsive:{
+			1550:{
+				items:items
+			},
+			991:{
+				items:itemsDesktop
+			},
+			767:{
+				items:itemsTablet
+			},
+			318:{
+				items:itemsMobile
+			}
+		},
+		rtl: rtl,
+		autoPlay: false,
+	    nav: {{ navigation }},
+		dots:  false,
+	    pagination: {{ pagination }},
+	    rewindNav: {{ rewind }},
+	    navigationText: ["", ""],
+	    scrollPerPage: false,
+      	margin: 30,
+	    slideSpeed: 500
+	})
+	});
+});
+</script>

@@ -248,6 +248,3 @@ ul.step li.step_current {
 .jms-slider-wrapper .fs-pager-wrapper a.active, .jms-slider-wrapper .fs-custom-pager-wrapper a.active {
   background: #e6c26c none repeat scroll 0 0 !important;
 }
-.footer-navbar .menu-footer li a:hover {
-    color: #e6c26c;
-}

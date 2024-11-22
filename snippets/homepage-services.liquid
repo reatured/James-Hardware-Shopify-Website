@@ -1,0 +1,30 @@
+{% assign block = 0 %}
+{% for i in (1..4) %}
+	{% capture services_enable %}services_enable_{{ i }}{% endcapture %}      	
+	{% if settings[services_enable] %}
+	{% assign block = block | plus: 1 %}
+	{% endif %}
+{% endfor %}
+{% assign cols_class = 12 | divided_by : block %}
+<section class="section-services" style="background-image:url('{{ "services_bg.jpg" | asset_url }}');background-size:{{ settings.services_background__size }};background-attachment:{{ settings.services_background_attachment }};background-position:{{ settings.services_background_position }};background-repeat:{{ settings.services_background_repeat }}">
+  <div class="container">
+    <div class="row">
+      {% for i in (1..4) %}
+      {% capture services_enable %}services_enable_{{ i }}{% endcapture %}
+      {% capture services_icon %}services_icon_{{ i }}{% endcapture %}
+      {% capture title_services %}title_services_{{ i }}{% endcapture %}
+      {% capture link_services %}link_services_{{ i }}{% endcapture %}
+      {% capture description_services %}description_services_{{ i }}{% endcapture %}
+      {% if settings[services_enable] %}
+      <div class="services-box col-lg-{{ cols_class }} col-md-{{ cols_class }} col-sm-6 col-xs-12">
+        <div class="services-content">
+			<em class="{{ settings[services_icon] }}"></em>
+			<h3 class="title"><a title="{{ settings[title_services] }}" href="{{ settings[link_services] }}">{{ settings[title_services] }}</a></h3>
+			<p>{{ settings[description_services] }}</p>
+		</div>
+      </div>
+      {% endif %}
+       {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+{% assign menu_title = settings.title_menu_2 %}
+{% assign menu_enable = settings.footer_menu_enable_2 %}
+{% assign menu_link = settings.footer_menu_linklist_2 %}
+<div class="footer-block">
+  {% if menu_title != blank %}<h4 class="title_block"><span>{{ menu_title }}</span></h4>{% endif %}
+  {% if menu_enable %} 
+     <div class="menu-footer">
+        <ul>
+          {% for link in linklists[menu_link].links %}
+          	 <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {% endfor %}  
+        </ul>  
+     </div> 
+  {% endif %}
+</div>

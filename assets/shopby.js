@@ -109,7 +109,6 @@ function filterGetData(newurl) {
             initQuickview();
             initAddToCart();     
           	viewAs();
-          	initAddToWishlist();
         },
         error: function(xhr, text) {
             hideLoading();

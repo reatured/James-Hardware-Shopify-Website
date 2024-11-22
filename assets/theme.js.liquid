@@ -531,4 +531,13 @@ $(document).on('click','.overlay, .close-window', function() {
     $('.quickview-box').fadeOut(500);
     return false;
 });
- 
+jQuery(function ($) {
+  $('.menu-icon').on('click', function(){
+      $('.topbar-menu').addClass('open');
+  });
+});
+jQuery(function ($) {
+  $('.close-menu').on('click', function(){
+      $('.topbar-menu').removeClass('open');
+  });
+});

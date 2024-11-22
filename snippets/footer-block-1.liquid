@@ -1,0 +1,19 @@
+{% assign contact_title = settings.contact_title %}
+{% assign contact_address = settings.contact_address %}
+{% assign phone_number = settings.phone_number %}
+{% assign email_address = settings.email_address %}
+{% assign mail_to = settings.mail_to%}
+{% assign time_open = settings.time_open %}
+<div class="footer-block">
+  {% if contact_title != blank %}<h4 class="title_block"><span>{{ contact_title }}</span></h4>{% endif %}
+  <div class="contact-block">
+      <div id="block_contact_infos">
+        <ul>
+            {% if contact_address != blank %}<li><em class="pe-7s-map-marker"></em>{{ contact_address }}</li>{% endif %}
+            {% if phone_number != blank %}<li><em class="pe-7s-call"></em><span>Phone :</span> {{ phone_number }} </li>{% endif %}
+            {% if email_address != blank %}<li><em class="pe-7s-mail"></em><span>Email :</span> <a href="mailto:{{ mail_to }}">{{ email_address }}</a></li>{% endif %}
+            {% if time_open != blank %}<li><em class="pe-7s-clock"></em><span>Open :</span> {{ time_open }}</li>{% endif %}
+        </ul>
+      </div>
+  </div>
+</div>

@@ -42,22 +42,22 @@
 	-webkit-overflow-scrolling: touch;
 }
 .menu-wrap {
-  background: #fff none repeat scroll 0 0;
-  height: 100%;
-  overflow: auto;
-  padding: 0 0 30px;
-  position: fixed;
-  right: -320px;
-  top: 0;
-  transition: right 0.4s cubic-bezier(0.7, 0, 0.3, 1) 0s;
-  width: 270px;
-  z-index: 3001;
+    background: #fff none repeat scroll 0 0;    
+    height: 100%;
+    overflow: auto;
+    padding: 0px 0px 30px 0px;
+    position: fixed;
+  	top: 0;
+    left: -320px;
+    transition: left 0.4s cubic-bezier(0.7, 0, 0.3, 1) 0s;
+    width: 270px;
+    z-index: 3001;
 }
 
 .show-menu .menu-wrap {
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
-    right: 0;
-    transition: right 0.4s cubic-bezier(0.7, 0, 0.3, 1) 0s;
+    left: 0;
+    transition: left 0.4s cubic-bezier(0.7, 0, 0.3, 1) 0s;
 }
 
 .show-menu .content::before {
@@ -96,7 +96,7 @@
 #off-canvas-menu li.active a,
 #off-canvas-menu li a:focus {
   	background:none;
-  	color:#4f4f4f;
+  	color: #fd0101;
 }
 #off-canvas-menu li > a em {
     float: right;

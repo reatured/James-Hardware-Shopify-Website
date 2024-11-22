@@ -1,5 +1,9 @@
-.jms-megamenu .nav {
-  float:right;
+
+.jms-megamenu {
+	text-align: center;
+}
+.jms-megamenu > ul {
+  display: inline-block;
 }
 .jms-megamenu > .nav > li {
     display: inline-block;    

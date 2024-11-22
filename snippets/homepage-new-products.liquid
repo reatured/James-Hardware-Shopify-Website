@@ -1,32 +1,21 @@
-{% assign cols = settings.tabs_products_per_row | plus: 0 %}
-{% assign rows = settings.tabs_products_per_column | plus: 0 %}
-{% assign total_products = settings.tabs_total | plus: 0 %}
-{% assign rewind = settings.tabs_rewind %}
-{% assign pagination = settings.tabs_pagination %}
-{% assign navigation = settings.tabs_navigation %}
-{% assign tab_collection = settings.tab_collection_1 %}
+{% assign cols = settings.new_products_per_row | plus: 0 %}
+{% assign rows = settings.new_products_per_column | plus: 0 %}
+{% assign total_products = settings.new_products_total | plus: 0 %}
+{% assign rewind = settings.new_products_rewind %}
+{% assign pagination = settings.new_products_pagination %}
+{% assign navigation = settings.new_products_navigation %}
+{% assign products_collection = settings.new_products_collection %}
 
-<div class="section-products"><div class="home-row row fullwidth">  
-<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">  
-<div class="jms-tab">
-	<ul class="nav nav-tabs" role="tablist">
-	{% for i in (1..5) %}
-      	{% capture tab_enable %}tab_enable_{{ i }}{% endcapture %}      	
-      	{% capture tab_title %}tab_title_{{ i }}{% endcapture %}	      	      	
-      	{% if settings[tab_enable] %}
-     	 <li class="{% if i == 1 %}active{% endif %}"><a href="#tab-collection{{ i }}" data-toggle="tab" class="button">{{ settings[tab_title] }}</a></li>
-      	{% endif %}
-	{% endfor %}
-	</ul>  
-</div> 
-<div class="tab-content">
-	{% for i in (1..5) %}
-  		{% capture tab_enable %}tab_enable_{{ i }}{% endcapture %}      	          	
-  		{% capture tab_collection %}tab_collection_{{ i }}{% endcapture %}	
-      	{% if settings[tab_enable] %}
-      	<div id="tab-collection{{ i }}" class="tab-pane{% if i == 1 %} active{% endif %}" role="tabpanel">                    	
-              	<div class="product-tab-carousel">
-                  	{% assign products_count = collections[settings[tab_collection]].products.size %}
+<div class="section-products">
+<div class="container">
+<div class="slider-product-title">
+	<h3 class="title">
+		<span>{{ settings.new_products_title }}</span>
+	</h3>
+</div>
+              	<div class="new-products-carousel">
+				
+                  	{% assign products_count = collections[products_collection].products.size %}
                   	{% if products_count > total_products %}
 						{% assign total = total_products %} 
 					{% else %}
@@ -42,7 +31,7 @@
                   	{% if cols > number_cols %}	
 						{% assign number_cols = cols %}
 					{% endif %}                  	
-                  	{% for product in collections[settings[tab_collection]].products limit: total_products %}
+                  	{% for product in collections[products_collection].products limit: total %}
                   		{% assign i_mod = forloop.index0 | modulo:number_cols %}
                   		{% if i_mod == 0 %}
                             {% assign index = 0 %}
@@ -53,27 +42,21 @@
                   	
                   	{% for i  in (0..10) limit:number_cols %}
                   		<div class="item">
-                  		{% for product in collections[settings[tab_collection]].products limit: total_products %}
+                  		{% for product in collections[products_collection].products limit: total %}
                           	{% assign i_mod = forloop.index0 | modulo:number_cols %}
                           	{% if i_mod == i %}
                   				{% include 'product-grid-item' %}
                   		  	{% endif %}	                  				
                       	{% endfor %}
                   		</div>    
-                  	{% endfor %}
+                  	{% endfor %}				
               	</div>
-          	
-      	</div>
-      	{% endif %}
-      
-	{% endfor %}
-</div>  
-</div>  
-</div></div>
+</div>
+</div>
 <script type="text/javascript">
 jQuery(function ($) {
     "use strict";
-	var productCarousel = $(".product-tab-carousel");	
+	var productCarousel = $(".new-products-carousel");	
 	if (productCarousel.length > 0) productCarousel.each(function () {	
 	var items = {{ cols }},
 	    itemsDesktop = 4,
@@ -88,11 +71,8 @@ jQuery(function ($) {
 			1550:{
 				items:items
 			},
-			1199:{
-				items:itemsDesktop
-			},
 			991:{
-				items:itemsDesktopSmall
+				items:itemsDesktop
 			},
 			767:{
 				items:itemsTablet
@@ -109,6 +89,7 @@ jQuery(function ($) {
 	    rewindNav: {{ rewind }},
 	    navigationText: ["", ""],
 	    scrollPerPage: false,
+      	margin: 30,
 	    slideSpeed: 500
 	})
 	});

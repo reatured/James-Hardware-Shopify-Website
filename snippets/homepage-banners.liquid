@@ -1,72 +1,66 @@
-<div class="home-banner-section"><div class="home-row row fullwidth">
-<div class="home-banner">
-<div class="home-banner-left">
-<div class="box-home-banner-left box-home-banner-left-50 box-home-banner-left-1">
-<div class="wrapper-banner"><a title="Banner" href="#"> <img class="img-responsive" src="{{ "banner_img_1.jpg" | asset_url }}" alt="Banner"></a>
-<div class="banner-content">
-<div class="banner-box">
-<div class="box-content">
-<p>{{ settings.banner_heading_1 }}</p>
+<div class="home-2-banner section-home-banner container">
+	<div class="row">
+		<div class="home-banner-left col-lg-4 col-md-4 col-sm-4 col-xs-12">
+			<div class="box-home-banner-left">
+				<div class="wrapper-banner"><a title="Banner" href="{{ settings.banner_link_1 }}"> <img class="img-responsive" src="{{ "banner_img_1.jpg" | asset_url }}" alt="Banner"></a>
+					<div class="banner-content">
+						<div class="banner-box">
+							<div class="box-content">
+								<p>{{ settings.banner_heading_1 }}</p>
+								{% if settings.banner_link_1 != blank %}
+									<a title="Shop now" href="{{ settings.banner_link_1 }}"> <span>Shop now</span> </a>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="home-banner-right col-lg-8 col-md-8 col-sm-8 col-xs-12">
+			<div class="box-home-banner-right box-home-banner-right-1">
+				<div class="wrapper-banner"><a title="Banner" href="{{ settings.banner_link_2 }}"> <img class="img-responsive" src="{{ "banner_img_2.jpg" | asset_url }}" alt="Banner"></a>
+					<div class="banner-content">
+						<div class="banner-box">
+							<div class="box-content">
+								<p>{{ settings.banner_heading_2 }}</p>
+								{% if settings.banner_link_2 != blank %}
+									<a title="Shop now" href="{{ settings.banner_link_2 }}"> <span>Shop now</span> </a>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="box-home-banner-right box-home-banner-right-2 col-lg-6 col-sm-6 col-md-6 col-xs-12">
+					<div class="wrapper-banner">
+						<div class="banner-content">
+							<div class="banner-box">
+								<div class="box-content">
+									<p>{{ settings.banner_heading_3 }}</p>
+									{% if settings.banner_link_3 != blank %}
+										<a title="Shop now" href="{{ settings.banner_link_3 }}"> <span>Shop now</span> </a>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box-home-banner-right box-home-banner-right-3 col-lg-6 col-sm-6 col-md-6 col-xs-12">
+					<div class="wrapper-banner"><a title="Banner" href="{{ settings.banner_link_4 }}"> <img class="img-responsive" src="{{ "banner_img_4.jpg" | asset_url }}" alt="Banner"></a>
+						<div class="banner-content">
+							<div class="banner-box">
+								<div class="box-content">
+									<p>{{ settings.banner_heading_4 }}</p>
+									{% if settings.banner_link_4 != blank %}
+										<a title="Shop now" href="{{ settings.banner_link_4 }}"> <span>Shop now</span> </a>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="box-home-banner-left box-home-banner-left-50 box-home-banner-left-2">
-<div class="wrapper-banner"><a title="Banner" href="#"> <img class="img-responsive" src="{{ "banner_img_2.jpg" | asset_url }}" alt="Banner"></a>
-<div class="banner-content">
-<div class="banner-box">
-<div class="box-content">
-<p>{{ settings.banner_heading_2 }}</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="box-home-banner-left box-home-banner-left-30 box-home-banner-left-3">
-<div class="wrapper-banner"><a title="Banner" href="#"> <img class="img-responsive" src="{{ "banner_img_3.jpg" | asset_url }}" alt="Banner"></a>
-<div class="banner-content">
-<div class="banner-box">
-<div class="box-content">
-<p>{{ settings.banner_heading_3 }}</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="box-home-banner-left box-home-banner-left-30 box-home-banner-left-4">
-<div class="wrapper-banner"><a title="Banner" href="#"> <img class="img-responsive" src="{{ "banner_img_4.jpg" | asset_url }}" alt="Banner"></a>
-<div class="banner-content">
-<div class="banner-box">
-<div class="box-content">
-<p>{{ settings.banner_heading_4 }}</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="box-home-banner-left box-home-banner-left-30 box-home-banner-left-5">
-<div class="wrapper-banner"><a title="Banner" href="#"> <img class="img-responsive" src="{{"banner_img_5.jpg" | asset_url }}" alt="Banner"></a>
-<div class="banner-content">
-<div class="banner-box">
-<div class="box-content">
-<p>{{ settings.banner_heading_5 }}</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="home-banner-right">
-<div class="wrapper-banner"><a title="Banner" href="#"> <img class="img-responsive" src="{{ "banner_img_6.jpg" | asset_url }}" alt="Banner"></a>
-<div class="banner-content">
-<div class="banner-box">
-<div class="box-content">
-<p>{{ settings.banner_heading_6 }}</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div></div>

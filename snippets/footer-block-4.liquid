@@ -1,0 +1,13 @@
+{% if settings.footer_newsletter_enable %}
+<div class="footer-block">
+   <h4 class="title_block"><span class="title">{{ 'layout.footer.newsletter_title' | t }}</span></h4>
+    <span class="des-newsletter">{{ 'layout.footer.newsletter_caption' | t }}</span>
+  <div class="section-newsletter">    	
+      <div class="home-row row fullwidth">
+          <div id="newsletter_block">
+              {% include 'newsletter-form' %}
+          </div>
+      </div>  
+  </div>
+</div>
+{% endif %}  

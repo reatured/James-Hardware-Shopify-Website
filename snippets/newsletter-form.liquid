@@ -34,7 +34,7 @@
       {% else %}
     	<div class="form-inline">
           	<div class="input-group">
-              	<div class="newsletter-input"><input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="contact[email]" id="Email" class="input-group-field form-control" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}"></div>        	
+              	<div class="newsletter-input"><input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="contact[email]" id="Email" class="input-group-field form-control" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off"></div>        	
               <span class="input-group-addon"><input type="submit" class="button" name="subscribe" id="subscribe" value="{{ 'general.newsletter_form.submit' | t }}"></span>
           	</div>  
     		<input type="hidden" name="contact[tags]" value="newsletter">

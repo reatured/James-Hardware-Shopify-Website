@@ -61,7 +61,7 @@
   {{ 'mobile-menu.js' | asset_url | script_tag }}
   {{ 'jquery.jcarousel.min.js' | asset_url | script_tag }}
   {{ 'owl.carousel.js' | asset_url | script_tag }}
-  
+   
   
   {% include 'global-vars-js' %}
   {% comment %}
@@ -73,12 +73,38 @@
 
 </head>
 
-<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
-{% include 'mobile-nav' %}  
-<div id="content-wrap"><div class="content">  
+<body id="{{ page_title | handle }}" class="home-2 {% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+{% include 'mobile-nav' %} 
+<div id="content-wrap"><div class="content">    
 <header class="header-1">
-  <div class="topbar"><div class="header-row row fullwidth">    
-    <div class="navbar-logo col-lg-2 col-sm-2 col-md-2 col-xs-2">      	
+  <div class="topbar"><div class="header-row row fullwidth">
+    <div class="action-block col-lg-4 col-sm-4 col-md-4 col-xs-4">
+      <span class="menu-icon hidden-xs hidden-sm"><img src="{{ "menu-icon.png" | asset_url }}" /></span>
+      <a class="menu-icon open-button hidden-lg hidden-md hidden-lg hidden-md" id="open-button" href="#"><img src="{{ "menu-icon.png" | asset_url }}" /></a>
+      {% if shop.customer_accounts_enabled %}
+  		<div class="account-block">
+          <a class="btn-xs dropdown-toggle" data-toggle="dropdown" href="#">Sign in <img src="{{ "account-icon.png" | asset_url }}" /></a>
+          <ul class="dropdown-menu">
+          {% if customer %}
+          <li>
+              <a href="/account">{{ 'layout.customer.account' | t }}</a>
+          </li>
+          <li>
+              {{ 'layout.customer.log_out' | t | customer_logout_link }}
+                </li>
+           {% else %}
+           <li>
+                {{ 'layout.customer.log_in' | t | customer_login_link }}
+           </li>           
+           <li>
+                {{ 'layout.customer.create_account' | t | customer_register_link }}
+           </li>
+           {% endif %}
+           </ul>
+  		  </div> 
+    	{% endif %}  
+    </div>
+    <div class="navbar-logo col-lg-4 col-sm-4 col-md-4 col-xs-4">      	
           {% if settings.logo_use_image %}
              <a href="/" class="logo-wrapper">
                <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" />
@@ -88,10 +114,7 @@
           {% endif %}          
           
     </div>
-    <div class="topbar-center col-lg-9 col-sm-10 col-md-9 col-xs-12">
-      	{% include 'site-nav' %}
-    </div>
-    <div class="topbar-right col-lg-1 col-sm-2 col-md-1 col-xs-12">      	          
+    <div class="topbar-right col-lg-4 col-sm-4 col-md-4 col-xs-4">      	          
         <div class="header-block">
              {% include 'search-bar' %}
         </div>
@@ -109,6 +132,9 @@
          	{% include 'setting-nav' %}
       	</div>  
     </div>
+    <div class="topbar-menu col-lg-12 col-sm-12 col-md-12 col-xs-12 hidden-xs hidden-sm">
+      	{% include 'site-nav' %}
+    </div>
   </div></div>
 </header>
 <div class="quickview-box"></div>
@@ -120,29 +146,21 @@
 {% if template != 'index' %}
 </div>  
 {% endif %}    
-<footer>
+<footer style="background-color: {{ settings.color-picker }}">
   	<div class="footer-navbar">
-      	<div class="footer-row">
-			{% if settings.footer_quicklinks_enable %} 
-          	<div class="menu-footer">
-              	<ul>
-                {% for link in linklists[settings.footer_quicklinks_linklist].links %}
-                	<li><a href="{{ link.url }}">{{ link.title }}</a></li>
-              	{% endfor %}  
-              	</ul>  
-          	</div> 
-    		{% endif %}
-        </div>    
-  	</div>
-  	{% if settings.footer_social_enable %}        
-    {% include 'social-links' %}    
-    {% endif %}
-  	{% if settings.footer_contact_enable %}
-        <div id="block_contact_infos"> 
-        	{{ settings.footer_contact_text }}
+      <div class="{{ settings.footer-width }}">
+      	<div class="footer-row row">
+		  {% for i in (1..4) %}
+            {% capture temp %}footer-block-{{ i }}{% endcapture %}
+          	<div class="footer-position col-lg-3 col-sm-6 col-md-3 col-xs-12">
+              {% include temp %}
+            </div>
+          {% endfor %}
         </div>
-    {% endif %}
+      </div>
+  	</div>
   	<div class="footer-bottom">
+      <div class="{{ settings.footer-width }}">
     	{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. {{ powered_by_link }}
       	{% if settings.footer_show_methods_of_payment %}
         {% unless shop.enabled_payment_types == empty %}
@@ -155,6 +173,7 @@
            	</div>         
          {% endunless %}
        {% endif %}
+      </div>
   	</div>  
 </footer>
 {% include 'message-modal' %}
@@ -194,6 +213,6 @@ jQuery(function() {
       .trigger('change');
   });
 });
-</script>  
+</script>    
 </body>
 </html>
