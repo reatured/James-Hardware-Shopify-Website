@@ -79,18 +79,34 @@
                   </button>
                 </noscript>
 
-                <button
-                  type="submit"
-                  id="checkout"
-                  class="cart__checkout-button button"
-                  name="checkout"
-                  {% if cart == empty %}
-                    disabled
-                  {% endif %}
-                  form="cart"
-                >
-                  {{ 'sections.cart.checkout' | t }}
-                </button>
+                <div class="cart__buttons-container">
+                  <button
+                    type="submit"
+                    id="checkout"
+                    class="cart__checkout-button button"
+                    name="checkout"
+                    {% if cart == empty %}
+                      disabled
+                    {% endif %}
+                    form="cart"
+                  >
+                    {{ 'sections.cart.checkout' | t }}
+                  </button>
+
+                  <button
+                    type="submit"
+                    id="request-quote"
+                    class="cart__quote-button button button--secondary"
+                    name="request_quote"
+                    {% if cart == empty %}
+                      disabled
+                    {% endif %}
+                    form="cart"
+                    formaction="/pages/quote-request"
+                  >
+                    Request Quote
+                  </button>
+                </div>
               </div>
 
               {%- if additional_checkout_buttons -%}

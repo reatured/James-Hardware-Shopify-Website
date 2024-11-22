@@ -266,6 +266,11 @@
         "post_success": "Thanks for contacting us. We'll get back to you as soon as possible.",
         "error_heading": "Please adjust the following:"
       }
+    },
+    "quote_request": {
+      "title": "Request a Quote",
+      "submit": "Submit Quote Request",
+      "items_title": "Items in Your Quote Request"
     }
   },
   "sections": {

@@ -222,3 +222,17 @@ cart-items {
     gap: 1rem;
   }
 }
+
+.cart__buttons-container {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.cart__quote-button {
+  flex: 1;
+}
+
+.cart__checkout-button {
+  flex: 1;
+}

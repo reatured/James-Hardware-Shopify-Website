@@ -1,0 +1,134 @@
+<div class="page-width">
+  <div class="quote-request-container">
+    <h1>Request a Quote</h1>
+    
+    <form id="quote-form" class="quote-form" action="/contact#contact_form" method="POST">
+      <input type="hidden" name="form_type" value="contact" />
+      <input type="hidden" name="utf8" value="✓" />
+      
+      <div class="field">
+        <label for="quote-name">Name</label>
+        <input type="text" id="quote-name" name="contact[name]" required>
+      </div>
+
+      <div class="field">
+        <label for="quote-email">Email</label>
+        <input type="email" id="quote-email" name="contact[email]" required>
+      </div>
+
+      <div class="field">
+        <label for="quote-phone">Phone (optional)</label>
+        <input type="tel" id="quote-phone" name="contact[phone]">
+      </div>
+
+      <div class="field">
+        <label for="quote-message">Additional Comments</label>
+        <textarea id="quote-message" name="contact[body]" rows="4"></textarea>
+      </div>
+
+      <div class="quote-items">
+        <h2>Items in Your Quote Request</h2>
+        <div id="quote-items-list"></div>
+      </div>
+
+      <button type="submit" class="button">Submit Quote Request</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const itemsList = document.getElementById('quote-items-list');
+    const messageField = document.getElementById('quote-message');
+    
+    // Get cart data from localStorage or session
+    fetch('/cart.js')
+      .then(response => response.json())
+      .then(cart => {
+        // Create items list HTML
+        let itemsHtml = '<ul class="quote-items-list">';
+        let messageText = 'Products requested:\n';
+        
+        cart.items.forEach(item => {
+          itemsHtml += `
+            <li class="quote-item">
+              <div class="quote-item__image">
+                <img src="${item.image}" alt="${item.title}" width="60">
+              </div>
+              <div class="quote-item__info">
+                <h3>${item.title}</h3>
+                <p>Quantity: ${item.quantity}</p>
+                ${item.variant_title ? `<p>Variant: ${item.variant_title}</p>` : ''}
+              </div>
+            </li>
+          `;
+          
+          messageText += `\n- ${item.title}`;
+          if (item.variant_title) messageText += ` (${item.variant_title})`;
+          messageText += ` x${item.quantity}`;
+        });
+        
+        itemsHtml += '</ul>';
+        itemsList.innerHTML = itemsHtml;
+        
+        // Add products to hidden message field
+        messageField.value = messageText;
+      });
+  });
+</script>
+
+<style>
+  .quote-request-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+  }
+
+  .quote-form {
+    margin-top: 2rem;
+  }
+
+  .field {
+    margin-bottom: 1.5rem;
+  }
+
+  .field label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .field input,
+  .field textarea {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .quote-items {
+    margin: 2rem 0;
+  }
+
+  .quote-items-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .quote-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+  }
+
+  .quote-item__image {
+    margin-right: 1rem;
+  }
+
+  .quote-item__info h3 {
+    margin: 0 0 0.5rem 0;
+  }
+
+  .quote-item__info p {
+    margin: 0;
+  }
+</style> 
