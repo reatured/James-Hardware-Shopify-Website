@@ -9,12 +9,20 @@
  */
 {
   "sections": {
+    "cc_responsive_banner_image_G8dy9h": {
+      "type": "CC-Responsive-Banner-Image",
+      "settings": {
+        "desktop_image": "shopify://shop_images/Branding_Souvenir_V1.jpg",
+        "mobile_image": "shopify://shop_images/Branding_Souvenir_V4_Mobile.jpg",
+        "image_link": "shopify://products/bc001-book-clip"
+      }
+    },
     "cc_responsive_banner_image_yeED8f": {
       "type": "CC-Responsive-Banner-Image",
       "settings": {
         "desktop_image": "shopify://shop_images/Frame_3_1.png",
         "mobile_image": "shopify://shop_images/Frame_4_1.png",
-        "image_link": ""
+        "image_link": "shopify://products/ch304"
       }
     },
     "4d68f5c5-32f6-4e0b-8181-e04410ba50fd": {
@@ -173,14 +181,6 @@
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 0
-      }
-    },
-    "cc_responsive_banner_image_G8dy9h": {
-      "type": "CC-Responsive-Banner-Image",
-      "settings": {
-        "desktop_image": "shopify://shop_images/Branding_Souvenir_V1.jpg",
-        "mobile_image": "shopify://shop_images/Branding_Souvenir_V4_Mobile.jpg",
-        "image_link": ""
       }
     }
   },
