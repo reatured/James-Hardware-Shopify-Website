@@ -55,6 +55,9 @@
     display: flex;
     align-items: center;
     line-height: calc(1 + 0.3 / var(--font-body-scale));
+    font-family: {{ section.settings.menu_font_family }};
+    font-weight: {{ section.settings.menu_font_weight }};
+    text-transform: {{ section.settings.menu_text_transform }};
   }
 
   .list-menu__item--link {
@@ -634,6 +637,64 @@
       "unit": "px",
       "label": "Menu Bottom Padding",
       "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Menu Typography"
+    },
+    {
+      "type": "font_picker",
+      "id": "menu_font_family",
+      "label": "Menu Font",
+      "default": "helvetica_n4"
+    },
+    {
+      "type": "select",
+      "id": "menu_font_weight",
+      "label": "Font Weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular (400)"
+        },
+        {
+          "value": "500",
+          "label": "Medium (500)"
+        },
+        {
+          "value": "600",
+          "label": "Semibold (600)"
+        },
+        {
+          "value": "700",
+          "label": "Bold (700)"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "select",
+      "id": "menu_text_transform",
+      "label": "Text Transform",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "lowercase",
+          "label": "lowercase"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize"
+        }
+      ],
+      "default": "none"
     }
   ],
   "blocks": [
