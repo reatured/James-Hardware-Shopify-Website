@@ -79,6 +79,7 @@
     width: 100%;
     border-top: 1px solid rgba(var(--color-foreground), 0.08);
     background-color: {{ section.settings.menu_background_color }};
+    padding-bottom: {{ section.settings.menu_bottom_padding }}px;
   }
 
   @media screen and (max-width: 989px) {
@@ -623,6 +624,16 @@
       "id": "menu_background_color",
       "label": "Menu Background Color",
       "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "menu_bottom_padding",
+      "min": 0,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "label": "Menu Bottom Padding",
+      "default": 10
     }
   ],
   "blocks": [
