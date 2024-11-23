@@ -209,7 +209,7 @@
       "accent-1": {
         "settings": {
           "background": "#475681",
-          "background_gradient": "linear-gradient(57deg, rgba(249, 119, 255, 1) 8%, rgba(54, 212, 255, 1) 47%, rgba(43, 252, 135, 1) 83%)",
+          "background_gradient": "",
           "text": "#ffffff",
           "button": "#ffffff",
           "button_label": "#78807f",
