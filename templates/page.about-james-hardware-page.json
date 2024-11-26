@@ -41,12 +41,36 @@
         "image_link": ""
       }
     },
+    "cc_responsive_banner_image_qfEkN7": {
+      "type": "CC-Responsive-Banner-Image",
+      "settings": {
+        "desktop_image": "shopify://shop_images/P19_full_05.png",
+        "mobile_image": "shopify://shop_images/P19_full_Mobile_05_b7715233-fec6-4ba9-82b7-90ebe9e8f202.png",
+        "image_link": ""
+      }
+    },
     "main": {
       "type": "main-page",
       "custom_css": [],
       "settings": {
         "padding_top": 32,
         "padding_bottom": 24
+      }
+    },
+    "cc_responsive_banner_image_AtyaYT": {
+      "type": "CC-Responsive-Banner-Image",
+      "settings": {
+        "desktop_image": "shopify://shop_images/P19_full_06.png",
+        "mobile_image": "shopify://shop_images/P19_full_Mobile_06_c1a627cb-8b74-44ec-ab08-36d5ab5767d6.png",
+        "image_link": ""
+      }
+    },
+    "cc_responsive_banner_image_EPB7nk": {
+      "type": "CC-Responsive-Banner-Image",
+      "settings": {
+        "desktop_image": "shopify://shop_images/P19_full_07.png",
+        "mobile_image": "shopify://shop_images/P19_full_Mobile_07_ab33c5ee-287c-4d06-b849-cdef6a8b6491.png",
+        "image_link": ""
       }
     }
   },
@@ -55,6 +79,9 @@
     "cc_responsive_banner_image_pqbmNE",
     "cc_responsive_banner_image_3xVVX8",
     "cc_responsive_banner_image_yVnXJD",
+    "cc_responsive_banner_image_qfEkN7",
+    "cc_responsive_banner_image_AtyaYT",
+    "cc_responsive_banner_image_EPB7nk",
     "main"
   ]
 }
