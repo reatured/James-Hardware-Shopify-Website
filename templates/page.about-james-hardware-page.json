@@ -20,8 +20,8 @@
     "cc_responsive_banner_image_pqbmNE": {
       "type": "CC-Responsive-Banner-Image",
       "settings": {
-        "desktop_image": "shopify://shop_images/P19_full_Mobile_02_1e5cfde1-4929-4e6e-957f-5ef58f3959c0.png",
-        "mobile_image": "shopify://shop_images/P19_full_Mobile_02.png",
+        "desktop_image": "shopify://shop_images/P19_full_02.png",
+        "mobile_image": "shopify://shop_images/P19_full_Mobile_02_1e5cfde1-4929-4e6e-957f-5ef58f3959c0.png",
         "image_link": ""
       }
     },
