@@ -18,6 +18,7 @@
         },
         "price": {
           "type": "price",
+          "disabled": true,
           "settings": {}
         },
         "description": {
@@ -56,13 +57,6 @@
           "settings": {
             "share_label": "Share"
           }
-        },
-        "buy_buttons_fTnQUz": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
-          }
         }
       },
       "block_order": [
@@ -72,8 +66,7 @@
         "collapsible-row-1",
         "collapsible-row-0",
         "collapsible-row-2",
-        "share",
-        "buy_buttons_fTnQUz"
+        "share"
       ],
       "settings": {
         "enable_sticky_info": true,
