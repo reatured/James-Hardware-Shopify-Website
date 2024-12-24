@@ -14,20 +14,20 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement_k6rypd": {
+        "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "A Reliable Home Decor Hardware Manufacturer Supplying EU and NA since 1995!",
+            "text": "Celebrating 30 Years of Business",
             "link": ""
           }
         }
       },
       "block_order": [
-        "announcement_k6rypd"
+        "announcement-bar-0"
       ],
       "settings": {
-        "color_scheme": "background-1",
-        "show_line_separator": true,
+        "color_scheme": "scheme-5",
+        "show_line_separator": false,
         "show_social": false,
         "auto_rotate": false,
         "change_slides_speed": 5,
@@ -38,19 +38,20 @@
     "header": {
       "type": "header",
       "settings": {
-        "logo_position": "top-center",
+        "logo_position": "middle-left",
         "menu": "main-menu",
         "menu_type_desktop": "mega",
-        "sticky_header_type": "always",
+        "sticky_header_type": "reduce-logo-size",
         "show_line_separator": true,
-        "color_scheme": "accent-1",
-        "menu_color_scheme": "accent-1",
-        "enable_country_selector": false,
-        "enable_language_selector": false,
+        "color_scheme": "scheme-3",
+        "menu_color_scheme": "",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "enable_customer_avatar": true,
         "mobile_logo_position": "center",
         "margin_bottom": 0,
-        "padding_top": 20,
-        "padding_bottom": 20
+        "padding_top": 8,
+        "padding_bottom": 8
       }
     }
   },
