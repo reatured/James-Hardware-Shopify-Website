@@ -56,6 +56,13 @@
           "settings": {
             "share_label": "Share"
           }
+        },
+        "buy_buttons_fTnQUz": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
         }
       },
       "block_order": [
@@ -65,7 +72,8 @@
         "collapsible-row-1",
         "collapsible-row-0",
         "collapsible-row-2",
-        "share"
+        "share",
+        "buy_buttons_fTnQUz"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -85,6 +93,7 @@
     },
     "quick-order-list": {
       "type": "quick-order-list",
+      "disabled": true,
       "settings": {
         "show_image": true,
         "show_sku": true,
