@@ -1,1 +1,415 @@
-{"sections":{"slideshow_dCXTHJ":{"type":"slideshow","blocks":{"slide_exnbKV":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/IMG_0238.jpg","heading":"Custome Hook Rack","heading_size":"h2","subheading":"Assembling a diverse range of coat hooks with different mounting plates, these modular hookracks bring uniqueness.","button_label":"HP23604Z","link":"shopify:\/\/products\/hp23604x","button_style_secondary":false,"box_align":"middle-left","show_text_box":false,"text_alignment":"left","image_overlay_opacity":40,"color_scheme":"scheme-5","text_alignment_mobile":"left"}},"slide_3KqgkN":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/Catelogue_4.png","heading":"Shelf Bracket","heading_size":"h2","subheading":"Originally designed by James Hardware, this bracket provides two ways of installation.","button_label":"GH069","link":"shopify:\/\/products\/gh069","button_style_secondary":false,"box_align":"middle-left","show_text_box":false,"text_alignment":"left","image_overlay_opacity":40,"color_scheme":"scheme-5","text_alignment_mobile":"left"}}},"block_order":["slide_exnbKV","slide_3KqgkN"],"settings":{"layout":"full_bleed","slide_height":"medium","slider_visual":"dots","auto_rotate":false,"change_slides_speed":7,"image_behavior":"ambient","show_text_below":true,"accessibility_info":"Slideshow about our brand"}},"featured_collection2":{"type":"featured-collection","settings":{"title":"New arrivals","heading_size":"h2","description":"","show_description":false,"description_style":"body","collection":"2024-dec","products_to_show":25,"columns_desktop":5,"full_width":true,"show_view_all":true,"view_all_style":"solid","enable_desktop_slider":true,"color_scheme":"","image_ratio":"adapt","image_shape":"default","show_secondary_image":false,"show_vendor":false,"show_rating":false,"quick_add":"bulk","columns_mobile":"2","swipe_on_mobile":false,"padding_top":36,"padding_bottom":52}},"image_banner_AVTNtQ":{"type":"image-banner","blocks":{"text_V9Tzqy":{"type":"text","settings":{"text":"Designed by James hardware","text_style":"body"}},"heading_CxwgJg":{"type":"heading","settings":{"heading":"Coat Hook","heading_size":"h1"}},"buttons_W8JU3z":{"type":"buttons","settings":{"button_label_1":"GH069","button_link_1":"shopify:\/\/products\/hp23604x","button_style_secondary_1":false,"button_label_2":"ALL COAT HOOK","button_link_2":"shopify:\/\/collections\/coat-hooks","button_style_secondary_2":false}}},"block_order":["text_V9Tzqy","heading_CxwgJg","buttons_W8JU3z"],"disabled":true,"settings":{"image":"shopify:\/\/shop_images\/IMG_0238.jpg","image_overlay_opacity":40,"image_height":"small","desktop_content_position":"middle-left","show_text_box":false,"desktop_content_alignment":"left","color_scheme":"scheme-5","image_behavior":"none","mobile_content_alignment":"center","stack_images_on_mobile":true,"show_text_below":true}},"image_banner":{"type":"image-banner","blocks":{"text":{"type":"text","settings":{"text":"Designed by James hardware","text_style":"body"}},"heading":{"type":"heading","settings":{"heading":"Shelf Bracket","heading_size":"h1"}},"button":{"type":"buttons","settings":{"button_label_1":"GH069","button_link_1":"shopify:\/\/collections\/all","button_style_secondary_1":false,"button_label_2":"ALL SHELF BRACKET","button_link_2":"shopify:\/\/collections\/cabinet-hardware","button_style_secondary_2":false}}},"block_order":["text","heading","button"],"disabled":true,"settings":{"image":"shopify:\/\/shop_images\/Catelogue_4.png","image_overlay_opacity":40,"image_height":"small","desktop_content_position":"middle-right","show_text_box":false,"desktop_content_alignment":"right","color_scheme":"scheme-5","image_behavior":"none","mobile_content_alignment":"center","stack_images_on_mobile":false,"show_text_below":true}},"newsletter_bBdXpf":{"type":"newsletter","blocks":{"heading_rGWWcm":{"type":"heading","settings":{"heading":"Subscribe to our emails","heading_size":"h1"}},"paragraph_andMbD":{"type":"paragraph","settings":{"text":"<p>Be the first to know about new collections and exclusive offers.<\/p>"}},"email_form_8gXChj":{"type":"email_form","settings":{}}},"block_order":["heading_rGWWcm","paragraph_andMbD","email_form_8gXChj"],"settings":{"color_scheme":"scheme-3","full_width":true,"padding_top":40,"padding_bottom":52}},"multicolumn":{"type":"multicolumn","blocks":{"column1":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/CH304_Dolphin_Hook-01.jpg","title":"Coat Hook","text":"","link_label":"","link":""}},"column2":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Catelogue_4.png","title":"Shelf Bracket","text":"","link_label":"","link":""}},"column3":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/DSC05445.jpg","title":"Handles","text":"","link_label":"","link":""}},"column4":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/DSC06641.jpg","title":"Door Stops","text":"","link_label":"","link":""}},"column5":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/gh017.jpg","title":"Glass Clip","text":"","link_label":"","link":""}},"column6":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Handle_Lock_2023_June_Cover3.jpg","title":"Handle Lock","text":"","link_label":"","link":""}}},"block_order":["column1","column2","column3","column4","column5","column6"],"settings":{"title":"Product Categories","heading_size":"hxl","image_width":"full","image_ratio":"portrait","columns_desktop":6,"column_alignment":"center","background_style":"primary","button_label":"","button_link":"","color_scheme":"scheme-5","columns_mobile":"2","swipe_on_mobile":true,"padding_top":12,"padding_bottom":12}},"collection_list":{"type":"collection-list","blocks":{"featured_collection_kYWtG6":{"type":"featured_collection","settings":{"collection":"glass-holder"}},"featured_collection1":{"type":"featured_collection","settings":{"collection":"coat-hooks"}},"featured_collection2":{"type":"featured_collection","settings":{"collection":"door-stops"}},"featured_collection3":{"type":"featured_collection","settings":{"collection":"door-viewer"}},"featured_collection4":{"type":"featured_collection","settings":{"collection":"cabinet-hardware"}},"featured_collection5":{"type":"featured_collection","settings":{"collection":"house-number"}}},"block_order":["featured_collection_kYWtG6","featured_collection1","featured_collection2","featured_collection3","featured_collection4","featured_collection5"],"settings":{"title":"Shop our top categories","heading_size":"h2","image_ratio":"square","columns_desktop":6,"color_scheme":"scheme-4","show_view_all":false,"columns_mobile":"2","swipe_on_mobile":false,"padding_top":48,"padding_bottom":60}},"featured_collection1":{"type":"featured-collection","settings":{"title":"Proven bestsellers","heading_size":"h2","description":"","show_description":false,"description_style":"body","collection":"selection-for-intergescom","products_to_show":25,"columns_desktop":5,"full_width":false,"show_view_all":true,"view_all_style":"solid","enable_desktop_slider":false,"color_scheme":"","image_ratio":"adapt","image_shape":"default","show_secondary_image":false,"show_vendor":false,"show_rating":false,"quick_add":"bulk","columns_mobile":"2","swipe_on_mobile":false,"padding_top":36,"padding_bottom":52}}},"order":["slideshow_dCXTHJ","featured_collection2","image_banner_AVTNtQ","image_banner","newsletter_bBdXpf","multicolumn","collection_list","featured_collection1"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_dCXTHJ": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_exnbKV": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/IMG_0238.jpg",
+            "heading": "Custome Hook Rack",
+            "heading_size": "h2",
+            "subheading": "Assembling a diverse range of coat hooks with different mounting plates, these modular hookracks bring uniqueness.",
+            "button_label": "HP23604Z",
+            "link": "shopify://products/hp23604x",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "left",
+            "image_overlay_opacity": 40,
+            "color_scheme": "scheme-5",
+            "text_alignment_mobile": "left"
+          }
+        },
+        "slide_3KqgkN": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Catelogue_4.png",
+            "heading": "Shelf Bracket",
+            "heading_size": "h2",
+            "subheading": "Originally designed by James Hardware, this bracket provides two ways of installation.",
+            "button_label": "GH069",
+            "link": "shopify://products/gh069",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "left",
+            "image_overlay_opacity": 40,
+            "color_scheme": "scheme-5",
+            "text_alignment_mobile": "left"
+          }
+        }
+      },
+      "block_order": [
+        "slide_exnbKV",
+        "slide_3KqgkN"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "dots",
+        "auto_rotate": false,
+        "change_slides_speed": 7,
+        "image_behavior": "ambient",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "featured_collection2": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "New arrivals",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "2024-dec",
+        "products_to_show": 25,
+        "columns_desktop": 5,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 52
+      }
+    },
+    "image_banner_AVTNtQ": {
+      "type": "image-banner",
+      "blocks": {
+        "text_V9Tzqy": {
+          "type": "text",
+          "settings": {
+            "text": "Designed by James hardware",
+            "text_style": "body"
+          }
+        },
+        "heading_CxwgJg": {
+          "type": "heading",
+          "settings": {
+            "heading": "Coat Hook",
+            "heading_size": "h1"
+          }
+        },
+        "buttons_W8JU3z": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "GH069",
+            "button_link_1": "shopify://products/hp23604x",
+            "button_style_secondary_1": false,
+            "button_label_2": "ALL COAT HOOK",
+            "button_link_2": "shopify://collections/coat-hooks",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "text_V9Tzqy",
+        "heading_CxwgJg",
+        "buttons_W8JU3z"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/IMG_0238.jpg",
+        "image_overlay_opacity": 40,
+        "image_height": "small",
+        "desktop_content_position": "middle-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
+        "color_scheme": "scheme-5",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Designed by James hardware",
+            "text_style": "body"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Shelf Bracket",
+            "heading_size": "h1"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "GH069",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": false,
+            "button_label_2": "ALL SHELF BRACKET",
+            "button_link_2": "shopify://collections/cabinet-hardware",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "text",
+        "heading",
+        "button"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/Catelogue_4.png",
+        "image_overlay_opacity": 40,
+        "image_height": "small",
+        "desktop_content_position": "middle-right",
+        "show_text_box": false,
+        "desktop_content_alignment": "right",
+        "color_scheme": "scheme-5",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": true
+      }
+    },
+    "newsletter_bBdXpf": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_rGWWcm": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscribe to our emails",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_andMbD": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.</p>"
+          }
+        },
+        "email_form_8gXChj": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_rGWWcm",
+        "paragraph_andMbD",
+        "email_form_8gXChj"
+      ],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn": {
+      "type": "multicolumn",
+      "blocks": {
+        "column1": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/CH304_Dolphin_Hook-01.jpg",
+            "title": "Coat Hook",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column2": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Catelogue_4.png",
+            "title": "Shelf Bracket",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column3": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DSC05445.jpg",
+            "title": "Handles",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column4": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DSC06641.jpg",
+            "title": "Door Stops",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column5": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/gh017.jpg",
+            "title": "Glass Clip",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column6": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Handle_Lock_2023_June_Cover3.jpg",
+            "title": "Handle Lock",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column1",
+        "column2",
+        "column3",
+        "column4",
+        "column5",
+        "column6"
+      ],
+      "settings": {
+        "title": "Product Categories",
+        "heading_size": "hxl",
+        "image_width": "full",
+        "image_ratio": "portrait",
+        "columns_desktop": 6,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-5",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "collection_list": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_kYWtG6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "glass-holder"
+          }
+        },
+        "featured_collection1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "coat-hooks"
+          }
+        },
+        "featured_collection2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "door-stops"
+          }
+        },
+        "featured_collection3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "door-viewer"
+          }
+        },
+        "featured_collection4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cabinet-hardware"
+          }
+        },
+        "featured_collection5": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "house-number"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_kYWtG6",
+        "featured_collection1",
+        "featured_collection2",
+        "featured_collection3",
+        "featured_collection4",
+        "featured_collection5"
+      ],
+      "settings": {
+        "title": "Shop our top categories",
+        "heading_size": "h2",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-4",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 48,
+        "padding_bottom": 60
+      }
+    },
+    "featured_collection1": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Proven bestsellers",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "selection-for-intergescom",
+        "products_to_show": 25,
+        "columns_desktop": 5,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "slideshow_dCXTHJ",
+    "featured_collection2",
+    "image_banner_AVTNtQ",
+    "image_banner",
+    "newsletter_bBdXpf",
+    "multicolumn",
+    "collection_list",
+    "featured_collection1"
+  ]
+}
