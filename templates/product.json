@@ -25,31 +25,13 @@
           "type": "description",
           "settings": {}
         },
-        "collapsible-row-1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Product features",
-            "icon": "star",
-            "content": "<p>{{ block.settings.page.metafields.custom.testing_1.value }}</p>",
-            "page": "product-features"
-          }
-        },
         "collapsible-row-0": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Materials and care",
+            "heading": "Specifications",
             "icon": "leaf",
-            "content": "",
+            "content": "<p>Width: {{ product.metafields.custom.width | metafield_tag }}</p><p>Height: {{ product.metafields.custom.height | metafield_tag }}</p><p>Length: {{ product.metafields.custom.length | metafield_tag }}</p><p>Weight: {{ product.metafields.custom.weight | metafield_tag }}</p><p>Colors: {{ product.metafields.custom.packaging.value }}</p>",
             "page": "materials-and-care"
-          }
-        },
-        "collapsible-row-2": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Merchandising tips",
-            "icon": "check_mark",
-            "content": "",
-            "page": "merchandising-tips"
           }
         },
         "share": {
@@ -63,9 +45,7 @@
         "title",
         "price",
         "description",
-        "collapsible-row-1",
         "collapsible-row-0",
-        "collapsible-row-2",
         "share"
       ],
       "settings": {
