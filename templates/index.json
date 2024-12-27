@@ -295,6 +295,7 @@
         "column5",
         "column6"
       ],
+      "disabled": true,
       "settings": {
         "title": "Product Categories",
         "heading_size": "hxl",
