@@ -360,6 +360,7 @@
         "featured_collection4",
         "featured_collection5"
       ],
+      "disabled": true,
       "settings": {
         "title": "Shop our top categories",
         "heading_size": "h2",
