@@ -233,7 +233,7 @@
             "title": "Coat Hook",
             "text": "",
             "link_label": "",
-            "link": ""
+            "link": "shopify://collections/coat-hooks"
           }
         },
         "column2": {
@@ -253,7 +253,7 @@
             "title": "Handles",
             "text": "",
             "link_label": "",
-            "link": ""
+            "link": "shopify://collections/cabinet-hardware"
           }
         },
         "column4": {
@@ -263,7 +263,7 @@
             "title": "Door Stops",
             "text": "",
             "link_label": "",
-            "link": ""
+            "link": "shopify://collections/door-stops"
           }
         },
         "column5": {
@@ -273,7 +273,7 @@
             "title": "Glass Clip",
             "text": "",
             "link_label": "",
-            "link": ""
+            "link": "shopify://collections/glass-holder"
           }
         },
         "column6": {
