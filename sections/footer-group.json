@@ -17,14 +17,14 @@
         "link_list": {
           "type": "link_list",
           "settings": {
-            "heading": "James",
+            "heading": "",
             "menu": "footer"
           }
         },
         "link_list_3i7U7n": {
           "type": "link_list",
           "settings": {
-            "heading": "Hardware",
+            "heading": "",
             "menu": "footer-about-us"
           }
         }
