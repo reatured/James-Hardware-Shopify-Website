@@ -77,7 +77,7 @@
         "text_wDK3VP": {
           "type": "text",
           "settings": {
-            "text": "<p>Weight: {{ product.metafields.custom.weight | metafield_tag }}</p><p>Colors: {{ product.metafields.custom.packaging.value }}</p><p>Materials: {{ product.metafields.custom.material.value }}</p><p>Width: {{ product.metafields.custom.width | metafield_tag }}</p><p>Height: {{ product.metafields.custom.height | metafield_tag }}</p><p>Length: {{ product.metafields.custom.length | metafield_tag }}</p><p></p><p></p>",
+            "text": "<p>Colors: {{ product.metafields.custom.packaging.value }}</p><p>Materials: {{ product.metafields.custom.material.value }}</p><p>Width: {{ product.metafields.custom.width | metafield_tag }}</p><p>Height: {{ product.metafields.custom.height | metafield_tag }}</p><p>Length: {{ product.metafields.custom.length | metafield_tag }}</p><p></p><p></p>",
             "text_style": "body"
           }
         }
