@@ -1,1 +1,150 @@
-{"sections":{"main":{"type":"main-product","blocks":{"title":{"type":"title","settings":{}},"price":{"type":"price","disabled":true,"settings":{}},"description":{"type":"description","settings":{}},"collapsible-row-1":{"type":"collapsible_tab","settings":{"heading":"Product features","icon":"star","content":"<p>{{ block.settings.page.metafields.custom.testing_1.value }}<\/p>","page":"product-features"}},"collapsible-row-0":{"type":"collapsible_tab","settings":{"heading":"Materials and care","icon":"leaf","content":"","page":"materials-and-care"}},"collapsible-row-2":{"type":"collapsible_tab","settings":{"heading":"Merchandising tips","icon":"check_mark","content":"","page":"merchandising-tips"}},"share":{"type":"share","settings":{"share_label":"Share"}}},"block_order":["title","price","description","collapsible-row-1","collapsible-row-0","collapsible-row-2","share"],"settings":{"enable_sticky_info":true,"color_scheme":"","media_size":"small","constrain_to_viewport":false,"media_fit":"cover","gallery_layout":"thumbnail_slider","media_position":"right","image_zoom":"lightbox","mobile_thumbnails":"hide","hide_variants":true,"enable_video_looping":false,"padding_top":36,"padding_bottom":36}},"quick-order-list":{"type":"quick-order-list","settings":{"show_image":true,"show_sku":true,"color_scheme":"scheme-2","padding_top":36,"padding_bottom":16}},"related-products":{"type":"related-products","settings":{"heading":"Other industry favorites","heading_size":"h2","products_to_show":5,"columns_desktop":5,"color_scheme":"scheme-1","image_ratio":"adapt","image_shape":"default","show_secondary_image":false,"show_vendor":false,"show_rating":false,"columns_mobile":"2","padding_top":36,"padding_bottom":44}}},"order":["main","quick-order-list","related-products"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "disabled": true,
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "collapsible-row-0": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Specifications",
+            "icon": "ruler",
+            "content": "<p>Materials: {{ product.metafields.custom.material.value }}</p><p>Length: {{ product.metafields.custom.length | metafield_tag }}</p><p>Width: {{ product.metafields.custom.width | metafield_tag }}</p><p>Height: {{ product.metafields.custom.height | metafield_tag }}</p><p>Package: {{ product.metafields.custom.packaging.value }}</p>",
+            "page": "materials-and-care"
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "description",
+        "collapsible-row-0",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "",
+        "media_size": "small",
+        "constrain_to_viewport": false,
+        "media_fit": "cover",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "right",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "quick-order-list": {
+      "type": "quick-order-list",
+      "settings": {
+        "show_image": true,
+        "show_sku": true,
+        "color_scheme": "scheme-2",
+        "padding_top": 36,
+        "padding_bottom": 16
+      }
+    },
+    "image_with_text_nGCz7d": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_BTAkfR": {
+          "type": "heading",
+          "settings": {
+            "heading": "Specifications",
+            "heading_size": "h2"
+          }
+        },
+        "text_aGNcU6": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Materials: {{ product.metafields.custom.material.value }}</p><p>Length: {{ product.metafields.custom.length | metafield_tag }}</p><p>Width: {{ product.metafields.custom.width | metafield_tag }}</p><p>Height: {{ product.metafields.custom.height | metafield_tag }}</p><p>Package: {{ product.metafields.custom.packaging.value }}</p>",
+            "text_style": "subtitle"
+          }
+        },
+        "button_UEPKVX": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_BTAkfR",
+        "text_aGNcU6",
+        "button_UEPKVX"
+      ],
+      "settings": {
+        "image": "{{ product.metafields.custom.sketch.value }}",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Other industry favorites",
+        "heading_size": "h2",
+        "products_to_show": 5,
+        "columns_desktop": 5,
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 44
+      }
+    }
+  },
+  "order": [
+    "main",
+    "quick-order-list",
+    "image_with_text_nGCz7d",
+    "related-products"
+  ]
+}

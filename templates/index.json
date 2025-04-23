@@ -16,8 +16,8 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/IMG_0238.jpg",
-            "heading": "Custome Hook Rack",
-            "heading_size": "h2",
+            "heading": "Custom Hook Rack",
+            "heading_size": "hxxl",
             "subheading": "Assembling a diverse range of coat hooks with different mounting plates, these modular hookracks bring uniqueness.",
             "button_label": "HP23604Z",
             "link": "shopify://products/hp23604x",
@@ -233,7 +233,7 @@
             "title": "Coat Hook",
             "text": "",
             "link_label": "",
-            "link": ""
+            "link": "shopify://collections/coat-hooks"
           }
         },
         "column2": {
@@ -253,7 +253,7 @@
             "title": "Handles",
             "text": "",
             "link_label": "",
-            "link": ""
+            "link": "shopify://collections/cabinet-hardware"
           }
         },
         "column4": {
@@ -263,7 +263,7 @@
             "title": "Door Stops",
             "text": "",
             "link_label": "",
-            "link": ""
+            "link": "shopify://collections/door-stops"
           }
         },
         "column5": {
@@ -273,7 +273,7 @@
             "title": "Glass Clip",
             "text": "",
             "link_label": "",
-            "link": ""
+            "link": "shopify://collections/glass-holder"
           }
         },
         "column6": {
@@ -360,6 +360,7 @@
         "featured_collection4",
         "featured_collection5"
       ],
+      "disabled": true,
       "settings": {
         "title": "Shop our top categories",
         "heading_size": "h2",
