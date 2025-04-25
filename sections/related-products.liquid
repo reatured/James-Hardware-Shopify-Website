@@ -18,41 +18,175 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .related-products {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .related-products__header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .related-products__title {
+    font-size: var(--font-size-2xl);
+    color: var(--color-foreground);
+    margin: 0 0 1rem;
+  }
+
+  .related-products__description {
+    color: var(--color-muted-foreground);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: var(--line-height-relaxed);
+  }
+
+  .related-products__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: var(--spacing-page-width);
+    margin: 0 auto;
+  }
+
+  .related-product-card {
+    position: relative;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .related-product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .related-product-card__image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  .related-product-card__content {
+    padding: 1.5rem;
+  }
+
+  .related-product-card__title {
+    font-size: var(--font-size-lg);
+    color: var(--color-foreground);
+    margin: 0 0 0.5rem;
+    line-height: var(--line-height-tight);
+  }
+
+  .related-product-card__price {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .related-product-card__price-current {
+    font-weight: 500;
+    color: var(--color-foreground);
+  }
+
+  .related-product-card__price-compare {
+    color: var(--color-muted-foreground);
+    text-decoration: line-through;
+  }
+
+  .related-product-card__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    text-decoration: none;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+
+  .related-product-card__button:hover {
+    background: var(--color-ring);
+  }
+
+  @media screen and (max-width: 768px) {
+    .related-products {
+      margin-top: 3rem;
+      padding-top: 2rem;
+    }
+
+    .related-products__title {
+      font-size: var(--font-size-xl);
+    }
+
+    .related-products__grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
 {%- endstyle -%}
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
-  <product-recommendations
-    class="related-products page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-    data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.products_to_show }}"
-    data-section-id="{{ section.id }}"
-    data-product-id="{{ product.id }}"
-  >
-    {% if recommendations.performed and recommendations.products_count > 0 %}
-      <h2 class="related-products__heading inline-richtext {{ section.settings.heading_size }}">
-        {{ section.settings.heading }}
-      </h2>
-      <ul
-        class="grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
-        role="list"
-      >
-        {% assign skip_card_product_styles = false %}
-        {% for recommendation in recommendations.products %}
-          <li class="grid__item">
-            {% render 'card-product',
-              card_product: recommendation,
-              media_aspect_ratio: section.settings.image_ratio,
-              image_shape: section.settings.image_shape,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating,
-              skip_styles: skip_card_product_styles
-            %}
-          </li>
-          {%- assign skip_card_product_styles = true -%}
-        {% endfor %}
-      </ul>
-    {% endif %}
-  </product-recommendations>
+  <div class="related-products">
+    <div class="related-products__header">
+      <h2 class="related-products__title">{{ section.settings.title }}</h2>
+      {%- if section.settings.description != blank -%}
+        <p class="related-products__description">{{ section.settings.description }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="related-products__grid">
+      {%- assign related_products = product.metafields.related.products | split: ',' -%}
+      {%- for related_product_handle in related_products -%}
+        {%- assign related_product = all_products[related_product_handle] -%}
+        {%- if related_product != blank -%}
+          <div class="related-product-card">
+            <a href="{{ related_product.url }}">
+              {%- if related_product.featured_image != blank -%}
+                <img
+                  class="related-product-card__image"
+                  src="{{ related_product.featured_image | image_url: width: 500 }}"
+                  alt="{{ related_product.featured_image.alt | escape }}"
+                  width="500"
+                  height="500"
+                  loading="lazy"
+                >
+              {%- endif -%}
+            </a>
+
+            <div class="related-product-card__content">
+              <h3 class="related-product-card__title">
+                <a href="{{ related_product.url }}">{{ related_product.title }}</a>
+              </h3>
+
+              <div class="related-product-card__price">
+                <span class="related-product-card__price-current">
+                  {{ related_product.price | money }}
+                </span>
+                {%- if related_product.compare_at_price > related_product.price -%}
+                  <span class="related-product-card__price-compare">
+                    {{ related_product.compare_at_price | money }}
+                  </span>
+                {%- endif -%}
+              </div>
+
+              <a href="{{ related_product.url }}" class="related-product-card__button">
+                View Product
+              </a>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
   {% if section.settings.image_shape == 'arch' %}
     {{ 'mask-arch.svg' | inline_asset_content }}
   {%- endif -%}
@@ -60,47 +194,19 @@
 
 {% schema %}
 {
-  "name": "t:sections.related-products.name",
-  "tag": "section",
-  "class": "section",
+  "name": "Related Products",
   "settings": [
     {
-      "type": "paragraph",
-      "content": "t:sections.related-products.settings.paragraph__1.content"
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Related Products"
     },
     {
-      "type": "inline_richtext",
-      "id": "heading",
-      "default": "t:sections.related-products.settings.paragraph__1.default",
-      "label": "t:sections.related-products.settings.heading.label"
-    },
-    {
-      "type": "select",
-      "id": "heading_size",
-      "options": [
-        {
-          "value": "h2",
-          "label": "t:sections.all.heading_size.options__1.label"
-        },
-        {
-          "value": "h1",
-          "label": "t:sections.all.heading_size.options__2.label"
-        },
-        {
-          "value": "h0",
-          "label": "t:sections.all.heading_size.options__3.label"
-        },
-        {
-          "value": "hxl",
-          "label": "t:sections.all.heading_size.options__4.label"
-        },
-        {
-          "value": "hxxl",
-          "label": "t:sections.all.heading_size.options__5.label"
-        }
-      ],
-      "default": "h1",
-      "label": "t:sections.all.heading_size.label"
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "You might also be interested in these products"
     },
     {
       "type": "range",
@@ -254,6 +360,11 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Related Products"
     }
   ]
 }

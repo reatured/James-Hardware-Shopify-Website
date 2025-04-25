@@ -1,0 +1,100 @@
+name: James Hardware
+version: 1.0.0
+settings_schema:
+  - name: theme_info
+    settings:
+      - type: text
+        id: theme_name
+        label: Theme name
+        default: James Hardware
+      - type: text
+        id: theme_author
+        label: Theme author
+        default: James Hardware LLC
+      - type: text
+        id: theme_version
+        label: Theme version
+        default: 1.0.0
+      - type: text
+        id: theme_support_email
+        label: Support email
+        default: support@jameshardware.com
+  - name: Colors
+    settings:
+      - type: color
+        id: color_primary
+        label: Primary color
+        default: "#8B6B44"
+      - type: color
+        id: color_secondary
+        label: Secondary color
+        default: "#E9E2D8"
+      - type: color
+        id: color_background
+        label: Background color
+        default: "#F7F4EF"
+      - type: color
+        id: color_foreground
+        label: Text color
+        default: "#2A2520"
+  - name: Typography
+    settings:
+      - type: font_picker
+        id: font_heading
+        label: Heading font
+        default: "georgia"
+      - type: font_picker
+        id: font_body
+        label: Body font
+        default: "inter"
+  - name: Layout
+    settings:
+      - type: range
+        id: page_width
+        label: Page width
+        min: 1000
+        max: 1600
+        step: 100
+        default: 1200
+        unit: px
+      - type: range
+        id: sidebar_width
+        label: Sidebar width
+        min: 200
+        max: 400
+        step: 20
+        default: 280
+        unit: px
+  - name: Logo
+    settings:
+      - type: image_picker
+        id: logo
+        label: Logo
+  - name: Social Media
+    settings:
+      - type: text
+        id: social_facebook_link
+        label: Facebook link
+      - type: text
+        id: social_instagram_link
+        label: Instagram link
+      - type: text
+        id: social_twitter_link
+        label: Twitter link
+      - type: text
+        id: social_pinterest_link
+        label: Pinterest link
+  - name: Footer
+    settings:
+      - type: text
+        id: footer_newsletter_heading
+        label: Newsletter heading
+        default: "Subscribe to our newsletter"
+      - type: text
+        id: footer_newsletter_subheading
+        label: Newsletter subheading
+        default: "Get the latest updates on new products and upcoming sales"
+      - type: text
+        id: footer_copyright
+        label: Copyright text
+        default: "© {{ 'now' | date: '%Y' }}, {{ shop.name }}. All rights reserved." 

@@ -1,0 +1,238 @@
+{%- style -%}
+  .product-sketch {
+    margin-top: 3rem;
+    background: var(--color-background);
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+  }
+
+  .product-sketch__header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .product-sketch__title {
+    font-size: var(--font-size-xl);
+    color: var(--color-foreground);
+    margin: 0;
+  }
+
+  .product-sketch__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .product-sketch__image-container {
+    position: relative;
+    background: var(--color-muted);
+    border-radius: 0.375rem;
+    overflow: hidden;
+  }
+
+  .product-sketch__image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .product-sketch__zoom-controls {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .product-sketch__zoom-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.375rem;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    color: var(--color-foreground);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .product-sketch__zoom-button:hover {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    border-color: var(--color-primary);
+  }
+
+  .product-sketch__specs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .product-sketch__spec-item {
+    padding: 1rem;
+    background: var(--color-muted);
+    border-radius: 0.375rem;
+  }
+
+  .product-sketch__spec-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-muted-foreground);
+    margin-bottom: 0.25rem;
+  }
+
+  .product-sketch__spec-value {
+    font-weight: 500;
+    color: var(--color-foreground);
+  }
+
+  .product-sketch__download {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .product-sketch__download-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    text-decoration: none;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+
+  .product-sketch__download-button:hover {
+    background: var(--color-ring);
+  }
+
+  @media screen and (max-width: 768px) {
+    .product-sketch__content {
+      grid-template-columns: 1fr;
+      padding: 1.5rem;
+    }
+
+    .product-sketch__specs {
+      grid-template-columns: 1fr;
+    }
+  }
+{%- endstyle -%}
+
+<div class="product-sketch">
+  <div class="product-sketch__header">
+    <h2 class="product-sketch__title">Technical Specifications</h2>
+  </div>
+
+  <div class="product-sketch__content">
+    <div class="product-sketch__image-container">
+      {%- if section.settings.technical_drawing != blank -%}
+        <img
+          class="product-sketch__image"
+          src="{{ section.settings.technical_drawing | image_url: width: 800 }}"
+          alt="Technical drawing of {{ product.title }}"
+          width="800"
+          height="600"
+          loading="lazy"
+        >
+      {%- else -%}
+        <div style="padding: 2rem; text-align: center; color: var(--color-muted-foreground);">
+          Technical drawing not available
+        </div>
+      {%- endif -%}
+
+      <div class="product-sketch__zoom-controls">
+        <button class="product-sketch__zoom-button" data-action="zoom-in">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10 4a1 1 0 011 1v4h4a1 1 0 110 2h-4v4a1 1 0 11-2 0v-4H5a1 1 0 110-2h4V5a1 1 0 011-1z"/>
+          </svg>
+        </button>
+        <button class="product-sketch__zoom-button" data-action="zoom-out">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="product-sketch__specs">
+      {%- for metafield in product.metafields.technical -%}
+        <div class="product-sketch__spec-item">
+          <div class="product-sketch__spec-label">{{ metafield[0] | replace: '_', ' ' | capitalize }}</div>
+          <div class="product-sketch__spec-value">{{ metafield[1] }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  {%- if section.settings.show_download and section.settings.technical_drawing != blank -%}
+    <div class="product-sketch__download">
+      <a href="{{ section.settings.technical_drawing | image_url }}" class="product-sketch__download-button" download>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"/>
+        </svg>
+        Download Technical Drawing
+      </a>
+    </div>
+  {%- endif -%}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const imageContainer = document.querySelector('.product-sketch__image-container');
+    const image = document.querySelector('.product-sketch__image');
+    const zoomInButton = document.querySelector('[data-action="zoom-in"]');
+    const zoomOutButton = document.querySelector('[data-action="zoom-out"]');
+    
+    let scale = 1;
+    const maxScale = 3;
+    const minScale = 1;
+    const scaleStep = 0.1;
+
+    function updateZoom() {
+      image.style.transform = `scale(${scale})`;
+    }
+
+    zoomInButton.addEventListener('click', () => {
+      if (scale < maxScale) {
+        scale += scaleStep;
+        updateZoom();
+      }
+    });
+
+    zoomOutButton.addEventListener('click', () => {
+      if (scale > minScale) {
+        scale -= scaleStep;
+        updateZoom();
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Product Sketch",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "technical_drawing",
+      "label": "Technical Drawing"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_download",
+      "label": "Show download button",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Sketch"
+    }
+  ]
+}
+{% endschema %} 

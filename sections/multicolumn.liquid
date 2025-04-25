@@ -13,6 +13,153 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .multicolumn {
+    padding: 4rem 1rem;
+    background: transparent;
+  }
+
+  .multicolumn-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .multicolumn-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: {{ section.settings.text_color }};
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  .multicolumn-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .multicolumn-card {
+    background: {{ section.settings.card_background }};
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  .multicolumn-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .multicolumn-card__image-wrapper {
+    position: relative;
+    padding-top: 75%;
+    overflow: hidden;
+  }
+
+  .multicolumn-card__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .multicolumn-card:hover .multicolumn-card__image {
+    transform: scale(1.05);
+  }
+
+  .multicolumn-card__info {
+    padding: 2rem;
+  }
+
+  .multicolumn-card__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: {{ section.settings.text_color }};
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .multicolumn-card__text {
+    color: {{ section.settings.text_color }};
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .multicolumn-card__link {
+    display: inline-flex;
+    align-items: center;
+    color: {{ section.settings.link_color }};
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    gap: 0.5rem;
+  }
+
+  .multicolumn-card__link:hover {
+    color: {{ section.settings.link_hover_color }};
+    transform: translateX(5px);
+  }
+
+  .multicolumn-card__link::after {
+    content: '→';
+    transition: transform 0.3s ease;
+  }
+
+  .multicolumn-card__link:hover::after {
+    transform: translateX(5px);
+  }
+
+  .multicolumn-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: {{ section.settings.button_color }};
+    color: {{ section.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .multicolumn-button:hover {
+    background: {{ section.settings.button_hover_color }};
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .multicolumn {
+      padding: 2rem 1rem;
+    }
+
+    .multicolumn-list {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .multicolumn-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .multicolumn-card__info {
+      padding: 1.5rem;
+    }
+
+    .multicolumn-card__title {
+      font-size: 1.3rem;
+    }
+  }
 {%- endstyle -%}
 
 {%- liquid
@@ -120,14 +267,14 @@
               {%- endif -%}
               <div class="multicolumn-card__info">
                 {%- if block.settings.title != blank -%}
-                  <h3 class="inline-richtext">{{ block.settings.title }}</h3>
+                  <h3 class="multicolumn-card__title">{{ block.settings.title }}</h3>
                 {%- endif -%}
                 {%- if block.settings.text != blank -%}
-                  <div class="rte">{{ block.settings.text }}</div>
+                  <div class="multicolumn-card__text">{{ block.settings.text }}</div>
                 {%- endif -%}
                 {%- if block.settings.link_label != blank -%}
                   <a
-                    class="link animate-arrow"
+                    class="multicolumn-card__link"
                     {% if block.settings.link == blank %}
                       role="link" aria-disabled="true"
                     {% else %}
@@ -135,9 +282,6 @@
                     {% endif %}
                   >
                     {{- block.settings.link_label | escape -}}
-                    <span class="svg-wrapper"
-                      ><span class="icon-wrap">&nbsp;{{ 'icon-arrow.svg' | inline_asset_content }}</span></span
-                    >
                   </a>
                 {%- endif -%}
               </div>
@@ -176,7 +320,7 @@
     <div class="center{% if show_mobile_slider %} small-hide medium-hide{% endif %}">
       {%- if section.settings.button_label != blank -%}
         <a
-          class="button button--primary"
+          class="multicolumn-button"
           {% if section.settings.button_link == blank %}
             role="link" aria-disabled="true"
           {% else %}
@@ -384,6 +528,54 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link Color",
+      "default": "#007bff"
+    },
+    {
+      "type": "color",
+      "id": "link_hover_color",
+      "label": "Link Hover Color",
+      "default": "#0056b3"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button Color",
+      "default": "#007bff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button Hover Color",
+      "default": "#0056b3"
     }
   ],
   "blocks": [

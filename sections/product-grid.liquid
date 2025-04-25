@@ -37,30 +37,30 @@
     }
   }
 
-  .featured-collection {
+  .product-grid {
     max-width: var(--spacing-page-width);
     margin: 0 auto;
     padding: 4rem 2rem;
   }
 
-  .featured-collection__header {
+  .product-grid__header {
     text-align: center;
     margin-bottom: 3rem;
   }
 
-  .featured-collection__title {
+  .product-grid__title {
     font-size: var(--font-size-3xl);
     margin-bottom: 1rem;
   }
 
-  .featured-collection__description {
+  .product-grid__description {
     color: var(--color-muted-foreground);
     max-width: 600px;
     margin: 0 auto;
     line-height: var(--line-height-relaxed);
   }
 
-  .featured-collection__products {
+  .product-grid__products {
     display: grid;
     grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
     gap: 2rem;
@@ -68,18 +68,18 @@
   }
 
   @media screen and (max-width: 989px) {
-    .featured-collection__products {
+    .product-grid__products {
       grid-template-columns: repeat({{ section.settings.columns_tablet }}, 1fr);
     }
   }
 
   @media screen and (max-width: 749px) {
-    .featured-collection__products {
+    .product-grid__products {
       grid-template-columns: repeat({{ section.settings.columns_mobile }}, 1fr);
     }
   }
 
-  .featured-collection__product {
+  .product-grid__product {
     position: relative;
     width: 100%;
     display: flex;
@@ -87,12 +87,12 @@
     gap: 1rem;
   }
 
-  .featured-collection__product-link {
+  .product-grid__product-link {
     text-decoration: none;
     color: inherit;
   }
 
-  .featured-collection__product-image-wrapper {
+  .product-grid__product-image-wrapper {
     position: relative;
     width: 100%;
     padding-bottom: 100%;
@@ -100,7 +100,7 @@
     background-color: var(--color-background-soft);
   }
 
-  .featured-collection__product-image {
+  .product-grid__product-image {
     position: absolute;
     top: 0;
     left: 0;
@@ -110,34 +110,34 @@
     transition: transform 0.3s ease;
   }
 
-  .featured-collection__product:hover .featured-collection__product-image {
+  .product-grid__product:hover .product-grid__product-image {
     transform: scale(1.05);
   }
 
-  .featured-collection__product-info {
+  .product-grid__product-info {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     padding: 0.5rem;
   }
 
-  .featured-collection__product-title {
+  .product-grid__product-title {
     font-size: var(--font-size-lg);
     font-weight: 500;
     margin: 0;
   }
 
-  .featured-collection__product-price {
+  .product-grid__product-price {
     font-weight: 500;
   }
 
-  .featured-collection__product-compare-price {
+  .product-grid__product-compare-price {
     text-decoration: line-through;
     color: var(--color-muted-foreground);
     margin-left: 0.5rem;
   }
 
-  .featured-collection__view-all {
+  .product-grid__view-all {
     display: inline-block;
     margin-top: 3rem;
     padding: 0.75rem 1.5rem;
@@ -148,22 +148,22 @@
     transition: background-color 0.2s ease;
   }
 
-  .featured-collection__view-all:hover {
+  .product-grid__view-all:hover {
     background: var(--color-ring);
   }
 
-  .featured-collection__view-all-wrapper {
+  .product-grid__view-all-wrapper {
     text-align: center;
   }
 
   {%- if section.settings.image_shape == 'circle' -%}
-    .featured-collection__product-image-wrapper {
+    .product-grid__product-image-wrapper {
       border-radius: 50%;
     }
   {%- endif -%}
 
   {%- if section.settings.image_shape == 'rounded' -%}
-    .featured-collection__product-image-wrapper {
+    .product-grid__product-image-wrapper {
       border-radius: 1rem;
     }
   {%- endif -%}
@@ -197,36 +197,36 @@
     id="collection-{{ section.id }}"
     data-id="{{ section.id }}"
   >
-    <div class="featured-collection">
-      <div class="featured-collection__header">
-        <h2 class="featured-collection__title">{{ section.settings.title }}</h2>
+    <div class="product-grid">
+      <div class="product-grid__header">
+        <h2 class="product-grid__title">{{ section.settings.title }}</h2>
         {%- if section.settings.description != blank -%}
-          <div class="featured-collection__description">{{ section.settings.description }}</div>
+          <div class="product-grid__description">{{ section.settings.description }}</div>
         {%- endif -%}
       </div>
 
-      <div class="featured-collection__products">
+      <div class="product-grid__products">
         {%- for product in collections[section.settings.collection].products limit: section.settings.products_to_show -%}
-          <div class="featured-collection__product">
-            <a href="{{ product.url }}" class="featured-collection__product-link">
-              <div class="featured-collection__product-image-wrapper">
+          <div class="product-grid__product">
+            <a href="{{ product.url }}" class="product-grid__product-link">
+              <div class="product-grid__product-image-wrapper">
                 {%- if product.featured_media -%}
                   {{ product.featured_media | image_url: width: 533 | image_tag:
                     loading: 'lazy',
                     width: 533,
                     height: 533,
-                    class: 'featured-collection__product-image'
+                    class: 'product-grid__product-image'
                   }}
                 {%- else -%}
-                  {{ 'product-1' | placeholder_svg_tag: 'featured-collection__product-image' }}
+                  {{ 'product-1' | placeholder_svg_tag: 'product-grid__product-image' }}
                 {%- endif -%}
               </div>
-              <div class="featured-collection__product-info">
-                <h3 class="featured-collection__product-title">{{ product.title }}</h3>
-                <div class="featured-collection__product-price">
+              <div class="product-grid__product-info">
+                <h3 class="product-grid__product-title">{{ product.title }}</h3>
+                <div class="product-grid__product-price">
                   {{ product.price | money }}
                   {%- if product.compare_at_price > product.price -%}
-                    <span class="featured-collection__product-compare-price">
+                    <span class="product-grid__product-compare-price">
                       {{ product.compare_at_price | money }}
                     </span>
                   {%- endif -%}
@@ -238,29 +238,25 @@
       </div>
 
       {%- if section.settings.show_view_all -%}
-        <div class="featured-collection__view-all-wrapper">
-          <a href="{{ collections[section.settings.collection].url }}" class="featured-collection__view-all">
+        <div class="product-grid__view-all-wrapper">
+          <a href="{{ collections[section.settings.collection].url }}" class="product-grid__view-all">
             {{ section.settings.view_all_text }}
           </a>
         </div>
       {%- endif -%}
     </div>
-
-    {%- if section.settings.image_shape == 'arch' %}
-      {{ 'mask-arch.svg' | inline_asset_content }}
-    {%- endif -%}
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "Featured Collection",
+  "name": "Product Grid",
   "settings": [
     {
       "type": "text",
       "id": "title",
       "label": "Title",
-      "default": "Featured Collection"
+      "default": "Product Grid"
     },
     {
       "type": "richtext",
@@ -367,8 +363,8 @@
   ],
   "presets": [
     {
-      "name": "Featured Collection"
+      "name": "Product Grid"
     }
   ]
 }
-{% endschema %}
+{% endschema %} 

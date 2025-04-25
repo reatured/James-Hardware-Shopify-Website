@@ -1,0 +1,217 @@
+{%- style -%}
+  .category-showcase {
+    padding: 4rem 0;
+    background: var(--color-background);
+  }
+
+  .category-showcase__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .category-showcase__title {
+    font-size: var(--font-size-3xl);
+    color: var(--color-foreground);
+    margin-bottom: 1rem;
+  }
+
+  .category-showcase__description {
+    color: var(--color-muted-foreground);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: var(--line-height-relaxed);
+  }
+
+  .category-showcase__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: var(--spacing-page-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .category-card {
+    position: relative;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .category-card__image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+
+  .category-card__content {
+    padding: 1.5rem;
+  }
+
+  .category-card__title {
+    font-size: var(--font-size-xl);
+    color: var(--color-foreground);
+    margin-bottom: 0.5rem;
+  }
+
+  .category-card__description {
+    color: var(--color-muted-foreground);
+    margin-bottom: 1rem;
+    line-height: var(--line-height-relaxed);
+  }
+
+  .category-card__link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s ease;
+  }
+
+  .category-card__link:hover {
+    color: var(--color-ring);
+  }
+
+  .category-card__link::after {
+    content: "→";
+    transition: transform 0.2s ease;
+  }
+
+  .category-card__link:hover::after {
+    transform: translateX(4px);
+  }
+
+  @media screen and (max-width: 768px) {
+    .category-showcase {
+      padding: 3rem 0;
+    }
+
+    .category-showcase__title {
+      font-size: var(--font-size-2xl);
+    }
+
+    .category-showcase__grid {
+      grid-template-columns: 1fr;
+      padding: 0 1rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="category-showcase">
+  <div class="category-showcase__header">
+    <h2 class="category-showcase__title">{{ section.settings.title }}</h2>
+    {%- if section.settings.description != blank -%}
+      <p class="category-showcase__description">{{ section.settings.description }}</p>
+    {%- endif -%}
+  </div>
+
+  <div class="category-showcase__grid">
+    {%- for block in section.blocks -%}
+      <div class="category-card" {{ block.shopify_attributes }}>
+        {%- if block.settings.image != blank -%}
+          <img
+            class="category-card__image"
+            src="{{ block.settings.image | image_url: width: 600 }}"
+            alt="{{ block.settings.title | escape }}"
+            width="600"
+            height="338"
+            loading="lazy"
+          >
+        {%- endif -%}
+        
+        <div class="category-card__content">
+          <h3 class="category-card__title">{{ block.settings.title }}</h3>
+          {%- if block.settings.description != blank -%}
+            <p class="category-card__description">{{ block.settings.description }}</p>
+          {%- endif -%}
+          {%- if block.settings.link != blank -%}
+            <a href="{{ block.settings.link }}" class="category-card__link">
+              {{ block.settings.link_text | default: 'Explore' }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Category Showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Our Product Categories"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Explore our wide range of hardware products organized by category"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Category name"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Brief description of the category"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link text",
+          "default": "Explore"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category Showcase",
+      "blocks": [
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %} 

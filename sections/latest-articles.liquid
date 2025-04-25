@@ -1,0 +1,277 @@
+{%- style -%}
+  .latest-articles {
+    padding: 4rem 0;
+    background: var(--color-background);
+  }
+
+  .latest-articles__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .latest-articles__title {
+    font-size: var(--font-size-3xl);
+    color: var(--color-foreground);
+    margin-bottom: 1rem;
+  }
+
+  .latest-articles__description {
+    color: var(--color-muted-foreground);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: var(--line-height-relaxed);
+  }
+
+  .latest-articles__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: var(--spacing-page-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .article-card {
+    position: relative;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .article-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .article-card__image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+
+  .article-card__content {
+    padding: 1.5rem;
+  }
+
+  .article-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-muted-foreground);
+    font-size: var(--font-size-sm);
+  }
+
+  .article-card__date {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .article-card__author {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .article-card__title {
+    font-size: var(--font-size-xl);
+    color: var(--color-foreground);
+    margin-bottom: 0.75rem;
+    line-height: var(--line-height-tight);
+  }
+
+  .article-card__excerpt {
+    color: var(--color-muted-foreground);
+    margin-bottom: 1rem;
+    line-height: var(--line-height-relaxed);
+  }
+
+  .article-card__link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s ease;
+  }
+
+  .article-card__link:hover {
+    color: var(--color-ring);
+  }
+
+  .article-card__link::after {
+    content: "→";
+    transition: transform 0.2s ease;
+  }
+
+  .article-card__link:hover::after {
+    transform: translateX(4px);
+  }
+
+  .latest-articles__cta {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .latest-articles__cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    text-decoration: none;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+
+  .latest-articles__cta-button:hover {
+    background: var(--color-ring);
+  }
+
+  @media screen and (max-width: 768px) {
+    .latest-articles {
+      padding: 3rem 0;
+    }
+
+    .latest-articles__title {
+      font-size: var(--font-size-2xl);
+    }
+
+    .latest-articles__grid {
+      grid-template-columns: 1fr;
+      padding: 0 1rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="latest-articles">
+  <div class="latest-articles__header">
+    <h2 class="latest-articles__title">{{ section.settings.title }}</h2>
+    {%- if section.settings.description != blank -%}
+      <p class="latest-articles__description">{{ section.settings.description }}</p>
+    {%- endif -%}
+  </div>
+
+  <div class="latest-articles__grid">
+    {%- for article in blogs[section.settings.blog].articles limit: section.settings.posts_to_show -%}
+      <article class="article-card">
+        {%- if article.image != blank -%}
+          <img
+            class="article-card__image"
+            src="{{ article.image | image_url: width: 600 }}"
+            alt="{{ article.image.alt | escape }}"
+            width="600"
+            height="338"
+            loading="lazy"
+          >
+        {%- endif -%}
+        
+        <div class="article-card__content">
+          <div class="article-card__meta">
+            <span class="article-card__date">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 1.33334C4.32 1.33334 1.33333 4.32001 1.33333 8.00001C1.33333 11.68 4.32 14.6667 8 14.6667C11.68 14.6667 14.6667 11.68 14.6667 8.00001C14.6667 4.32001 11.68 1.33334 8 1.33334ZM8 13.3333C5.06 13.3333 2.66667 10.94 2.66667 8.00001C2.66667 5.06001 5.06 2.66668 8 2.66668C10.94 2.66668 13.3333 5.06001 13.3333 8.00001C13.3333 10.94 10.94 13.3333 8 13.3333Z" fill="currentColor"/>
+                <path d="M8.33333 4.66667H7.33333V8.66667L10.3333 10.6667L10.8333 9.8L8.33333 8.16667V4.66667Z" fill="currentColor"/>
+              </svg>
+              {{ article.published_at | time_tag: format: 'date' }}
+            </span>
+            {%- if article.author != blank -%}
+              <span class="article-card__author">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 8C9.65685 8 11 6.65685 11 5C11 3.34315 9.65685 2 8 2C6.34315 2 5 3.34315 5 5C5 6.65685 6.34315 8 8 8Z" fill="currentColor"/>
+                  <path d="M8 9C5.23858 9 3 11.2386 3 14H13C13 11.2386 10.7614 9 8 9Z" fill="currentColor"/>
+                </svg>
+                {{ article.author }}
+              </span>
+            {%- endif -%}
+          </div>
+
+          <h3 class="article-card__title">
+            <a href="{{ article.url }}" class="article-card__link">
+              {{ article.title }}
+            </a>
+          </h3>
+
+          {%- if article.excerpt != blank -%}
+            <p class="article-card__excerpt">
+              {{ article.excerpt | strip_html | truncate: 120 }}
+            </p>
+          {%- endif -%}
+
+          <a href="{{ article.url }}" class="article-card__link">
+            {{ section.settings.read_more_text }}
+          </a>
+        </div>
+      </article>
+    {%- endfor -%}
+  </div>
+
+  {%- if section.settings.show_view_all and section.settings.blog != blank -%}
+    <div class="latest-articles__cta">
+      <a href="{{ blogs[section.settings.blog].url }}" class="latest-articles__cta-button">
+        {{ section.settings.view_all_text }}
+      </a>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Latest Articles",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Latest Articles"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Stay updated with our latest news and insights"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "range",
+      "id": "posts_to_show",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 3,
+      "label": "Number of posts to show"
+    },
+    {
+      "type": "text",
+      "id": "read_more_text",
+      "label": "Read more text",
+      "default": "Read more"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'View all' button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View all text",
+      "default": "View all articles"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Latest Articles"
+    }
+  ]
+}
+{% endschema %} 

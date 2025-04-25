@@ -1,0 +1,284 @@
+{%- style -%}
+  .hero {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    background: var(--color-background);
+    overflow: hidden;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: var(--spacing-page-width);
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .hero__title {
+    font-size: var(--font-size-5xl);
+    font-family: var(--font-heading);
+    color: var(--color-foreground);
+    margin-bottom: 1.5rem;
+    line-height: var(--line-height-tight);
+  }
+
+  .hero__subtitle {
+    font-size: var(--font-size-xl);
+    color: var(--color-muted-foreground);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: var(--line-height-relaxed);
+  }
+
+  .hero__cta {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    text-decoration: none;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+
+  .hero__cta:hover {
+    background: var(--color-ring);
+  }
+
+  .hero__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.4)
+    );
+    z-index: 1;
+  }
+
+  .hero__featured {
+    position: relative;
+    z-index: 2;
+    max-width: var(--spacing-page-width);
+    margin: -4rem auto 0;
+    padding: 0 2rem;
+  }
+
+  .hero__featured-title {
+    font-size: var(--font-size-2xl);
+    color: var(--color-foreground);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .hero__featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .hero__featured-product {
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+  }
+
+  .hero__featured-product:hover {
+    transform: translateY(-4px);
+  }
+
+  .hero__featured-image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  .hero__featured-info {
+    padding: 1.5rem;
+  }
+
+  .hero__featured-title {
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero__featured-description {
+    color: var(--color-muted-foreground);
+    margin-bottom: 1rem;
+    line-height: var(--line-height-relaxed);
+  }
+
+  .hero__featured-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .hero__featured-link:hover {
+    color: var(--color-ring);
+  }
+
+  @media screen and (max-width: 768px) {
+    .hero {
+      min-height: 500px;
+    }
+
+    .hero__title {
+      font-size: var(--font-size-4xl);
+    }
+
+    .hero__subtitle {
+      font-size: var(--font-size-lg);
+    }
+
+    .hero__featured {
+      margin-top: -2rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="hero">
+  {%- if section.settings.image != blank -%}
+    <img
+      class="hero__image"
+      src="{{ section.settings.image | image_url: width: 2000 }}"
+      alt="{{ section.settings.image.alt | escape }}"
+      width="2000"
+      height="1000"
+      loading="eager"
+    >
+  {%- endif -%}
+  <div class="hero__overlay"></div>
+
+  <div class="hero__content">
+    <h1 class="hero__title">{{ section.settings.title }}</h1>
+    {%- if section.settings.subtitle != blank -%}
+      <p class="hero__subtitle">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+    {%- if section.settings.button_text != blank and section.settings.button_link != blank -%}
+      <a href="{{ section.settings.button_link }}" class="hero__cta">
+        {{ section.settings.button_text }}
+      </a>
+    {%- endif -%}
+  </div>
+
+  {%- if section.settings.show_featured_products and section.settings.collection != blank -%}
+    <div class="hero__featured">
+      <h2 class="hero__featured-title">{{ section.settings.featured_title }}</h2>
+      <div class="hero__featured-grid">
+        {%- for product in collections[section.settings.collection].products limit: section.settings.products_to_show -%}
+          <div class="hero__featured-product">
+            <a href="{{ product.url }}">
+              <img
+                class="hero__featured-image"
+                src="{{ product.featured_image | image_url: width: 400 }}"
+                alt="{{ product.title | escape }}"
+                width="400"
+                height="400"
+                loading="lazy"
+              >
+            </a>
+            <div class="hero__featured-info">
+              <h3 class="hero__featured-title">
+                <a href="{{ product.url }}" class="hero__featured-link">
+                  {{ product.title }}
+                </a>
+              </h3>
+              <p class="hero__featured-description">
+                {{ product.description | strip_html | truncate: 100 }}
+              </p>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Welcome to James Hardware"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Your trusted partner for quality hardware solutions"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Explore Products"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_featured_products",
+      "label": "Show featured products",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "featured_title",
+      "label": "Featured products title",
+      "default": "Featured Products"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4,
+      "label": "Number of products to show"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %} 

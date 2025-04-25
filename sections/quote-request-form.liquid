@@ -1,0 +1,335 @@
+{%- style -%}
+  .quote-request-form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .quote-request-form__header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .quote-request-form__title {
+    font-size: var(--font-size-2xl);
+    color: var(--color-foreground);
+    margin: 0 0 1rem;
+  }
+
+  .quote-request-form__description {
+    color: var(--color-muted-foreground);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .quote-request-form__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .quote-request-form__field {
+    margin-bottom: 1rem;
+  }
+
+  .quote-request-form__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+  }
+
+  .quote-request-form__input,
+  .quote-request-form__textarea,
+  .quote-request-form__select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.375rem;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-size: var(--font-size-base);
+    transition: border-color 0.2s ease;
+  }
+
+  .quote-request-form__input:focus,
+  .quote-request-form__textarea:focus,
+  .quote-request-form__select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(139, 107, 68, 0.1);
+  }
+
+  .quote-request-form__textarea {
+    min-height: 150px;
+    resize: vertical;
+  }
+
+  .quote-request-form__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem;
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .quote-request-form__button:hover {
+    background: var(--color-ring);
+  }
+
+  .quote-request-form__button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .quote-request-form__success {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+    background: var(--color-success);
+    color: white;
+    border-radius: 0.375rem;
+    margin-top: 2rem;
+  }
+
+  .quote-request-form__error {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+    background: var(--color-destructive);
+    color: white;
+    border-radius: 0.375rem;
+    margin-top: 2rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .quote-request-form__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+{%- endstyle -%}
+
+<div class="quote-request-form">
+  <div class="quote-request-form__header">
+    <h2 class="quote-request-form__title">{{ section.settings.title }}</h2>
+    {%- if section.settings.description != blank -%}
+      <p class="quote-request-form__description">{{ section.settings.description }}</p>
+    {%- endif -%}
+  </div>
+
+  <form class="quote-request-form__form" id="quote-request-form">
+    <div class="quote-request-form__grid">
+      <div class="quote-request-form__field">
+        <label for="name" class="quote-request-form__label">Full Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          class="quote-request-form__input"
+          required
+        >
+      </div>
+
+      <div class="quote-request-form__field">
+        <label for="email" class="quote-request-form__label">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="quote-request-form__input"
+          required
+        >
+      </div>
+
+      <div class="quote-request-form__field">
+        <label for="phone" class="quote-request-form__label">Phone Number</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          class="quote-request-form__input"
+          required
+        >
+      </div>
+
+      <div class="quote-request-form__field">
+        <label for="company" class="quote-request-form__label">Company Name</label>
+        <input
+          type="text"
+          id="company"
+          name="company"
+          class="quote-request-form__input"
+          required
+        >
+      </div>
+    </div>
+
+    <div class="quote-request-form__field">
+      <label for="products" class="quote-request-form__label">Products</label>
+      <div id="products-list">
+        <div class="product-item">
+          <input
+            type="text"
+            name="products[]"
+            class="quote-request-form__input"
+            placeholder="Product name or SKU"
+            required
+          >
+          <input
+            type="number"
+            name="quantities[]"
+            class="quote-request-form__input"
+            placeholder="Quantity"
+            min="1"
+            required
+          >
+        </div>
+      </div>
+      <button type="button" id="add-product" class="quote-request-form__button" style="margin-top: 1rem;">
+        Add Another Product
+      </button>
+    </div>
+
+    <div class="quote-request-form__field">
+      <label for="delivery_date" class="quote-request-form__label">Required Delivery Date</label>
+      <input
+        type="date"
+        id="delivery_date"
+        name="delivery_date"
+        class="quote-request-form__input"
+        required
+      >
+    </div>
+
+    <div class="quote-request-form__field">
+      <label for="message" class="quote-request-form__label">Additional Information</label>
+      <textarea
+        id="message"
+        name="message"
+        class="quote-request-form__textarea"
+        placeholder="Please provide any additional details about your requirements"
+      ></textarea>
+    </div>
+
+    <button type="submit" class="quote-request-form__button" id="submit-button">
+      Submit Quote Request
+    </button>
+
+    <div class="quote-request-form__success" id="success-message">
+      Thank you for your quote request. We'll get back to you shortly.
+    </div>
+
+    <div class="quote-request-form__error" id="error-message">
+      There was an error submitting your quote request. Please try again.
+    </div>
+  </form>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('quote-request-form');
+    const submitButton = document.getElementById('submit-button');
+    const successMessage = document.getElementById('success-message');
+    const errorMessage = document.getElementById('error-message');
+    const addProductButton = document.getElementById('add-product');
+    const productsList = document.getElementById('products-list');
+
+    addProductButton.addEventListener('click', function() {
+      const productItem = document.createElement('div');
+      productItem.className = 'product-item';
+      productItem.innerHTML = `
+        <input
+          type="text"
+          name="products[]"
+          class="quote-request-form__input"
+          placeholder="Product name or SKU"
+          required
+        >
+        <input
+          type="number"
+          name="quantities[]"
+          class="quote-request-form__input"
+          placeholder="Quantity"
+          min="1"
+          required
+        >
+        <button type="button" class="remove-product">Remove</button>
+      `;
+      productsList.appendChild(productItem);
+
+      productItem.querySelector('.remove-product').addEventListener('click', function() {
+        productItem.remove();
+      });
+    });
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      submitButton.disabled = true;
+      submitButton.textContent = 'Submitting...';
+
+      try {
+        const formData = new FormData(form);
+        const data = {
+          name: formData.get('name'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          company: formData.get('company'),
+          delivery_date: formData.get('delivery_date'),
+          message: formData.get('message'),
+          products: Array.from(formData.getAll('products[]')).map((product, index) => ({
+            name: product,
+            quantity: formData.getAll('quantities[]')[index]
+          }))
+        };
+
+        // Here you would typically send the data to your backend
+        // For now, we'll simulate a successful submission
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        form.reset();
+        successMessage.style.display = 'block';
+        errorMessage.style.display = 'none';
+      } catch (error) {
+        errorMessage.style.display = 'block';
+        successMessage.style.display = 'none';
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Submit Quote Request';
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Quote Request Form",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Request a Quote"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Fill out the form below to request a quote for our products. Our team will get back to you shortly."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quote Request Form"
+    }
+  ]
+}
+{% endschema %} 

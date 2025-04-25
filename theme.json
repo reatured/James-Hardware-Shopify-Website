@@ -1,0 +1,45 @@
+{
+  "name": "James Hardware",
+  "version": "1.0.0",
+  "author": "James Hardware LLC",
+  "settings": {
+    "color_scheme": {
+      "primary": "#8B6B44",
+      "secondary": "#E9E2D8",
+      "background": "#F7F4EF",
+      "foreground": "#2A2520"
+    },
+    "typography": {
+      "heading_font": "Georgia",
+      "body_font": "Inter"
+    },
+    "layout": {
+      "page_width": 1200,
+      "sidebar_width": 280
+    }
+  },
+  "assets": {
+    "stylesheets": [
+      "theme.css",
+      "base.css"
+    ],
+    "javascripts": [
+      "theme.js"
+    ]
+  },
+  "sections": {
+    "header": "sections/header.liquid",
+    "sidebar": "sections/sidebar.liquid",
+    "footer": "sections/footer.liquid"
+  },
+  "templates": {
+    "index": "templates/index.liquid",
+    "product": "templates/product.liquid",
+    "collection": "templates/collection.liquid",
+    "page": "templates/page.liquid",
+    "blog": "templates/blog.liquid",
+    "article": "templates/article.liquid",
+    "cart": "templates/cart.liquid",
+    "search": "templates/search.liquid"
+  }
+} 

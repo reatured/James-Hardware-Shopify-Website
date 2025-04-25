@@ -1,0 +1,297 @@
+{%- style -%}
+  .quote-request {
+    margin-top: 4rem;
+    padding: 3rem;
+    background: var(--color-background);
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border);
+  }
+
+  .quote-request__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .quote-request__title {
+    font-size: var(--font-size-2xl);
+    color: var(--color-foreground);
+    margin: 0 0 1rem;
+  }
+
+  .quote-request__description {
+    color: var(--color-muted-foreground);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: var(--line-height-relaxed);
+  }
+
+  .quote-request__form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .quote-request__field {
+    margin-bottom: 1.5rem;
+  }
+
+  .quote-request__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+  }
+
+  .quote-request__input,
+  .quote-request__textarea,
+  .quote-request__select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.375rem;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-size: var(--font-size-base);
+    transition: border-color 0.2s ease;
+  }
+
+  .quote-request__input:focus,
+  .quote-request__textarea:focus,
+  .quote-request__select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(139, 107, 68, 0.1);
+  }
+
+  .quote-request__textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .quote-request__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem;
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .quote-request__button:hover {
+    background: var(--color-ring);
+  }
+
+  .quote-request__button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .quote-request__success {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+    background: var(--color-success);
+    color: white;
+    border-radius: 0.375rem;
+    margin-top: 2rem;
+  }
+
+  .quote-request__error {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+    background: var(--color-destructive);
+    color: white;
+    border-radius: 0.375rem;
+    margin-top: 2rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .quote-request {
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    .quote-request__title {
+      font-size: var(--font-size-xl);
+    }
+  }
+{%- endstyle -%}
+
+<div class="quote-request">
+  <div class="quote-request__header">
+    <h2 class="quote-request__title">{{ section.settings.title }}</h2>
+    {%- if section.settings.description != blank -%}
+      <p class="quote-request__description">{{ section.settings.description }}</p>
+    {%- endif -%}
+  </div>
+
+  <form class="quote-request__form" id="quote-request-form">
+    <div class="quote-request__field">
+      <label for="name" class="quote-request__label">Full Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        class="quote-request__input"
+        required
+      >
+    </div>
+
+    <div class="quote-request__field">
+      <label for="email" class="quote-request__label">Email Address</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="quote-request__input"
+        required
+      >
+    </div>
+
+    <div class="quote-request__field">
+      <label for="phone" class="quote-request__label">Phone Number</label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        class="quote-request__input"
+        required
+      >
+    </div>
+
+    <div class="quote-request__field">
+      <label for="company" class="quote-request__label">Company Name</label>
+      <input
+        type="text"
+        id="company"
+        name="company"
+        class="quote-request__input"
+        required
+      >
+    </div>
+
+    <div class="quote-request__field">
+      <label for="quantity" class="quote-request__label">Quantity Needed</label>
+      <input
+        type="number"
+        id="quantity"
+        name="quantity"
+        class="quote-request__input"
+        min="1"
+        required
+      >
+    </div>
+
+    <div class="quote-request__field">
+      <label for="delivery_date" class="quote-request__label">Required Delivery Date</label>
+      <input
+        type="date"
+        id="delivery_date"
+        name="delivery_date"
+        class="quote-request__input"
+        required
+      >
+    </div>
+
+    <div class="quote-request__field">
+      <label for="message" class="quote-request__label">Additional Information</label>
+      <textarea
+        id="message"
+        name="message"
+        class="quote-request__textarea"
+      ></textarea>
+    </div>
+
+    <button type="submit" class="quote-request__button" id="submit-button">
+      Request Quote
+    </button>
+
+    <div class="quote-request__success" id="success-message">
+      Thank you for your quote request. We'll get back to you shortly.
+    </div>
+
+    <div class="quote-request__error" id="error-message">
+      There was an error submitting your quote request. Please try again.
+    </div>
+  </form>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('quote-request-form');
+    const submitButton = document.getElementById('submit-button');
+    const successMessage = document.getElementById('success-message');
+    const errorMessage = document.getElementById('error-message');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      submitButton.disabled = true;
+      submitButton.textContent = 'Submitting...';
+
+      try {
+        const formData = new FormData(form);
+        const data = {
+          name: formData.get('name'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          company: formData.get('company'),
+          quantity: formData.get('quantity'),
+          delivery_date: formData.get('delivery_date'),
+          message: formData.get('message'),
+          product: {
+            title: '{{ product.title }}',
+            handle: '{{ product.handle }}',
+            id: '{{ product.id }}'
+          }
+        };
+
+        // Here you would typically send the data to your backend
+        // For now, we'll simulate a successful submission
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        form.reset();
+        successMessage.style.display = 'block';
+        errorMessage.style.display = 'none';
+      } catch (error) {
+        errorMessage.style.display = 'block';
+        successMessage.style.display = 'none';
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Request Quote';
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Quote Request",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Request a Quote"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Fill out the form below to request a quote for this product. Our team will get back to you shortly."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quote Request"
+    }
+  ]
+}
+{% endschema %} 

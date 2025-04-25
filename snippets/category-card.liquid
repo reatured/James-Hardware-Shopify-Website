@@ -1,0 +1,134 @@
+{%- style -%}
+  .category-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--color-background);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .category-card__image-wrapper {
+    position: relative;
+    padding-top: 75%;
+    background: var(--color-background-alt);
+  }
+
+  .category-card__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .category-card:hover .category-card__image {
+    transform: scale(1.05);
+  }
+
+  .category-card__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4));
+    z-index: 1;
+  }
+
+  .category-card__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    color: white;
+    z-index: 2;
+  }
+
+  .category-card__title {
+    margin: 0 0 0.5rem;
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: white;
+  }
+
+  .category-card__title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .category-card__description {
+    margin: 0;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    opacity: 0.9;
+  }
+
+  .category-card__count {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--color-foreground);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    border-radius: 1rem;
+    z-index: 2;
+  }
+
+  @media screen and (max-width: 768px) {
+    .category-card__content {
+      padding: 1rem;
+    }
+
+    .category-card__title {
+      font-size: var(--font-size-lg);
+    }
+
+    .category-card__description {
+      font-size: var(--font-size-sm);
+    }
+  }
+{%- endstyle -%}
+
+<div class="category-card">
+  <div class="category-card__image-wrapper">
+    {%- if collection.featured_image -%}
+      <img
+        src="{{ collection.featured_image | image_url: width: 533 }}"
+        alt="{{ collection.featured_image.alt | escape }}"
+        class="category-card__image"
+        width="{{ collection.featured_image.width }}"
+        height="{{ collection.featured_image.height }}"
+        loading="lazy"
+      >
+    {%- else -%}
+      {{ 'collection-1' | placeholder_svg_tag: 'category-card__image' }}
+    {%- endif -%}
+    <div class="category-card__overlay"></div>
+  </div>
+
+  <div class="category-card__content">
+    <h3 class="category-card__title">
+      <a href="{{ collection.url }}">{{ collection.title | escape }}</a>
+    </h3>
+    {%- if collection.description != blank -%}
+      <p class="category-card__description">{{ collection.description | strip_html | truncate: 100 }}</p>
+    {%- endif -%}
+  </div>
+
+  <div class="category-card__count">
+    {{ collection.all_products_count }} products
+  </div>
+</div> 

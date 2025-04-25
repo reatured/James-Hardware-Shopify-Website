@@ -1,0 +1,247 @@
+{%- style -%}
+  .product {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: var(--spacing-page-width);
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .product__gallery {
+    position: relative;
+  }
+
+  .product__main-image {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+  }
+
+  .product__thumbnails {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .product__thumbnail {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+
+  .product__thumbnail:hover {
+    opacity: 0.8;
+  }
+
+  .product__thumbnail.active {
+    border: 2px solid var(--color-primary);
+  }
+
+  .product__info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .product__title {
+    font-size: var(--font-size-3xl);
+    margin: 0;
+  }
+
+  .product__price {
+    font-size: var(--font-size-xl);
+    font-weight: 500;
+  }
+
+  .product__compare-price {
+    text-decoration: line-through;
+    color: var(--color-muted-foreground);
+    margin-left: 0.5rem;
+  }
+
+  .product__description {
+    color: var(--color-muted-foreground);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .product__variant-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .product__variant-label {
+    font-weight: 500;
+  }
+
+  .product__variant-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .product__variant-option {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .product__variant-option:hover {
+    border-color: var(--color-primary);
+  }
+
+  .product__variant-option.selected {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    border-color: var(--color-primary);
+  }
+
+  .product__quantity {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .product__quantity-label {
+    font-weight: 500;
+  }
+
+  .product__quantity-selector {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--color-border);
+    border-radius: 0.25rem;
+  }
+
+  .product__quantity-button {
+    padding: 0.5rem 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-foreground);
+  }
+
+  .product__quantity-input {
+    width: 3rem;
+    text-align: center;
+    border: none;
+    border-left: 1px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
+    padding: 0.5rem;
+  }
+
+  .product__add-to-cart {
+    padding: 1rem;
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+
+  .product__add-to-cart:hover {
+    background: var(--color-ring);
+  }
+
+  @media screen and (max-width: 768px) {
+    .product {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="product">
+  <div class="product__gallery">
+    <img
+      class="product__main-image"
+      src="{{ product.featured_image | image_url: width: 1000 }}"
+      alt="{{ product.title | escape }}"
+      width="1000"
+      height="1000"
+      loading="eager"
+    >
+    <div class="product__thumbnails">
+      {%- for image in product.images -%}
+        <img
+          class="product__thumbnail {% if forloop.first %}active{% endif %}"
+          src="{{ image | image_url: width: 200 }}"
+          alt="{{ image.alt | escape }}"
+          width="200"
+          height="200"
+          loading="lazy"
+          data-full-size="{{ image | image_url: width: 1000 }}"
+        >
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <div class="product__info">
+    <h1 class="product__title">{{ product.title }}</h1>
+    <div class="product__price">
+      {{ product.price | money }}
+      {%- if product.compare_at_price > product.price -%}
+        <span class="product__compare-price">{{ product.compare_at_price | money }}</span>
+      {%- endif -%}
+    </div>
+    <div class="product__description">
+      {{ product.description }}
+    </div>
+
+    {%- form 'product', product -%}
+      <div class="product__variant-selector">
+        {%- for option in product.options_with_values -%}
+          <div class="product__variant-group">
+            <label class="product__variant-label">{{ option.name }}</label>
+            <div class="product__variant-options">
+              {%- for value in option.values -%}
+                <div
+                  class="product__variant-option {% if option.selected_value == value %}selected{% endif %}"
+                  data-option="{{ option.name }}"
+                  data-value="{{ value }}"
+                >
+                  {{ value }}
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <div class="product__quantity">
+        <label class="product__quantity-label">Quantity</label>
+        <div class="product__quantity-selector">
+          <button type="button" class="product__quantity-button minus">-</button>
+          <input
+            type="number"
+            name="quantity"
+            value="1"
+            min="1"
+            class="product__quantity-input"
+          >
+          <button type="button" class="product__quantity-button plus">+</button>
+        </div>
+      </div>
+
+      <button type="submit" class="product__add-to-cart">
+        Add to Cart
+      </button>
+    {%- endform -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Template",
+  "settings": []
+}
+{% endschema %} 
