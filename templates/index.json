@@ -64,6 +64,95 @@
         "accessibility_info": "Slideshow about our brand"
       }
     },
+    "multicolumn": {
+      "type": "multicolumn",
+      "blocks": {
+        "column1": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/HP23804SC-08.jpg",
+            "title": "Coat Hook",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://collections/coat-hooks"
+          }
+        },
+        "column2": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Catelogue_4.png",
+            "title": "Shelf Bracket",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column3": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DSC05445.jpg",
+            "title": "Handles",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://collections/cabinet-hardware"
+          }
+        },
+        "column4": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DSC06641.jpg",
+            "title": "Door Stops",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://collections/door-stops"
+          }
+        },
+        "column5": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/gh017.jpg",
+            "title": "Glass Clip",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://collections/glass-holder"
+          }
+        },
+        "column6": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Handle_Lock_2023_June_Cover3.jpg",
+            "title": "Handle Lock",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column1",
+        "column2",
+        "column3",
+        "column4",
+        "column5",
+        "column6"
+      ],
+      "settings": {
+        "title": "Product Categories",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-5",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
     "featured_collection2": {
       "type": "featured-collection",
       "settings": {
@@ -223,95 +312,6 @@
         "padding_bottom": 52
       }
     },
-    "multicolumn": {
-      "type": "multicolumn",
-      "blocks": {
-        "column1": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/HP23804SC-08.jpg",
-            "title": "Coat Hook",
-            "text": "",
-            "link_label": "",
-            "link": "shopify://collections/coat-hooks"
-          }
-        },
-        "column2": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/Catelogue_4.png",
-            "title": "Shelf Bracket",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column3": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/DSC05445.jpg",
-            "title": "Handles",
-            "text": "",
-            "link_label": "",
-            "link": "shopify://collections/cabinet-hardware"
-          }
-        },
-        "column4": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/DSC06641.jpg",
-            "title": "Door Stops",
-            "text": "",
-            "link_label": "",
-            "link": "shopify://collections/door-stops"
-          }
-        },
-        "column5": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/gh017.jpg",
-            "title": "Glass Clip",
-            "text": "",
-            "link_label": "",
-            "link": "shopify://collections/glass-holder"
-          }
-        },
-        "column6": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/Handle_Lock_2023_June_Cover3.jpg",
-            "title": "Handle Lock",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column1",
-        "column2",
-        "column3",
-        "column4",
-        "column5",
-        "column6"
-      ],
-      "settings": {
-        "title": "Product Categories",
-        "heading_size": "h2",
-        "image_width": "full",
-        "image_ratio": "square",
-        "columns_desktop": 6,
-        "column_alignment": "left",
-        "background_style": "primary",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "scheme-5",
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "padding_top": 12,
-        "padding_bottom": 12
-      }
-    },
     "collection_list": {
       "type": "collection-list",
       "blocks": {
@@ -405,11 +405,11 @@
   },
   "order": [
     "slideshow_dCXTHJ",
+    "multicolumn",
     "featured_collection2",
     "image_banner_AVTNtQ",
     "image_banner",
     "newsletter_bBdXpf",
-    "multicolumn",
     "collection_list",
     "featured_collection1"
   ]
