@@ -229,7 +229,7 @@
         "column1": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/CH304_Dolphin_Hook-01.jpg",
+            "image": "shopify://shop_images/HP23804SC-08.jpg",
             "title": "Coat Hook",
             "text": "",
             "link_label": "",
@@ -297,11 +297,11 @@
       ],
       "settings": {
         "title": "Product Categories",
-        "heading_size": "hxl",
+        "heading_size": "h2",
         "image_width": "full",
-        "image_ratio": "portrait",
+        "image_ratio": "square",
         "columns_desktop": 6,
-        "column_alignment": "center",
+        "column_alignment": "left",
         "background_style": "primary",
         "button_label": "",
         "button_link": "",
