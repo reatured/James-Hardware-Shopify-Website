@@ -67,7 +67,7 @@
         "share"
       ],
       "custom_css": [
-        ".product__media.media.media--transparent img {mix-blend-mode: multiply; opacity: 0.9; /* Optional - adjust darkness */}"
+        ".product__media.media.media--transparent {mix-blend-mode: multiply;}"
       ],
       "settings": {
         "enable_sticky_info": true,
