@@ -50,7 +50,7 @@
         />
         <button 
           class="copy-button" 
-          onclick="copyImageUrl('{{ media | img_url: 'master' }}', this)" 
+          onclick="copyImageUrl('{{ media | img_url: 'master' | prepend: request.origin }}', this)" 
           title="Copy image URL"
         >
           📋
