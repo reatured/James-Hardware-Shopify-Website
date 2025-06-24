@@ -21,7 +21,7 @@
     position: absolute;
     top: 8px;
     right: 8px;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     color: #fff;
     border: none;
     padding: 4px 6px;
@@ -29,11 +29,12 @@
     border-radius: 4px;
     cursor: pointer;
     z-index: 10;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, transform 0.2s;
   }
 
   .copy-button:hover {
-    background-color: rgba(0,0,0,0.85);
+    background-color: rgba(0, 0, 0, 0.85);
+    transform: scale(1.05);
   }
 </style>
 
@@ -61,13 +62,13 @@
 
 <script>
   function copyImageUrl(url, buttonElement) {
-    navigator.clipboard.writeText(url).then(function() {
+    navigator.clipboard.writeText(url).then(function () {
       const originalText = buttonElement.innerText;
       buttonElement.innerText = '✅';
       setTimeout(() => {
         buttonElement.innerText = originalText;
       }, 1200);
-    }).catch(function(err) {
+    }).catch(function (err) {
       alert('Failed to copy image URL: ' + err);
     });
   }
