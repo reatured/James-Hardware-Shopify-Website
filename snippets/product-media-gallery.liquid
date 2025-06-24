@@ -50,7 +50,7 @@
         />
         <button 
           class="copy-button" 
-          onclick="copyImageUrl('{{ media | img_url: 'master' | prepend: request.origin }}', this)" 
+          onclick="copyImageUrl('{{ media | img_url: 'master' }}', this)" 
           title="Copy image URL"
         >
           📋
@@ -61,14 +61,15 @@
 </div>
 
 <script>
-  function copyImageUrl(url, buttonElement) {
-    navigator.clipboard.writeText(url).then(function () {
+  function copyImageUrl(relativeUrl, buttonElement) {
+    const fullUrl = new URL(relativeUrl, window.location.origin).href;
+    navigator.clipboard.writeText(fullUrl).then(() => {
       const originalText = buttonElement.innerText;
       buttonElement.innerText = '✅';
       setTimeout(() => {
         buttonElement.innerText = originalText;
       }, 1200);
-    }).catch(function (err) {
+    }).catch((err) => {
       alert('Failed to copy image URL: ' + err);
     });
   }
