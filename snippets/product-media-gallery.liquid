@@ -41,16 +41,20 @@
 <div class="product-gallery">
   {% for media in product.media %}
     {% if media.media_type == 'image' %}
+      {% assign img_url = media | img_url: 'master' %}
+      {% unless img_url contains 'http' %}
+        {% assign img_url = img_url | prepend: request.origin %}
+      {% endunless %}
       <div class="product-image-wrapper">
         <img 
-          src="{{ media | img_url: 'master' }}" 
+          src="{{ img_url }}" 
           alt="{{ media.alt | escape }}" 
           loading="lazy" 
           class="product__media"
         />
         <button 
           class="copy-button" 
-          onclick="copyImageUrl('{{ media | img_url: 'master' | prepend: request.origin }}', this)" 
+          onclick="copyImageUrl('{{ img_url }}', this)" 
           title="Copy image URL"
         >
           📋
