@@ -8,58 +8,86 @@
  * ------------------------------------------------------------
  */
 {
-  "name": "t:sections.header.name",
   "type": "header",
+  "name": "t:names.header",
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
+    "header_section": {
+      "type": "header",
       "blocks": {
-        "announcement-bar-0": {
-          "type": "announcement",
+        "header-logo": {
+          "type": "_header-logo",
+          "static": true,
           "settings": {
-            "text": "Celebrating 30 Years of Business",
-            "link": ""
-          }
+            "hide_logo_on_home_page": false,
+            "custom_height": 40,
+            "custom_height_mobile": 40,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "header-menu": {
+          "type": "_header-menu",
+          "static": true,
+          "settings": {
+            "menu": "main-menu",
+            "menu_style": "featured_products",
+            "featured_products_aspect_ratio": "4 / 5",
+            "featured_collections_aspect_ratio": "16 / 9",
+            "image_border_radius": 0,
+            "product_title_case": "uppercase",
+            "collection_title_case": "default",
+            "color_scheme": "",
+            "menu_font_style": "inverse",
+            "type_font_primary_link": "subheading",
+            "type_font_primary_size": "var(--font-size--body-md)",
+            "type_case_primary_link": "none",
+            "type_font_secondary_link": "secondary",
+            "type_case_secondary_link": "none",
+            "type_font_tertiary_link": "secondary",
+            "type_case_tertiary_link": "none",
+            "navigation_bar": false,
+            "color_scheme_navigation_bar": "",
+            "drawer_accordion": false,
+            "drawer_accordion_expand_first": false,
+            "drawer_dividers": false
+          },
+          "blocks": {}
         }
       },
-      "block_order": [
-        "announcement-bar-0"
-      ],
-      "custom_css": [
-        "p {font-family: \"Verdana\";}"
-      ],
       "settings": {
-        "color_scheme": "scheme-5",
-        "show_line_separator": false,
-        "show_social": true,
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "enable_country_selector": false,
-        "enable_language_selector": false
-      }
-    },
-    "header": {
-      "type": "header",
-      "settings": {
-        "logo_position": "middle-left",
-        "menu": "main-menu",
-        "menu_type_desktop": "mega",
-        "sticky_header_type": "reduce-logo-size",
-        "show_line_separator": true,
-        "color_scheme": "scheme-3",
-        "menu_color_scheme": "",
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "enable_customer_avatar": true,
-        "mobile_logo_position": "center",
-        "margin_bottom": 0,
-        "padding_top": 8,
-        "padding_bottom": 8
+        "logo_position": "left",
+        "menu_position": "center",
+        "menu_row": "top",
+        "show_search": true,
+        "search_position": "right",
+        "search_row": "top",
+        "show_country": true,
+        "country_selector_style": false,
+        "show_language": true,
+        "localization_position": "right",
+        "localization_row": "top",
+        "section_width": "page-width",
+        "section_height": "standard",
+        "enable_sticky_header": "scroll-up",
+        "divider_width": 0,
+        "divider_size": "page-width",
+        "border_width": 0,
+        "color_scheme_top": "",
+        "color_scheme_bottom": "",
+        "color_scheme_transparent": "scheme-6",
+        "enable_transparent_header_home": true,
+        "home_color_scheme": "inverse",
+        "enable_transparent_header_product": false,
+        "product_color_scheme": "default",
+        "enable_transparent_header_collection": false,
+        "collection_color_scheme": "default"
       }
     }
   },
   "order": [
-    "announcement-bar",
-    "header"
+    "header_section"
   ]
 }
