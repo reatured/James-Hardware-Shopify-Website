@@ -1,0 +1,43 @@
+{%- comment -%}
+  Header Navigation with Quote List Link
+{%- endcomment -%}
+
+<header class="bg-white shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-4">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="/" class="text-2xl font-bold text-primary">
+          James Hardware
+        </a>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="hidden md:flex space-x-8">
+        {% for link in linklists.main-menu.links %}
+          <a href="{{ link.url }}" class="text-gray-700 hover:text-primary">
+            {{ link.title }}
+          </a>
+        {% endfor %}
+        
+        <!-- Quote List Link -->
+        <a href="/pages/quote" class="flex items-center text-gray-700 hover:text-primary">
+          <span>Quote List</span>
+          <span class="ml-2 bg-primary text-white rounded-full px-2 py-1 text-xs">
+            {{ cart.item_count }}
+          </span>
+        </a>
+      </nav>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button type="button" class="text-gray-700 hover:text-primary">
+          <span class="sr-only">Open menu</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header> 
