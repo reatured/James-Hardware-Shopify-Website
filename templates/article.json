@@ -12,17 +12,17 @@
     "main": {
       "type": "main-article",
       "blocks": {
+        "featured_image": {
+          "type": "featured_image",
+          "settings": {
+            "image_height": "adapt"
+          }
+        },
         "title": {
           "type": "title",
           "settings": {
             "blog_show_date": true,
             "blog_show_author": false
-          }
-        },
-        "featured_image": {
-          "type": "featured_image",
-          "settings": {
-            "image_height": "medium"
           }
         },
         "share": {
@@ -37,10 +37,13 @@
         }
       },
       "block_order": [
-        "title",
         "featured_image",
+        "title",
         "share",
         "content"
+      ],
+      "custom_css": [
+        ".article-template__title {max-width: 1200px; /* or whatever wider size you want */ margin-left: auto; margin-right: auto; text-align: left; /* keeps the text aligned left */ padding: 0 20px; /* optional: prevent text from touching the edge */}"
       ],
       "settings": {}
     }
