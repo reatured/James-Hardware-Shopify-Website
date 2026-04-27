@@ -1,0 +1,1718 @@
+/*
+ * James Hardware — Editorial Luxury Redesign v2
+ * Inspired by: Apparatus, Frama, Buster + Punch, Joseph Giles
+ * Core moves: cinematic hero, fewer-bigger products, dark chiaroscuro bands,
+ * tracked-caps eyebrows + italic Cormorant display, generous editorial rhythm.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap');
+
+:root {
+  /* Apparatus-inspired neutral palette — minimal cream/white with restrained ink */
+  --jh-bone: #F5F2EC;
+  --jh-bone-warm: #EFEBE3;
+  --jh-paper: #FBF9F5;
+  --jh-cream: #ECE7DE;
+  --jh-ink: #1A1A1A;
+  --jh-ink-soft: #262626;
+  --jh-ink-light: #6B6B6B;
+  /* "bronze" tokens kept but rebalanced as muted neutral darks (no yellow) */
+  --jh-bronze: #4A4A4A;
+  --jh-bronze-light: #999999;
+  --jh-bronze-dark: #1A1A1A;
+  --jh-rule: rgba(26, 26, 26, 0.14);
+  --jh-rule-soft: rgba(26, 26, 26, 0.06);
+  --jh-rule-bronze: rgba(74, 74, 74, 0.3);
+
+  --font-heading-family: 'Cormorant Garamond', 'Times New Roman', serif !important;
+  --font-heading-style: normal !important;
+  --font-heading-weight: 300 !important;
+  --font-body-family: 'Jost', 'Helvetica Neue', sans-serif !important;
+  --font-body-style: normal !important;
+  --font-body-weight: 400 !important;
+}
+
+/* ============== GLOBAL ============== */
+
+html {
+  scroll-behavior: smooth;
+  background: var(--jh-bone);
+}
+body {
+  background-color: var(--jh-bone) !important;
+  color: var(--jh-ink-soft) !important;
+  font-family: 'Jost', sans-serif !important;
+  font-weight: 400 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-size: 1.7rem !important;
+  line-height: 1.65 !important;
+}
+@media (min-width: 750px) {
+  body { font-size: 1.75rem !important; }
+}
+
+/* Quiet film grain */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 9999;
+  opacity: 0.03;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 220px;
+}
+
+/* Selection */
+::selection { background: var(--jh-bronze); color: var(--jh-bone); }
+
+/* ============== TYPOGRAPHY ============== */
+
+h1, h2, h3, h4, h5, .h0, .h1, .h2, .h3, .h4, .h5 {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 300 !important;
+  letter-spacing: -0.012em !important;
+  color: var(--jh-ink) !important;
+  font-feature-settings: "liga" 1, "dlig" 1, "kern" 1;
+}
+
+h1, .h0, .banner__heading--large, .slideshow__heading {
+  font-size: clamp(4.4rem, 9vw, 11rem) !important;
+  line-height: 0.95 !important;
+  letter-spacing: -0.025em !important;
+  font-weight: 300 !important;
+  font-style: italic !important;
+}
+
+h2, .h1, .section-header__title, .title-wrapper-with-link h2 {
+  font-size: clamp(3.2rem, 5.5vw, 5.6rem) !important;
+  line-height: 1.0 !important;
+  font-weight: 300 !important;
+}
+
+h3, .h2, .card__heading {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 400 !important;
+  font-size: clamp(1.7rem, 2vw, 2.2rem) !important;
+  line-height: 1.18 !important;
+}
+
+p, li, span, .rte { font-family: 'Jost', sans-serif !important; }
+
+em, i, .italic {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+}
+
+/* Tracked caps eyebrow */
+.button, .header__menu-item, .list-menu__item--link,
+button[type="submit"], .footer-block__details-content a,
+.shopify-payment-button__button, .field__label {
+  font-family: 'Jost', sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  font-size: 1.4rem !important;
+}
+
+/* Re-style ALL section title eyebrows */
+.title-wrapper-with-link,
+.section-header,
+.banner__content,
+.newsletter__wrapper {
+  position: relative;
+}
+
+/* Editorial eyebrow above section titles in featured-collection / multicolumn / newsletter */
+.featured-collection .title-wrapper-with-link::before,
+.featured-collection .section-header::before,
+.featured-collection .collection__title::before,
+.featured-collection .title-wrapper::before,
+[id*="featured_collection"] .title-wrapper-with-link::before,
+[id*="featured_collection"] .section-header::before,
+[id*="featured_collection"] .collection__title::before,
+[id*="featured_collection"] .title-wrapper::before,
+.multicolumn .title-wrapper-with-link::before,
+.multicolumn .multicolumn__title::before,
+.newsletter__wrapper::before {
+  content: 'Vol. I  ·  Hardware';
+  display: block;
+  font-family: 'Jost', sans-serif !important;
+  font-size: 1.3rem !important;
+  letter-spacing: 0.42em !important;
+  text-transform: uppercase !important;
+  color: var(--jh-ink) !important;
+  margin-bottom: 1.6rem !important;
+  font-weight: 500 !important;
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* ============== ANNOUNCEMENT + HEADER ============== */
+
+.announcement-bar {
+  background: var(--jh-ink) !important;
+  color: var(--jh-bone) !important;
+  border: none !important;
+  padding: 0.85rem 0 !important;
+}
+.announcement-bar__message {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 1.3rem !important;
+  letter-spacing: 0.32em !important;
+  text-transform: uppercase !important;
+  font-weight: 400 !important;
+  color: var(--jh-bone) !important;
+}
+
+.shopify-section-header,
+.section-header { background: var(--jh-bone) !important; border-bottom: 1px solid var(--jh-rule); }
+
+.header { padding: 2.4rem 4.5rem !important; align-items: center; }
+@media (max-width: 749px) { .header { padding: 1.4rem 1.6rem !important; } }
+
+/* ============== STICKY HEADER SHRINK ON SCROLL ============== */
+/* Dawn's <sticky-header> JS adds .scrolled-past-header to .section-header
+   (and toggles .shopify-section-header-sticky / -hidden). Target those. */
+
+.section-header {
+  transition: background-color 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease;
+}
+
+.section-header.jh-scrolled {
+  background-color: rgba(245, 242, 236, 0.92) !important;
+  backdrop-filter: blur(12px) saturate(1.1);
+  -webkit-backdrop-filter: blur(12px) saturate(1.1);
+  box-shadow: 0 1px 0 var(--jh-rule);
+}
+
+/* Compact the inner header bar */
+.section-header.jh-scrolled .header-wrapper { background: transparent !important; }
+
+.section-header.jh-scrolled .header {
+  padding-top: 0.8rem !important;
+  padding-bottom: 0.8rem !important;
+}
+@media (max-width: 749px) {
+  .section-header.jh-scrolled .header {
+    padding-top: 0.6rem !important;
+    padding-bottom: 0.6rem !important;
+  }
+}
+
+/* Shrink the logo image so the bar collapses vertically */
+.header__heading-logo-wrapper,
+.header__heading-logo {
+  transition: width 0.35s cubic-bezier(0.2, 0.7, 0.1, 1),
+              max-height 0.35s cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+.section-header.jh-scrolled .header__heading-logo-wrapper,
+.section-header.jh-scrolled .header__heading-logo {
+  width: 55% !important;
+  max-height: 36px !important;
+}
+
+/* Hide the "Architectural Hardware" wordmark below the logo when scrolled */
+.header__heading-link::after,
+.header__heading::after {
+  transition: opacity 0.25s ease, max-height 0.25s ease, margin 0.25s ease;
+  overflow: hidden;
+}
+.section-header.jh-scrolled .header__heading-link::after,
+.section-header.jh-scrolled .header__heading::after {
+  opacity: 0 !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+}
+
+/* Tighten nav padding on scroll */
+.section-header.jh-scrolled .header__menu-item {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Trim the heading wrapper top spacing too */
+.section-header.jh-scrolled .header__heading,
+.section-header.jh-scrolled .header__heading-link {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  line-height: 1 !important;
+}
+
+.header__heading-link, .header__heading-logo-wrapper, .header__heading {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 400 !important;
+  font-size: 2.6rem !important;
+  letter-spacing: 0.06em !important;
+  color: var(--jh-ink) !important;
+  text-transform: none !important;
+}
+.header__heading-link::after {
+  content: 'Architectural Hardware';
+  display: block;
+  font-family: 'Jost', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--jh-ink-light);
+  margin-top: 0.4rem;
+  font-weight: 500;
+}
+
+.header__menu-item {
+  color: var(--jh-ink) !important;
+  font-size: 1.35rem !important;
+  letter-spacing: 0.22em !important;
+  position: relative;
+  padding: 0.6rem 1.6rem !important;
+  transition: color 0.3s ease;
+  font-weight: 500 !important;
+}
+.header__menu-item:hover { color: var(--jh-bronze) !important; background: transparent !important; }
+.header__menu-item span { text-decoration: none !important; position: relative; }
+.header__menu-item span::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -5px;
+  height: 1px;
+  background: var(--jh-bronze);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+.header__menu-item:hover span::after { transform: scaleX(1); }
+
+.header__icons .header__icon { color: var(--jh-ink) !important; transition: color 0.3s ease; }
+.header__icons .header__icon:hover { color: var(--jh-bronze) !important; }
+
+/* ============== HERO / SLIDESHOW — full bleed cinematic ============== */
+
+.slideshow,
+.slideshow--placeholder {
+  position: relative;
+  min-height: calc(100vh - 100px) !important;
+  background: var(--jh-ink) !important;
+}
+.slideshow__slide {
+  min-height: calc(100vh - 100px) !important;
+}
+.slideshow__media,
+.slideshow__media .media,
+.slideshow .banner__media {
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  filter: contrast(1.04) brightness(0.85) saturate(0.92);
+}
+.slideshow__media img,
+.slideshow__media video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* Vignette overlay for legibility */
+.slideshow__slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+    rgba(22,20,15,0.55) 0%,
+    rgba(22,20,15,0.25) 40%,
+    rgba(22,20,15,0.05) 70%,
+    rgba(22,20,15,0.4) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.slideshow__text-wrapper,
+.slideshow__text {
+  position: relative;
+  z-index: 2;
+  background: transparent !important;
+  padding: 6rem !important;
+  max-width: 56vw;
+  text-align: left !important;
+}
+
+.slideshow__heading,
+.banner__heading {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-weight: 300 !important;
+  font-size: clamp(5rem, 10vw, 12rem) !important;
+  line-height: 0.92 !important;
+  letter-spacing: -0.03em !important;
+  color: var(--jh-bone) !important;
+  margin: 0 0 2rem !important;
+  max-width: 16ch;
+}
+
+.slideshow__text p,
+.banner__text {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 1.15rem !important;
+  line-height: 1.7 !important;
+  color: rgba(245, 242, 236, 0.85) !important;
+  letter-spacing: 0.02em;
+  max-width: 44ch;
+  margin-bottom: 2.4rem !important;
+}
+
+/* SKU caption flourish */
+.slideshow__text::before {
+  content: 'Featured Object  /  №  001';
+  display: block;
+  font-family: 'Jost', sans-serif !important;
+  font-size: 1.15rem !important;
+  letter-spacing: 0.4em !important;
+  text-transform: uppercase !important;
+  color: var(--jh-bronze-light) !important;
+  margin-bottom: 3.2rem !important;
+  font-weight: 500 !important;
+}
+
+/* Hero buttons — bone outline on dark */
+.slideshow__text .button {
+  background: transparent !important;
+  border: 1px solid var(--jh-bone) !important;
+  color: var(--jh-bone) !important;
+  padding: 1.8rem 4rem !important;
+  font-size: 1.15rem !important;
+}
+.slideshow__text .button:hover {
+  background: var(--jh-bone) !important;
+  color: var(--jh-ink) !important;
+}
+
+/* Slide controls */
+.slideshow__control-wrapper { z-index: 3; }
+.slider-counter--dots .slider-counter__link {
+  background: transparent !important;
+  border: 1px solid rgba(242,235,224,0.5) !important;
+  width: 8px !important; height: 8px !important;
+  margin: 0 6px !important;
+}
+.slider-counter__link--active { background: var(--jh-bronze-light) !important; border-color: var(--jh-bronze-light) !important; }
+
+/* Bronze atelier wordmark fixed at bottom-right of hero */
+.slideshow::after {
+  content: 'EST. ATELIER';
+  position: absolute;
+  bottom: 3rem; right: 4rem;
+  font-family: 'Jost', sans-serif !important;
+  font-size: 1.05rem !important;
+  letter-spacing: 0.5em !important;
+  text-transform: uppercase !important;
+  color: rgba(245, 242, 236, 0.65) !important;
+  font-weight: 500;
+  z-index: 3;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* ============== TRUST / MANIFESTO STRIP — pseudo-injected via slideshow::before ============== */
+
+.slideshow::before {
+  display: none;
+}
+
+/* Trust bar between hero and next section — inject via shopify-section after slideshow */
+.shopify-section[id*="slideshow"] + .shopify-section-group-header-group + .shopify-section,
+.shopify-section[id*="slideshow"] + .shopify-section {
+  position: relative;
+}
+.shopify-section[id*="slideshow"] + .shopify-section::before {
+  content: 'SOLID BRASS  ·  HAND-FINISHED  ·  SPECIFIED BY ARCHITECTS  ·  SHIPPED WORLDWIDE';
+  display: block;
+  background: var(--jh-ink);
+  color: var(--jh-bronze-light);
+  font-family: 'Jost', sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 2rem 2rem;
+  font-weight: 500;
+  border-top: 1px solid rgba(184, 144, 102, 0.3);
+  border-bottom: 1px solid rgba(184, 144, 102, 0.3);
+}
+
+/* ============== MULTICOLUMN — turn into editorial 3-up category showcase ============== */
+
+.multicolumn {
+  background: var(--jh-bone) !important;
+  padding: 5rem 0 !important;
+}
+/* Force the title wrapper to center properly */
+.multicolumn .title-wrapper-with-link,
+.multicolumn .multicolumn__title,
+.multicolumn .title-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin: 0 auto 3rem !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+.multicolumn .title-wrapper-with-link h2,
+.multicolumn .multicolumn__title h2,
+.multicolumn .title-wrapper h2 {
+  font-style: italic !important;
+  font-size: clamp(3.6rem, 6vw, 6.4rem) !important;
+  text-align: center !important;
+  margin: 0 !important;
+}
+
+/* Force list to be a real grid, not a horizontal slider */
+.multicolumn-list,
+.multicolumn .multicolumn-list,
+.multicolumn .slider {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 3rem 2rem !important;
+  flex-wrap: wrap !important;
+  overflow: visible !important;
+  scroll-snap-type: none !important;
+  width: 100% !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+}
+.multicolumn-list .multicolumn-list__item,
+.multicolumn-list .grid__item,
+.multicolumn-list .slider__slide {
+  width: auto !important;
+  flex-basis: auto !important;
+  max-width: none !important;
+  scroll-snap-align: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: list-item;
+}
+
+@media (max-width: 989px) {
+  .multicolumn-list {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 600px) {
+  .multicolumn-list {
+    grid-template-columns: 1fr !important;
+  }
+}
+.multicolumn-card {
+  background: transparent !important;
+  border: none !important;
+  text-align: left !important;
+}
+.multicolumn-card__image-wrapper {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  overflow: hidden;
+  position: relative;
+}
+.multicolumn-card__image-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  pointer-events: none;
+  transition: border-color 0.5s ease;
+}
+.multicolumn-card:hover .multicolumn-card__image-wrapper::after {
+  border-color: var(--jh-bronze);
+}
+.multicolumn-card__image-wrapper img {
+  width: 100% !important;
+  aspect-ratio: 4 / 5 !important;
+  object-fit: cover !important;
+  transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.1, 1) !important;
+  filter: contrast(1.02);
+}
+.multicolumn-card:hover .multicolumn-card__image-wrapper img { transform: scale(1.04); }
+
+.multicolumn-card__info {
+  padding: 1.8rem 0 0 !important;
+  text-align: left !important;
+  position: relative;
+}
+.multicolumn-card__info::before {
+  content: counter(multicolumn-counter, decimal-leading-zero);
+  font-family: 'Jost', sans-serif !important;
+  font-size: 1.05rem !important;
+  letter-spacing: 0.4em !important;
+  color: var(--jh-bronze) !important;
+  font-weight: 500 !important;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+.multicolumn-list { counter-reset: multicolumn-counter; }
+.multicolumn-card { counter-increment: multicolumn-counter; }
+
+.multicolumn-card__info h3 {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  font-size: 2.2rem !important;
+  color: var(--jh-ink) !important;
+  margin: 0 0 0.4rem !important;
+  letter-spacing: -0.005em !important;
+}
+.multicolumn-card__info p {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  color: var(--jh-ink-light) !important;
+  font-weight: 500 !important;
+  margin-top: 0.8rem !important;
+}
+
+/* "View" link with bronze underline-grow */
+.multicolumn-card__link,
+.multicolumn-card__info a {
+  color: var(--jh-bronze) !important;
+  font-family: 'Jost', sans-serif !important;
+  font-size: 1.05rem !important;
+  letter-spacing: 0.3em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  display: inline-block;
+  margin-top: 1.2rem;
+  position: relative;
+  font-weight: 500 !important;
+}
+.multicolumn-card__link::after,
+.multicolumn-card__info a::after {
+  content: ' →';
+  margin-left: 0.4rem;
+  transition: margin-left 0.4s ease;
+}
+.multicolumn-card__link:hover::after { margin-left: 0.9rem; }
+
+/* ============== BUTTONS ============== */
+
+.button, .shopify-payment-button__button--unbranded {
+  background: var(--jh-ink) !important;
+  color: var(--jh-bone) !important;
+  border: 1px solid var(--jh-ink) !important;
+  border-radius: 0 !important;
+  padding: 1.6rem 3.8rem !important;
+  font-size: 1.15rem !important;
+  letter-spacing: 0.28em !important;
+  font-weight: 500 !important;
+  transition: all 0.4s cubic-bezier(0.2, 0.7, 0.1, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+.button:hover {
+  background: var(--jh-bronze) !important;
+  color: var(--jh-bone) !important;
+  border-color: var(--jh-bronze) !important;
+  transform: translateY(-1px);
+}
+.button--secondary {
+  background: transparent !important;
+  color: var(--jh-ink) !important;
+  border: 1px solid var(--jh-ink) !important;
+}
+.button--secondary:hover {
+  background: var(--jh-ink) !important;
+  color: var(--jh-bone) !important;
+}
+.button--tertiary,
+.link-underline {
+  background: transparent !important;
+  color: var(--jh-bronze) !important;
+  border: none !important;
+  border-bottom: 1px solid var(--jh-bronze) !important;
+  padding: 0.4rem 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Disable the dynamic Shop Pay branded buttons — they break the aesthetic */
+.shopify-payment-button__more-options,
+.shopify-payment-button__button--branded,
+.shopify-payment-button,
+shop-follow-on-shop-button,
+shop-follow-button,
+[class*="shop-follow"],
+[class*="follow-on-shop"] {
+  display: none !important;
+}
+
+/* "View all" links */
+.button.button--tertiary[href*="collections"] {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 0.32em !important;
+  color: var(--jh-bronze) !important;
+  border-bottom: 1px solid var(--jh-bronze) !important;
+  background: transparent !important;
+}
+
+/* ============== PRODUCT + COLLECTION CARDS ============== */
+
+.card, .card-wrapper { background: transparent !important; border-radius: 0 !important; border: none !important; box-shadow: none !important; overflow: visible !important; }
+
+.card__inner, .card--card, .card--standard {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.card__media, .card .media {
+  border-radius: 0 !important;
+  overflow: hidden;
+  background: var(--jh-cream) !important;
+  aspect-ratio: 4 / 5 !important;
+  position: relative;
+}
+.card__media img, .card .media img {
+  transition: transform 1.4s cubic-bezier(0.2, 0.7, 0.1, 1), opacity 0.6s !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+.card-wrapper:hover .card__media img { transform: scale(1.05); }
+
+/* Bronze hairline overlay on hover */
+.card__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  pointer-events: none;
+  transition: border-color 0.5s ease;
+}
+.card-wrapper:hover .card__media::after { border-color: var(--jh-bronze); }
+
+/* "Quick view" / SHOP italic CTA on card hover (Frama-style) */
+.card-wrapper {
+  position: relative;
+}
+.card-wrapper::after {
+  content: 'View →';
+  position: absolute;
+  bottom: 7.5rem; right: 1rem;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--jh-bone);
+  background: var(--jh-ink);
+  padding: 0.5rem 1.4rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+.card-wrapper:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-information { padding: 1.6rem 0 0 !important; text-align: left !important; }
+
+.card__heading,
+.card__heading a {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 400 !important;
+  font-style: italic !important;
+  letter-spacing: 0 !important;
+  color: var(--jh-ink) !important;
+  text-transform: none !important;
+  font-size: 1.65rem !important;
+  line-height: 1.2 !important;
+}
+.card__heading a { text-decoration: none !important; }
+.card__heading a:hover { color: var(--jh-bronze) !important; }
+
+.price__regular .price-item--regular,
+.price-item {
+  font-family: 'Jost', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 1.25rem !important;
+  letter-spacing: 0.2em !important;
+  color: var(--jh-ink-light) !important;
+  text-transform: uppercase !important;
+}
+
+/* ============== FEATURED-COLLECTION SECTIONS ============== */
+
+.featured-collection,
+.section-featured-collection,
+.shopify-section--collection,
+[id*="featured_collection"] .collection {
+  padding: 5rem 0 !important;
+  background: var(--jh-bone) !important;
+}
+
+.featured-collection .title-wrapper-with-link,
+.featured-collection .section-header,
+.featured-collection .collection__title,
+.featured-collection .title-wrapper,
+[id*="featured_collection"] .title-wrapper-with-link,
+[id*="featured_collection"] .collection__title,
+[id*="featured_collection"] .title-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 1.6rem !important;
+  margin: 0 auto 6rem !important;
+  text-align: center !important;
+  padding: 0 4rem !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+.featured-collection .title-wrapper-with-link h2,
+.featured-collection .section-header h2,
+.featured-collection .collection__title h2,
+.featured-collection .title-wrapper h2,
+[id*="featured_collection"] .title-wrapper-with-link h2,
+[id*="featured_collection"] .collection__title h2,
+[id*="featured_collection"] .title-wrapper h2 {
+  text-align: center !important;
+  font-style: italic !important;
+  margin: 0 !important;
+}
+
+/* Force product grid to wrap properly — broad selectors */
+.product-grid,
+.grid.product-grid,
+.collection__products,
+.grid--4-col-desktop,
+[id*="featured_collection"] .grid,
+[id*="featured_collection"] .slider,
+.collection .grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 3rem 2rem !important;
+  overflow: visible !important;
+  scroll-snap-type: none !important;
+  flex-wrap: wrap !important;
+  list-style: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  width: 100% !important;
+}
+.product-grid .grid__item,
+.product-grid .slider__slide,
+[id*="featured_collection"] .grid__item,
+.collection .grid__item {
+  width: auto !important;
+  max-width: none !important;
+  flex-basis: auto !important;
+  scroll-snap-align: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+@media (max-width: 989px) {
+  .product-grid,
+  .grid.product-grid,
+  .collection__products,
+  .grid--4-col-desktop,
+  [id*="featured_collection"] .grid,
+  .collection .grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 600px) {
+  .product-grid,
+  .grid.product-grid,
+  .collection__products,
+  .grid--4-col-desktop,
+  [id*="featured_collection"] .grid,
+  .collection .grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+.featured-collection .title-wrapper-with-link p,
+.featured-collection .section-header p,
+.featured-collection__description {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  font-size: 1.4rem !important;
+  color: var(--jh-ink-light) !important;
+  text-align: center !important;
+  max-width: 56ch;
+  margin: 0 auto !important;
+  line-height: 1.6 !important;
+}
+
+/* The grid */
+.collection .grid,
+.collection-product-grid,
+.featured-collection .grid {
+  gap: 4rem 3rem !important;
+}
+
+/* Slider variant for hover-scrollable feel */
+.slider {
+  scrollbar-width: none;
+}
+.slider::-webkit-scrollbar { display: none; }
+
+/* ============== IMAGE BANNER ============== */
+
+.banner,
+.section-image-banner {
+  background: var(--jh-ink) !important;
+  position: relative;
+}
+.banner__media,
+.banner__media-image {
+  filter: contrast(1.04) brightness(0.95);
+}
+.banner__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+    rgba(22,20,15,0.5) 0%,
+    rgba(22,20,15,0.15) 50%,
+    rgba(22,20,15,0.45) 100%);
+  pointer-events: none;
+}
+.banner__content {
+  padding: 5rem 4rem !important;
+  position: relative;
+  z-index: 2;
+}
+.banner__box {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  max-width: 50ch;
+}
+.banner__heading {
+  color: var(--jh-bone) !important;
+  font-style: italic !important;
+  font-size: clamp(4.4rem, 8vw, 9rem) !important;
+  line-height: 0.95 !important;
+  margin-bottom: 1.6rem !important;
+}
+.banner__text {
+  color: rgba(245, 242, 236, 0.85) !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1.7 !important;
+  margin-bottom: 2.4rem !important;
+}
+.banner .button {
+  background: transparent !important;
+  border: 1px solid var(--jh-bone) !important;
+  color: var(--jh-bone) !important;
+}
+.banner .button:hover {
+  background: var(--jh-bone) !important;
+  color: var(--jh-ink) !important;
+}
+
+/* ============== NEWSLETTER ============== */
+
+.newsletter {
+  background: var(--jh-ink) !important;
+  padding: 6rem 4rem !important;
+  position: relative;
+  overflow: hidden;
+}
+.newsletter::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 30% 50%, rgba(184, 144, 102, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 70% 50%, rgba(184, 144, 102, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.newsletter__wrapper {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 56rem !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+.newsletter__wrapper::before {
+  content: 'Correspondence';
+  color: var(--jh-bronze-light) !important;
+}
+.newsletter__heading,
+.newsletter h2 {
+  color: var(--jh-bone) !important;
+  font-style: italic !important;
+  font-size: clamp(3.2rem, 6vw, 6.4rem) !important;
+  margin-bottom: 1.4rem !important;
+  font-weight: 300 !important;
+}
+.newsletter__subheading,
+.newsletter p {
+  color: rgba(245, 242, 236, 0.7) !important;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-size: 1.25rem !important;
+  line-height: 1.65 !important;
+  max-width: 52ch !important;
+  margin: 0 auto 3rem !important;
+}
+.newsletter-form,
+.newsletter-form__field-wrapper {
+  background: transparent !important;
+  max-width: 44rem !important;
+  margin: 0 auto !important;
+}
+.newsletter-form__field-wrapper input,
+.newsletter .field__input {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(245, 242, 236, 0.3) !important;
+  border-radius: 0 !important;
+  font-family: 'Jost', sans-serif !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  font-size: 1.3rem !important;
+  padding: 1.4rem 0 !important;
+  color: var(--jh-bone) !important;
+}
+.newsletter-form__field-wrapper input::placeholder {
+  color: rgba(245, 242, 236, 0.5) !important;
+}
+.newsletter-form__field-wrapper input:focus {
+  border-bottom-color: var(--jh-bronze-light) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.newsletter-form__button { color: var(--jh-bronze-light) !important; }
+
+/* ============== FOOTER ============== */
+
+.footer {
+  background: var(--jh-ink) !important;
+  color: var(--jh-bone) !important;
+  border: none !important;
+  padding: 5rem 5rem 3rem !important;
+}
+.footer * { color: var(--jh-bone) !important; }
+.footer .footer__content-top {
+  border-bottom: 1px solid rgba(245, 242, 236, 0.12);
+  padding-bottom: 5rem;
+  margin-bottom: 3rem;
+}
+.footer .footer-block__heading {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  font-size: 1.8rem !important;
+  color: var(--jh-bronze-light) !important;
+  letter-spacing: 0.005em !important;
+  text-transform: none !important;
+  margin-bottom: 2rem !important;
+}
+.footer .footer-block ul a,
+.footer .list-menu__item {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 1.3rem !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  color: rgba(245, 242, 236, 0.75) !important;
+  transition: color 0.3s ease !important;
+  border-bottom: none !important;
+  padding: 0.5rem 0 !important;
+  display: inline-block;
+}
+.footer .footer-block ul a:hover,
+.footer .list-menu__item:hover { color: var(--jh-bronze-light) !important; }
+.footer__copyright {
+  border-top: 1px solid rgba(245, 242, 236, 0.12) !important;
+  padding-top: 2rem !important;
+  margin-top: 3rem !important;
+  text-align: center;
+}
+.footer__copyright, .footer__copyright * {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.32em !important;
+  text-transform: uppercase !important;
+  color: rgba(245, 242, 236, 0.4) !important;
+}
+
+.footer .field__input {
+  color: var(--jh-bone) !important;
+  border-bottom-color: rgba(245, 242, 236, 0.3) !important;
+}
+.footer .field__input::placeholder { color: rgba(245, 242, 236, 0.5) !important; }
+
+/* Footer atelier wordmark */
+.footer::before {
+  content: 'James Hardware  /  Architectural Hardware  /  Est. Workshop';
+  display: block;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-weight: 300 !important;
+  font-size: clamp(2.2rem, 4vw, 3.8rem) !important;
+  color: var(--jh-bone) !important;
+  margin-bottom: 5rem !important;
+  letter-spacing: -0.005em !important;
+  line-height: 1.2;
+}
+
+/* ============== PRODUCT PAGE ============== */
+
+/* Page wrapper / layout */
+.section-template--product,
+main[role="main"] .product {
+  background: var(--jh-bone) !important;
+  padding: 4rem 0 !important;
+}
+
+.product {
+  background: var(--jh-bone) !important;
+}
+.product__info-wrapper {
+  padding: 0 4rem !important;
+  position: sticky;
+  top: 4rem;
+}
+.product__media-wrapper {
+  padding: 0 2rem !important;
+}
+
+/* Product gallery — clean, no thumbnails clutter */
+.product__media-list {
+  background: transparent !important;
+  gap: 1rem !important;
+}
+.product__media-item {
+  background: var(--jh-paper) !important;
+  border: 1px solid var(--jh-rule-soft) !important;
+  border-radius: 0 !important;
+  overflow: hidden;
+}
+.product__media-item .product__media,
+.product-media,
+.product__media-item img {
+  border-radius: 0 !important;
+  object-fit: contain !important;
+  background: var(--jh-paper) !important;
+}
+
+/* Restyle the zoom/expand button (the "checkbox" the user mentioned) */
+.product__media-zoom-icon,
+.product__media-icon,
+.product-media-modal__toggle,
+button[aria-label*="open media"],
+.deferred-media__poster-button {
+  background: rgba(245, 242, 236, 0.85) !important;
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--jh-rule) !important;
+  border-radius: 0 !important;
+  width: 3.6rem !important;
+  height: 3.6rem !important;
+  color: var(--jh-ink) !important;
+  transition: all 0.3s ease !important;
+}
+.product__media-zoom-icon:hover,
+.product__media-icon:hover {
+  background: var(--jh-ink) !important;
+  color: var(--jh-bone) !important;
+}
+
+.product__title h1, .product__title h2 {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 300 !important;
+  font-style: italic !important;
+  font-size: clamp(3.4rem, 5.5vw, 5.4rem) !important;
+  letter-spacing: -0.018em !important;
+  line-height: 1.05 !important;
+  color: var(--jh-ink) !important;
+  margin-bottom: 1.4rem !important;
+}
+
+/* SKU eyebrow above title */
+.product__title::before {
+  content: 'James Hardware  /  Architectural Object';
+  display: block;
+  font-family: 'Jost', sans-serif !important;
+  font-size: 1.15rem !important;
+  letter-spacing: 0.32em !important;
+  text-transform: uppercase !important;
+  color: var(--jh-ink-light) !important;
+  margin-bottom: 1.6rem !important;
+  font-weight: 500 !important;
+  opacity: 0.7;
+}
+.product__description {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 1.4rem !important;
+  line-height: 1.75 !important;
+  color: var(--jh-ink-soft) !important;
+  font-weight: 400 !important;
+  margin: 2rem 0 !important;
+  padding-top: 2rem;
+  border-top: 1px solid var(--jh-rule-soft);
+}
+
+/* Specifications collapsible */
+.product__accordion,
+details[id*="Spec"],
+.collapsible-content,
+.accordion {
+  border: none !important;
+  border-top: 1px solid var(--jh-rule) !important;
+  background: transparent !important;
+  margin: 2rem 0 !important;
+  padding: 1.4rem 0 !important;
+}
+.product__accordion summary,
+details[id*="Spec"] summary,
+.collapsible-content summary {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 1.3rem !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  color: var(--jh-ink) !important;
+  padding: 0.8rem 0 !important;
+}
+.product__accordion[open] {
+  padding-bottom: 2rem !important;
+}
+
+/* Specifications: always-expanded, non-collapsible */
+.jh-accordion-static details {
+  pointer-events: auto;
+}
+.jh-accordion-static summary {
+  pointer-events: none !important;
+  cursor: default !important;
+  list-style: none !important;
+}
+.jh-accordion-static summary::-webkit-details-marker { display: none !important; }
+.jh-accordion-static summary svg,
+.jh-accordion-static summary .svg-wrapper,
+.jh-accordion-static summary .icon-caret {
+  display: none !important;
+}
+.jh-accordion-static .summary__title {
+  gap: 0 !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+.jh-accordion-static .accordion__content {
+  display: block !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  opacity: 1 !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+.jh-accordion-static .accordion__content > p {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+/* Variant pickers — generously spaced */
+.product-form__input {
+  padding: 1.4rem 0 !important;
+}
+.product-form__input legend,
+.product-form__input .form__label {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  color: var(--jh-ink-light) !important;
+  margin-bottom: 1.2rem !important;
+  font-weight: 500 !important;
+}
+
+/* Quantity row */
+.product-form__quantity {
+  margin: 2.4rem 0 !important;
+}
+.quantity__input {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 1.4rem !important;
+  letter-spacing: 0.1em !important;
+}
+
+/* Buy button row spans full width */
+.product-form__buttons,
+.product-form__submit {
+  width: 100% !important;
+}
+.product-form__submit {
+  font-size: 1.3rem !important;
+  letter-spacing: 0.32em !important;
+  padding: 1.8rem 3rem !important;
+  margin: 2rem 0 !important;
+}
+
+/* Share / icons row */
+.share-button summary,
+.share-button details,
+.product__share {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  color: var(--jh-ink-light) !important;
+}
+
+/* Quote / Add-to-cart buttons full width on product page */
+.product-form .button {
+  width: 100% !important;
+}
+
+/* Bulk quick order list (B2B) — refine layout */
+.bulk-quick-order-list,
+.quick-order-list {
+  background: var(--jh-paper) !important;
+  border: 1px solid var(--jh-rule) !important;
+  padding: 2rem !important;
+  margin: 2rem 0 !important;
+}
+.quick-order-list-row,
+.bulk-quick-order-list__row {
+  border-bottom: 1px solid var(--jh-rule-soft) !important;
+  padding: 1.4rem 0 !important;
+}
+.quick-order-list-row__title {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-size: 1.6rem !important;
+  font-weight: 400 !important;
+  color: var(--jh-ink) !important;
+}
+
+/* Related products section */
+.related-products {
+  padding: 6rem 0 !important;
+  background: var(--jh-bone) !important;
+  border-top: 1px solid var(--jh-rule);
+  margin-top: 6rem;
+}
+.related-products .title-wrapper-with-link h2 {
+  font-style: italic !important;
+  font-size: clamp(2.4rem, 4vw, 4rem) !important;
+}
+.price__container .price-item--regular { font-size: 1.3rem !important; letter-spacing: 0.16em !important; }
+
+.product-form__input--pill input + label,
+.variant-pills__input + label {
+  border-radius: 0 !important;
+  border: 1px solid var(--jh-rule) !important;
+  background: transparent !important;
+  font-family: 'Jost', sans-serif !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  font-size: 1.05rem !important;
+  padding: 1.1rem 1.6rem !important;
+}
+.product-form__input--pill input:checked + label,
+.variant-pills__input:checked + label {
+  background: var(--jh-ink) !important;
+  color: var(--jh-bone) !important;
+  border-color: var(--jh-ink) !important;
+}
+
+.quantity {
+  border-radius: 0 !important;
+  border: 1px solid var(--jh-rule) !important;
+  background: transparent !important;
+}
+.quantity__button { background: transparent !important; color: var(--jh-ink) !important; }
+
+/* ============== CART DRAWER ============== */
+.cart-drawer, .drawer__inner {
+  background: var(--jh-paper) !important;
+  border-radius: 0 !important;
+}
+.cart-drawer__heading, .drawer__heading {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 300 !important;
+  font-style: italic !important;
+  font-size: 2.4rem !important;
+}
+
+/* ============== UTILITY ============== */
+
+/* Belt and suspenders — never hide content if JS scroll triggers don't fire */
+.scroll-trigger,
+.scroll-trigger--offscreen,
+.scroll-trigger.animate--fade-in,
+.scroll-trigger.animate--slide-in {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
+@keyframes jh-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+main { animation: jh-fade-up 1s cubic-bezier(0.2, 0.7, 0.1, 1) both; }
+.section-header { animation: jh-fade-up 0.8s cubic-bezier(0.2, 0.7, 0.1, 1) both; animation-delay: 0.1s; }
+
+.page-width {
+  padding-left: 5rem !important;
+  padding-right: 5rem !important;
+  max-width: 1480px !important;
+  margin: 0 auto !important;
+}
+@media (max-width: 749px) {
+  .page-width { padding-left: 1.6rem !important; padding-right: 1.6rem !important; }
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--jh-bone); }
+::-webkit-scrollbar-thumb { background: var(--jh-rule); }
+::-webkit-scrollbar-thumb:hover { background: var(--jh-bronze); }
+
+/* Forms */
+.field__label {
+  font-family: 'Jost', sans-serif !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  font-size: 1rem !important;
+  color: var(--jh-ink-light) !important;
+}
+
+blockquote, .pullquote {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-weight: 300 !important;
+  font-size: 2rem !important;
+  line-height: 1.4 !important;
+  color: var(--jh-ink) !important;
+  border-left: 1px solid var(--jh-bronze) !important;
+  padding-left: 2.4rem !important;
+}
+
+/* ============== SLIDER NAV BUTTONS ============== */
+.slider-button {
+  background: transparent !important;
+  border: 1px solid var(--jh-rule) !important;
+  border-radius: 50% !important;
+  width: 4.4rem !important;
+  height: 4.4rem !important;
+  color: var(--jh-ink) !important;
+  transition: all 0.4s ease !important;
+}
+.slider-button:hover:not(:disabled) {
+  background: var(--jh-ink) !important;
+  color: var(--jh-bone) !important;
+  border-color: var(--jh-ink) !important;
+}
+
+/* ============== SEARCH ============== */
+.search__input {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid var(--jh-rule) !important;
+  border-radius: 0 !important;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-size: 2rem !important;
+  font-weight: 300 !important;
+  color: var(--jh-ink) !important;
+  padding: 1.2rem 0 !important;
+}
+.predictive-search { background: var(--jh-bone) !important; }
+
+/* ============================================================
+   PRODUCT SPEC SHEET — image-with-text reframed as architectural data sheet
+   Inspired by: Apparatus (hairline rules + dual labels), VOLA (model-no-as-hero),
+   Buster + Punch (technical drawing centerpiece), Rocky Mountain (footnoted detail)
+   ============================================================ */
+
+.jh-spec-section {
+  background: var(--jh-bone) !important;
+}
+
+.jh-spec-section .image-with-text {
+  position: relative;
+  padding-top: 6rem;
+}
+
+/* Eyebrow above the entire section */
+.jh-spec-section .image-with-text::before {
+  content: 'TECHNICAL DETAIL — FIG. 01';
+  display: block;
+  text-align: center;
+  font-family: 'Jost', 'Helvetica Neue', sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--jh-mute, #6E6E6E);
+  margin-bottom: 4rem;
+  font-weight: 400;
+}
+
+/* Section padding overrides — make this feel substantial */
+.jh-spec-section .section-1-padding,
+.jh-spec-section [class*="-padding"] {
+  padding-top: 9rem !important;
+  padding-bottom: 9rem !important;
+}
+
+/* Layout: stack vertically — drawing as hero, specs strip below.
+   Override Dawn's two-column flex completely. */
+.jh-spec-section .image-with-text__grid {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 5rem !important;
+  margin: 0 !important;
+  max-width: 96rem;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.jh-spec-section .image-with-text__grid > .grid__item {
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: initial !important;
+}
+
+/* ============== TECHNICAL DRAWING (top, centered) ============== */
+.jh-spec-section .image-with-text__media-item {
+  position: relative;
+  padding: 0 0 4.5rem 0;
+}
+
+/* Inner panel holding the drawing — bone, with corner ticks via SVG outlines */
+.jh-spec-section .image-with-text__media {
+  position: relative !important;
+  background: var(--jh-paper) !important;
+  padding: 5rem 4.5rem !important;
+  overflow: visible !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 36rem;
+}
+
+/* Corner ticks: top-left + bottom-right via ::before */
+.jh-spec-section .image-with-text__media::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--jh-ink), var(--jh-ink)),
+    linear-gradient(var(--jh-ink), var(--jh-ink)),
+    linear-gradient(var(--jh-ink), var(--jh-ink)),
+    linear-gradient(var(--jh-ink), var(--jh-ink)),
+    linear-gradient(var(--jh-ink), var(--jh-ink)),
+    linear-gradient(var(--jh-ink), var(--jh-ink)),
+    linear-gradient(var(--jh-ink), var(--jh-ink)),
+    linear-gradient(var(--jh-ink), var(--jh-ink));
+  background-size:
+    28px 1px, 1px 28px,
+    28px 1px, 1px 28px,
+    28px 1px, 1px 28px,
+    28px 1px, 1px 28px;
+  background-position:
+    top left, top left,
+    top right, top right,
+    bottom left, bottom left,
+    bottom right, bottom right;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.jh-spec-section .image-with-text__media img {
+  background: transparent !important;
+  mix-blend-mode: multiply;
+  position: relative;
+  z-index: 2;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: 30rem !important;
+  width: auto !important;
+  object-fit: contain !important;
+}
+
+/* Drawing caption */
+.jh-spec-section .image-with-text__media-item::after {
+  content: 'DRAWN TO SCALE  ·  DIMENSIONS IN MM';
+  position: absolute;
+  bottom: 1.5rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: 'Jost', 'Helvetica Neue', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--jh-mute, #6E6E6E);
+  font-weight: 400;
+}
+
+/* ============== SPEC STRIP (below drawing, centered) ============== */
+.jh-spec-section .image-with-text__text-item {
+  width: 100% !important;
+}
+
+.jh-spec-section .image-with-text__content {
+  background: transparent !important;
+  padding: 0 !important;
+  width: 100% !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+/* Heading + eyebrow above the spec strip */
+.jh-spec-section .image-with-text__heading {
+  position: relative;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-size: 4rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.005em !important;
+  line-height: 1.05 !important;
+  color: var(--jh-ink) !important;
+  margin: 0 auto 3.5rem !important;
+  padding-top: 2.6rem !important;
+  text-align: center !important;
+  text-transform: none !important;
+  width: fit-content;
+}
+.jh-spec-section .image-with-text__heading::before {
+  content: 'DETAIL N° JH-SERIES';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Jost', 'Helvetica Neue', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.15rem;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--jh-ink-light, #6B6B6B);
+  white-space: nowrap;
+}
+
+/* The text rte: convert <p> rows into a horizontal data strip */
+.jh-spec-section .image-with-text__text {
+  font-family: 'Jost', 'Helvetica Neue', sans-serif !important;
+  color: var(--jh-ink) !important;
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+  border-top: 1px solid var(--jh-rule) !important;
+  border-bottom: 1px solid var(--jh-rule) !important;
+}
+
+/* Each spec row: vertical cell with key on top, value below, hairline divider between */
+.jh-spec-section .jh-spec-row {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 1.2rem !important;
+  padding: 3rem 1.5rem !important;
+  margin: 0 !important;
+  border-left: 1px solid var(--jh-rule) !important;
+  text-align: center !important;
+}
+.jh-spec-section .jh-spec-row:first-of-type {
+  border-left: 0 !important;
+}
+.jh-spec-section .jh-spec-empty {
+  display: none !important;
+}
+
+.jh-spec-section .jh-spec-key {
+  font-family: 'Jost', 'Helvetica Neue', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--jh-ink-light, #6B6B6B);
+  font-weight: 400;
+}
+
+.jh-spec-section .jh-spec-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.6rem;
+  letter-spacing: 0.005em;
+  color: var(--jh-ink);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1;
+}
+.jh-spec-section .jh-spec-num {
+  font-style: italic;
+  font-feature-settings: 'lnum';
+}
+.jh-spec-section .jh-spec-unit {
+  font-family: 'Jost', 'Helvetica Neue', sans-serif;
+  font-style: normal;
+  font-size: 1.05rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--jh-ink-light, #6B6B6B);
+  margin-left: 0.4rem;
+  font-weight: 400;
+  vertical-align: 0.15em;
+}
+
+/* Hide the default Specifications heading because we redesign it visually */
+.jh-spec-section .image-with-text__content > .image-with-text__heading + .image-with-text__text {
+  margin-top: 0;
+}
+
+/* Mobile: spec strip becomes vertical stacked rows */
+@media (max-width: 749px) {
+  .jh-spec-section .image-with-text__grid { gap: 3rem !important; }
+  .jh-spec-section .image-with-text__media { padding: 3rem 2rem !important; min-height: auto !important; }
+  .jh-spec-section .image-with-text__media img { max-height: 22rem !important; }
+  .jh-spec-section .image-with-text__heading { font-size: 3rem !important; }
+  .jh-spec-section .image-with-text__text {
+    grid-template-columns: 1fr !important;
+  }
+  .jh-spec-section .jh-spec-row {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    border-left: 0 !important;
+    border-top: 1px solid var(--jh-rule) !important;
+    padding: 1.6rem 0 !important;
+  }
+  .jh-spec-section .jh-spec-row:first-of-type {
+    border-top: 0 !important;
+  }
+  .jh-spec-section .jh-spec-val { font-size: 2rem; }
+  .jh-spec-section .image-with-text { padding-top: 3rem; }
+  .jh-spec-section .image-with-text::before { margin-bottom: 2.5rem; font-size: 1rem; }
+  .jh-spec-section [class*="-padding"] { padding-top: 5rem !important; padding-bottom: 5rem !important; }
+}
+
+/* ============================================================
+   B2B INTERIM — hide bulk-order list on product pages until the
+   quote system ships. Re-enable later by removing this block.
+   ============================================================ */
+[id$="__quick-order-list"],
+.shopify-section-quick-order-list {
+  display: none !important;
+}

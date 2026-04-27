@@ -55,12 +55,12 @@
       ],
       "settings": {
         "layout": "full_bleed",
-        "slide_height": "medium",
+        "slide_height": "large",
         "slider_visual": "dots",
-        "auto_rotate": false,
+        "auto_rotate": true,
         "change_slides_speed": 7,
         "image_behavior": "ambient",
-        "show_text_below": true,
+        "show_text_below": false,
         "accessibility_info": "Slideshow about our brand"
       }
     },
@@ -137,48 +137,48 @@
         "column6"
       ],
       "settings": {
-        "title": "Product Categories",
-        "heading_size": "h2",
+        "title": "The Collection",
+        "heading_size": "h1",
         "image_width": "full",
-        "image_ratio": "square",
-        "columns_desktop": 6,
+        "image_ratio": "portrait",
+        "columns_desktop": 3,
         "column_alignment": "left",
-        "background_style": "primary",
+        "background_style": "none",
         "button_label": "",
         "button_link": "",
-        "color_scheme": "scheme-5",
-        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
         "swipe_on_mobile": true,
-        "padding_top": 12,
-        "padding_bottom": 12
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "featured_collection2": {
       "type": "featured-collection",
       "settings": {
-        "title": "New arrivals",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
+        "title": "New Arrivals",
+        "heading_size": "h1",
+        "description": "<p>Recent additions to our atelier — limited drops, hand-finished</p>",
+        "show_description": true,
         "description_style": "body",
         "collection": "2024-dec",
-        "products_to_show": 25,
-        "columns_desktop": 5,
+        "products_to_show": 8,
+        "columns_desktop": 4,
         "full_width": true,
         "show_view_all": true,
         "view_all_style": "solid",
-        "enable_desktop_slider": true,
+        "enable_desktop_slider": false,
         "color_scheme": "",
-        "image_ratio": "adapt",
+        "image_ratio": "portrait",
         "image_shape": "default",
-        "show_secondary_image": false,
+        "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 52
+        "swipe_on_mobile": true,
+        "padding_top": 96,
+        "padding_bottom": 96
       }
     },
     "image_banner_AVTNtQ": {
@@ -215,19 +215,18 @@
         "heading_CxwgJg",
         "buttons_W8JU3z"
       ],
-      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/IMG_0238.jpg",
         "image_overlay_opacity": 40,
-        "image_height": "small",
+        "image_height": "large",
         "desktop_content_position": "middle-left",
         "show_text_box": false,
         "desktop_content_alignment": "left",
-        "color_scheme": "scheme-5",
+        "color_scheme": "scheme-4",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
-        "show_text_below": true
+        "show_text_below": false
       }
     },
     "image_banner": {
@@ -264,19 +263,18 @@
         "heading",
         "button"
       ],
-      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/Catelogue_4.png",
         "image_overlay_opacity": 40,
-        "image_height": "small",
+        "image_height": "large",
         "desktop_content_position": "middle-right",
         "show_text_box": false,
         "desktop_content_alignment": "right",
-        "color_scheme": "scheme-5",
+        "color_scheme": "scheme-4",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
-        "show_text_below": true
+        "show_text_below": false
       }
     },
     "newsletter_bBdXpf": {
@@ -285,14 +283,14 @@
         "heading_rGWWcm": {
           "type": "heading",
           "settings": {
-            "heading": "Subscribe to our emails",
+            "heading": "Notes from James",
             "heading_size": "h1"
           }
         },
         "paragraph_andMbD": {
           "type": "paragraph",
           "settings": {
-            "text": "<p>Be the first to know about new collections and exclusive offers.</p>"
+            "text": "<p>I write only when there is something worth sharing — new pieces from the workshop, project archives, and limited drops. — James</p>"
           }
         },
         "email_form_8gXChj": {
@@ -306,10 +304,10 @@
         "email_form_8gXChj"
       ],
       "settings": {
-        "color_scheme": "scheme-3",
+        "color_scheme": "scheme-4",
         "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
+        "padding_top": 96,
+        "padding_bottom": 96
       }
     },
     "collection_list": {
@@ -377,29 +375,29 @@
     "featured_collection1": {
       "type": "featured-collection",
       "settings": {
-        "title": "Proven bestsellers",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
+        "title": "Proven Bestsellers",
+        "heading_size": "h1",
+        "description": "<p>Pieces returning to specification books year after year</p>",
+        "show_description": true,
         "description_style": "body",
         "collection": "selection-for-intergescom",
-        "products_to_show": 25,
-        "columns_desktop": 5,
-        "full_width": false,
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "full_width": true,
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "",
-        "image_ratio": "adapt",
+        "color_scheme": "scheme-2",
+        "image_ratio": "portrait",
         "image_shape": "default",
-        "show_secondary_image": false,
+        "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 52
+        "swipe_on_mobile": true,
+        "padding_top": 96,
+        "padding_bottom": 96
       }
     }
   },
