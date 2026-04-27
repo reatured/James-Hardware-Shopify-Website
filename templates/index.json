@@ -169,7 +169,7 @@
         "view_all_style": "solid",
         "enable_desktop_slider": false,
         "color_scheme": "",
-        "image_ratio": "portrait",
+        "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
@@ -218,7 +218,7 @@
       "settings": {
         "image": "shopify://shop_images/IMG_0238.jpg",
         "image_overlay_opacity": 40,
-        "image_height": "large",
+        "image_height": "adapt",
         "desktop_content_position": "middle-left",
         "show_text_box": false,
         "desktop_content_alignment": "left",
@@ -229,52 +229,71 @@
         "show_text_below": false
       }
     },
-    "image_banner": {
-      "type": "image-banner",
+    "lookbook_rail": {
+      "type": "multicolumn",
       "blocks": {
-        "text": {
-          "type": "text",
+        "look1": {
+          "type": "column",
           "settings": {
-            "text": "Designed by James hardware",
-            "text_style": "body"
+            "image": "shopify://shop_images/DSC05445.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
           }
         },
-        "heading": {
-          "type": "heading",
+        "look2": {
+          "type": "column",
           "settings": {
-            "heading": "Shelf Bracket",
-            "heading_size": "h1"
+            "image": "shopify://shop_images/DSC06641.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
           }
         },
-        "button": {
-          "type": "buttons",
+        "look3": {
+          "type": "column",
           "settings": {
-            "button_label_1": "GH069",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": false,
-            "button_label_2": "ALL SHELF BRACKET",
-            "button_link_2": "shopify://collections/cabinet-hardware",
-            "button_style_secondary_2": false
+            "image": "shopify://shop_images/Handle_Lock_2023_June_Cover3.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "look4": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/HP23804SC-08.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "text",
-        "heading",
-        "button"
+        "look1",
+        "look2",
+        "look3",
+        "look4"
       ],
       "settings": {
-        "image": "shopify://shop_images/Catelogue_4.png",
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "middle-right",
-        "show_text_box": false,
-        "desktop_content_alignment": "right",
-        "color_scheme": "scheme-4",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "title": "From the Workshop",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "square",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "newsletter_bBdXpf": {
@@ -388,7 +407,7 @@
         "view_all_style": "solid",
         "enable_desktop_slider": false,
         "color_scheme": "scheme-2",
-        "image_ratio": "portrait",
+        "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
@@ -406,9 +425,9 @@
     "multicolumn",
     "featured_collection2",
     "image_banner_AVTNtQ",
-    "image_banner",
+    "lookbook_rail",
+    "featured_collection1",
     "newsletter_bBdXpf",
-    "collection_list",
-    "featured_collection1"
+    "collection_list"
   ]
 }
