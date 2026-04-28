@@ -1926,26 +1926,51 @@ a:focus-visible,
   content: 'Correspondence' !important;
 }
 
-/* One inverted section to break the cream rhythm ---------------- */
+/* Bestsellers — warm cream tonal shift (NOT inverted dark, which
+   created a gray box around product photos and washed out prices) -- */
 [id$="__featured_collection1"],
 [id$="__featured_collection1"] .featured-collection {
-  background: var(--jh-ink) !important;
-}
-[id$="__featured_collection1"] .featured-collection__title,
-[id$="__featured_collection1"] .collection__title h2,
-[id$="__featured_collection1"] .title-wrapper-with-link h2,
-[id$="__featured_collection1"] .featured-collection__description,
-[id$="__featured_collection1"] .card__heading,
-[id$="__featured_collection1"] .card__heading a,
-[id$="__featured_collection1"] .price,
-[id$="__featured_collection1"] .price__regular .price-item--regular {
-  color: var(--jh-bone) !important;
-}
-[id$="__featured_collection1"] .collection__title::before {
-  color: #C99A6E !important;
+  background: var(--jh-bone-warm) !important;
 }
 [id$="__featured_collection1"] .card__media {
-  background: #2A2A2A !important;
+  background: var(--jh-paper) !important;
+}
+[id$="__featured_collection1"] .card__heading,
+[id$="__featured_collection1"] .card__heading a {
+  color: var(--jh-ink) !important;
+}
+[id$="__featured_collection1"] .price,
+[id$="__featured_collection1"] .price-item,
+[id$="__featured_collection1"] .price__regular .price-item--regular {
+  color: var(--jh-ink-soft) !important;
+}
+[id$="__featured_collection1"] .collection__title h2 {
+  color: var(--jh-ink) !important;
+}
+[id$="__featured_collection1"] .featured-collection__description {
+  color: var(--jh-ink-light) !important;
+}
+
+/* Newsletter — softer breathing room + visible top/bottom rules --- */
+[id$="__newsletter_bBdXpf"] .newsletter {
+  padding: 9.6rem 4rem !important;
+  border-top: 1px solid rgba(245, 242, 236, 0.08);
+  border-bottom: 1px solid rgba(245, 242, 236, 0.08);
+}
+[id$="__newsletter_bBdXpf"] .newsletter__wrapper {
+  background: transparent !important;
+  padding: 0 1.6rem !important;
+}
+@media (max-width: 749px) {
+  [id$="__newsletter_bBdXpf"] .newsletter {
+    padding: 5.6rem 1.6rem !important;
+  }
+}
+
+/* Chapter divider IV (inverted) — slightly looser on desktop ----- */
+[id$="__chapter_div_2"] .jh-chapter {
+  padding-top: 9.6rem !important;
+  padding-bottom: 9.6rem !important;
 }
 
 /* Chapter divider — editorial pause between sections ------------- */
