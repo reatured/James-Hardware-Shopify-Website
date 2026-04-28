@@ -1973,6 +1973,22 @@ a:focus-visible,
   padding-bottom: 9.6rem !important;
 }
 
+/* The Collection (catalogue) — show entire image, no cropping ----
+   Source images vary 0.98–1.55 ratio; forcing 4/5 cover crops ~47%
+   off the landscape ones. Switch to contain on a paper background
+   so each tile shows the full subject in a uniform frame. */
+[id$="__multicolumn"] .multicolumn-card__image-wrapper {
+  background: var(--jh-paper) !important;
+}
+[id$="__multicolumn"] .multicolumn-card__image-wrapper img {
+  object-fit: contain !important;
+  padding: 1.6rem !important;
+  filter: none !important;
+}
+[id$="__multicolumn"] .multicolumn-card:hover .multicolumn-card__image-wrapper img {
+  transform: scale(1.02) !important;
+}
+
 /* Chapter divider — editorial pause between sections ------------- */
 .jh-chapter {
   background: var(--jh-bone) !important;
