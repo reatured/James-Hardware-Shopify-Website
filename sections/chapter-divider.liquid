@@ -1,0 +1,57 @@
+{%- liquid
+  assign invert_class = ''
+  if section.settings.invert
+    assign invert_class = ' jh-chapter--invert'
+  endif
+-%}
+
+<section class="jh-chapter{{ invert_class }}" aria-label="{{ section.settings.eyebrow | escape }}">
+  <div class="jh-chapter__numeral">{{ section.settings.numeral }}</div>
+  <div class="jh-chapter__body">
+    {%- if section.settings.eyebrow != blank -%}
+      <span class="jh-chapter__eyebrow">{{ section.settings.eyebrow }}</span>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <p class="jh-chapter__text">{{ section.settings.text }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Chapter divider",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "numeral",
+      "label": "Roman numeral",
+      "default": "II."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "Chapter Two"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Manifesto line",
+      "default": "On modular hookracks — Spring 2025."
+    },
+    {
+      "type": "checkbox",
+      "id": "invert",
+      "label": "Invert (dark surface)",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Chapter divider"
+    }
+  ]
+}
+{% endschema %}

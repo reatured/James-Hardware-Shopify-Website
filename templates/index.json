@@ -147,8 +147,8 @@
         "button_label": "",
         "button_link": "",
         "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 80,
         "padding_bottom": 80
       }
@@ -216,9 +216,9 @@
         "buttons_W8JU3z"
       ],
       "settings": {
-        "image": "shopify://shop_images/IMG_0238.jpg",
+        "image": "shopify://shop_images/Handle_Lock_2023_June_Cover3.jpg",
         "image_overlay_opacity": 40,
-        "image_height": "adapt",
+        "image_height": "medium",
         "desktop_content_position": "middle-left",
         "show_text_box": false,
         "desktop_content_alignment": "left",
@@ -227,6 +227,24 @@
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": false
+      }
+    },
+    "chapter_div_1": {
+      "type": "chapter-divider",
+      "settings": {
+        "numeral": "II.",
+        "eyebrow": "Chapter Two",
+        "text": "On modular hookracks — assembling the catalogue, one fitting at a time.",
+        "invert": false
+      }
+    },
+    "chapter_div_2": {
+      "type": "chapter-divider",
+      "settings": {
+        "numeral": "IV.",
+        "eyebrow": "Chapter Four",
+        "text": "Specified by architects — pieces that return to the spec book year after year.",
+        "invert": true
       }
     },
     "lookbook_rail": {
@@ -424,8 +442,10 @@
     "slideshow_dCXTHJ",
     "multicolumn",
     "featured_collection2",
+    "chapter_div_1",
     "image_banner_AVTNtQ",
     "lookbook_rail",
+    "chapter_div_2",
     "featured_collection1",
     "newsletter_bBdXpf",
     "collection_list"
