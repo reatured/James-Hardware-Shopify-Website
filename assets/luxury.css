@@ -1743,13 +1743,13 @@ blockquote, .pullquote {
 }
 
 /* --- P0.2 honor square ratio on the sections that asked for it - */
-#shopify-section-featured_collection1 .card__media,
-#shopify-section-featured_collection2 .card__media,
-#shopify-section-featured_collection1 .card .media,
-#shopify-section-featured_collection2 .card .media {
+[id$="__featured_collection1"] .card__media,
+[id$="__featured_collection2"] .card__media,
+[id$="__featured_collection1"] .card .media,
+[id$="__featured_collection2"] .card .media {
   aspect-ratio: 1 / 1 !important;
 }
-#shopify-section-lookbook_rail .multicolumn-card__image-wrapper img {
+[id$="__lookbook_rail"] .multicolumn-card__image-wrapper img {
   aspect-ratio: 1 / 1 !important;
 }
 
@@ -1861,8 +1861,8 @@ blockquote, .pullquote {
 }
 
 /* --- P2.2 hide multicolumn counter when block has no title ----- */
-#shopify-section-lookbook_rail .multicolumn-card__info::before,
-#shopify-section-lookbook_rail .multicolumn-card__info {
+[id$="__lookbook_rail"] .multicolumn-card__info::before,
+[id$="__lookbook_rail"] .multicolumn-card__info {
   display: none !important;
 }
 
@@ -1900,11 +1900,11 @@ a:focus-visible,
 .multicolumn .multicolumn__title h2 {
   position: relative;
 }
-#shopify-section-featured_collection2 .title-wrapper-with-link::before,
-#shopify-section-featured_collection1 .title-wrapper-with-link::before,
-#shopify-section-lookbook_rail .title-wrapper-with-link::before,
-#shopify-section-multicolumn .title-wrapper-with-link::before,
-#shopify-section-newsletter_bBdXpf .newsletter__wrapper::before {
+[id$="__featured_collection2"] .collection__title::before,
+[id$="__featured_collection1"] .collection__title::before,
+[id$="__lookbook_rail"] .title-wrapper-with-link::before,
+[id$="__multicolumn"] .title-wrapper-with-link::before,
+[id$="__newsletter_bBdXpf"] .newsletter__wrapper::before {
   display: block !important;
   font-family: 'Jost', sans-serif !important;
   font-size: 1rem !important;
@@ -1916,34 +1916,35 @@ a:focus-visible,
   background: none !important;
   padding: 0 !important;
   border: 0 !important;
-}
-#shopify-section-multicolumn .title-wrapper-with-link::before { content: 'Vol. I  ·  Catalogue' !important; }
-#shopify-section-featured_collection2 .title-wrapper-with-link::before { content: 'Vol. II  ·  Recently Added' !important; }
-#shopify-section-lookbook_rail .title-wrapper-with-link::before { content: 'Vol. III  ·  Workshop Notes' !important; }
-#shopify-section-featured_collection1 .title-wrapper-with-link::before { content: 'Vol. IV  ·  Specified by Architects' !important; }
-#shopify-section-newsletter_bBdXpf .newsletter__wrapper::before {
-  content: 'Correspondence' !important;
   text-align: center;
+}
+[id$="__multicolumn"] .title-wrapper-with-link::before { content: 'Vol. I  ·  Catalogue' !important; }
+[id$="__featured_collection2"] .collection__title::before { content: 'Vol. II  ·  Recently Added' !important; }
+[id$="__lookbook_rail"] .title-wrapper-with-link::before { content: 'Vol. III  ·  Workshop Notes' !important; }
+[id$="__featured_collection1"] .collection__title::before { content: 'Vol. IV  ·  Specified by Architects' !important; }
+[id$="__newsletter_bBdXpf"] .newsletter__wrapper::before {
+  content: 'Correspondence' !important;
 }
 
 /* One inverted section to break the cream rhythm ---------------- */
-#shopify-section-featured_collection1,
-#shopify-section-featured_collection1 .featured-collection {
+[id$="__featured_collection1"],
+[id$="__featured_collection1"] .featured-collection {
   background: var(--jh-ink) !important;
 }
-#shopify-section-featured_collection1 .featured-collection__title,
-#shopify-section-featured_collection1 .title-wrapper-with-link h2,
-#shopify-section-featured_collection1 .featured-collection__description,
-#shopify-section-featured_collection1 .card__heading,
-#shopify-section-featured_collection1 .card__heading a,
-#shopify-section-featured_collection1 .price,
-#shopify-section-featured_collection1 .price__regular .price-item--regular {
+[id$="__featured_collection1"] .featured-collection__title,
+[id$="__featured_collection1"] .collection__title h2,
+[id$="__featured_collection1"] .title-wrapper-with-link h2,
+[id$="__featured_collection1"] .featured-collection__description,
+[id$="__featured_collection1"] .card__heading,
+[id$="__featured_collection1"] .card__heading a,
+[id$="__featured_collection1"] .price,
+[id$="__featured_collection1"] .price__regular .price-item--regular {
   color: var(--jh-bone) !important;
 }
-#shopify-section-featured_collection1 .title-wrapper-with-link::before {
+[id$="__featured_collection1"] .collection__title::before {
   color: #C99A6E !important;
 }
-#shopify-section-featured_collection1 .card__media {
+[id$="__featured_collection1"] .card__media {
   background: #2A2A2A !important;
 }
 
