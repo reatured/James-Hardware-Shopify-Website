@@ -289,20 +289,42 @@
             "link_label": "",
             "link": ""
           }
+        },
+        "look5": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/gh017.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "look6": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/IMG_0238.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
         }
       },
       "block_order": [
         "look1",
         "look2",
         "look3",
-        "look4"
+        "look4",
+        "look5",
+        "look6"
       ],
       "settings": {
         "title": "From the Workshop",
         "heading_size": "h1",
         "image_width": "full",
         "image_ratio": "square",
-        "columns_desktop": 4,
+        "columns_desktop": 3,
         "column_alignment": "left",
         "background_style": "none",
         "button_label": "",
